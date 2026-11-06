@@ -1,0 +1,66 @@
+﻿# TITLE scope. Proven extra status permits the native family classification exception only.
+# Nomad-title transfer stays blocked: vanilla on_title_gain can destroy an existing native domicile title.
+# Transfer never calls a destroy effect. Existing native domicile destruction protection is unchanged.
+zz_md_transfer_proven_extra = {
+ has_variable = zz_md_created_title
+ has_variable = zz_md_schema_version
+ # Explicit branches keep tooltip evaluation away from absent legacy source variables.
+ trigger_if = {
+  limit = { has_variable = zz_md_schema_version }
+  trigger_if = {
+   limit = { var:zz_md_schema_version = 2 }
+   always = yes
+  }
+  trigger_else_if = {
+   limit = { var:zz_md_schema_version = 3 exists = var:zz_md_origin_domicile }
+   title_domicile = var:zz_md_origin_domicile
+  }
+  trigger_else = { always = no }
+ }
+ trigger_else = { always = no }
+}
+zz_md_transfer_title_eligible = {
+ is_title_created = yes
+ exists = holder
+ holder = { is_alive = yes }
+ exists = title_domicile
+ title_domicile = { owner = prev.holder }
+ is_leased_out = no
+ NOR = { is_head_of_faith = yes has_clerical_region = yes pam_title_is_clerical_elector_trigger = yes pam_title_is_antipope_office_trigger = yes is_holy_order = yes is_mercenary_company = yes }
+ # Native on_title_gain, county nomad branch, merges/destroys duplicate nomad domiciles.
+ # Restore the native nomad carrier restriction, including Mod extras. A receiver-only
+ # pre-send check would race delayed responses and cannot guarantee native preservation.
+ custom_description = { text = zz_md_nomad_transfer_unavailable_tt is_nomad_title = no }
+ OR = { zz_md_transfer_proven_extra = yes is_noble_family_title = no }
+}
+zz_md_domicile_revocation_can_pick = {
+	is_contested = no
+	custom_description = {
+		text = "revoke_title_not_noble_family_title"
+		OR = { is_noble_family_title = no zz_md_transfer_proven_extra = yes }
+	}
+	# Mod residence management permits immediate revocation after a grant.
+	custom_description = {
+		text = "character_interactions_not_rel_head_title"
+		is_head_of_faith = no
+	}
+	custom_description = {
+		text = "character_interactions_not_clerical_region_title"
+		has_clerical_region = no
+	}
+	custom_description = {
+		text = "character_interactions_not_clerical_elector_title"
+		pam_title_is_clerical_elector_trigger = no
+	}
+	custom_description = {
+		text = "character_interactions_not_antipope_office_title"
+		pam_title_is_antipope_office_trigger = no
+	}
+	custom_tooltip = {
+		text = special_title_cannot_be_revoked.tt
+		NOR = {
+			this = title:k_papal_state
+			this = title:k_orthodox
+		}
+	}
+}

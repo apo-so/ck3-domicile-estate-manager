@@ -1,0 +1,122 @@
+﻿# Confirmation executes the swap; completion is emitted only after exact postcheck.
+
+namespace = zz_swap_estate
+zz_swap_estate.0001 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_swap_estate_effect = yes
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+namespace = zz_swap_domicile
+zz_swap_domicile.0001 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_swap_ea_domicile_effect = yes
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+namespace = zz_swap_japanese
+zz_swap_japanese.0001 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_swap_japanese_effect = yes
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+zz_swap_domicile.0002 = {
+    type = character_event
+    title = zz_swap_domicile.0002.t
+    desc = zz_swap_domicile.0002.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    option = { name = zz_swap_domicile.0002.a }
+}
+
+zz_swap_estate.0002 = {
+    type = character_event
+    title = zz_swap_domicile.0002.t
+    desc = zz_swap_domicile.0002.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    option = { name = zz_swap_domicile.0002.a }
+}
+
+zz_swap_japanese.0002 = {
+    type = character_event
+    title = zz_swap_domicile.0002.t
+    desc = zz_swap_domicile.0002.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    option = { name = zz_swap_domicile.0002.a }
+}
+
+zz_swap_domicile.0003 = {
+    type = character_event
+    title = zz_swap_domicile.0003.t
+    desc = zz_swap_domicile.0003.desc
+    theme = stewardship
+    option = { name = zz_swap_domicile.0002.a }
+}
+
+zz_swap_domicile.0004 = {
+    type = character_event
+    title = zz_swap_domicile.0004.t
+    desc = zz_swap_domicile.0004.desc
+    theme = stewardship
+    option = { name = zz_swap_domicile.0002.a }
+}

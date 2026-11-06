@@ -1,0 +1,12 @@
+﻿l_simp_chinese:
+ zz_md_destroy_short:0 "销毁"
+ zz_md_destroy:0 "销毁住所"
+ zz_md_destroy_tt:0 "确认后拆除建筑并销毁此住所头衔。建筑补偿和资源转移数额将在消息栏显示。未能转移的给养或牧群将随住所消失。"
+ zz_md_destroy_result_title:0 "住所拆除"
+ zz_md_destroy_result_target:0 "操作头衔：[SCOPE.sTitle('zz_md_destroy_message_title').GetName]"
+ zz_md_destroy_result_done:0 "头衔已销毁。"
+ zz_md_destroy_result_refused:0 "住所头衔未能销毁。以下建筑补偿与资源转移已经发生，请检查当前住所。"
+ zz_md_destroy_result_refund:0 "拆除建筑获得：金币[zz_md_destroy_message_gold|2]，威望[zz_md_destroy_message_prestige|2]，虔诚[zz_md_destroy_message_piety|2]，影响力[zz_md_destroy_message_influence|2]。"
+ zz_md_destroy_result_provisions:0 "原有给养[zz_md_destroy_message_requested|2]：转移[zz_md_destroy_message_received|2]，随住所消失[zz_md_destroy_message_lost|2]。"
+ zz_md_destroy_result_herd:0 "原有牧群[zz_md_destroy_message_requested|2]：转移[zz_md_destroy_message_received|2]，随住所消失[zz_md_destroy_message_lost|2]。"
+ zz_md_destroy_result_domicile_remains:0 "这处住所仍与一个由你持有的头衔关联，请刷新住所列表查看。"

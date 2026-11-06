@@ -1,0 +1,84 @@
+﻿# ===================================================
+# 交换庄园 — 支持三种庄园类型自动路由
+# ===================================================
+zz_swap_domicile_interaction = {
+    category = interaction_category_diplomacy
+    interface_priority = 160
+    common_interaction = yes
+    icon = icon_vassal
+
+    desc = zz_swap_domicile_interaction_desc
+
+    ai_maybe = no
+    auto_accept = yes
+    use_diplomatic_range = no
+    ignores_pending_interaction_block = yes
+
+    # MOD 步骤1 (2026-07-20): 仅对"拥有庄园的封臣及下属"显示
+    is_shown = {
+        zz_md_vassal_swap_enabled = yes
+        scope:actor = { has_domicile = yes }            # 发起者也必须拥有庄园才能交换
+        scope:recipient = {
+            this != scope:actor                         # 不能与自己交换
+            is_vassal_or_below_of = scope:actor         # 封臣及下属
+            has_domicile = yes                          # 对方也拥有庄园
+        }
+    }
+
+    # MOD 步骤1 (2026-07-20): 类型/等级不符 -> 灰置并给理由 (能看到不能点)
+    is_valid_showing_failures_only = {
+        zz_md_vassal_swap_enabled = yes
+        custom_description = { text = zz_swap_unsupported_type zz_swap_supported_types = yes }
+        custom_description = {
+            text = zz_swap_not_ready
+            scope:actor = {
+                is_alive = yes
+                NOT = { has_variable = zz_swap_incomplete }
+                domicile = { has_ongoing_domicile_construction = no }
+            }
+            scope:recipient = {
+                is_alive = yes
+                NOT = { has_variable = zz_swap_incomplete }
+                domicile = { has_ongoing_domicile_construction = no }
+            }
+        }
+        scope:recipient = {
+            custom_description = {
+                text = zz_swap_type_mismatch            # 庄园类型不同
+                OR = { NOT = { zz_swap_supported_types = yes } zz_domicile_type_matches = yes }
+            }
+            custom_description = {
+                text = zz_swap_tier_mismatch            # 主建筑等级不一致
+                OR = {
+                    NOT = { zz_domicile_type_matches = yes }
+                    zz_domicile_tier_matches = yes
+                }
+            }
+        }
+    }
+
+    on_accept = {
+        if = {
+            limit = { zz_md_vassal_swap_enabled = yes }
+        # 根据玩家庄园类型路由到对应事件
+        scope:actor = {
+            if = {
+                limit = { domicile ?= { is_domicile_type = east_asian_estate } }
+                trigger_event = zz_swap_domicile.0001
+            }
+            else_if = {
+                limit = { domicile ?= { is_domicile_type = estate } }
+                trigger_event = zz_swap_estate.0001
+            }
+            else_if = {
+                limit = { domicile ?= { is_domicile_type = japanese_manor } }
+                trigger_event = zz_swap_japanese.0001
+            }
+        }
+    
+        }
+    }
+
+    ai_accept = { base = 100 }
+    ai_will_do = { base = 0 }
+}

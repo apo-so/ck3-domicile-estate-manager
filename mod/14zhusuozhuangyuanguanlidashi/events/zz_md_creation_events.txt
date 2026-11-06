@@ -1,0 +1,94 @@
+﻿namespace = zz_md
+zz_md.0100 = {
+    type = character_event
+    title = zz_md_creation_title
+    desc = zz_md_creation_desc
+    theme = stewardship
+    option = { name = zz_md_tier_county hidden_effect = { set_variable = { name = zz_md_preview_tier value = 1 } trigger_event = zz_md.0111 } }
+    option = { name = zz_md_tier_duchy hidden_effect = { set_variable = { name = zz_md_preview_tier value = 2 } trigger_event = zz_md.0112 } }
+    option = { name = zz_md_tier_kingdom hidden_effect = { set_variable = { name = zz_md_preview_tier value = 3 } trigger_event = zz_md.0113 } }
+    option = { name = zz_md_tier_empire hidden_effect = { set_variable = { name = zz_md_preview_tier value = 4 } trigger_event = zz_md.0114 } }
+    option = { name = zz_md_tier_hegemony hidden_effect = { set_variable = { name = zz_md_preview_tier value = 5 } trigger_event = zz_md.0115 } }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0111 = {
+    type = character_event
+    title = zz_md_tier_county
+    desc = zz_md_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_confirm
+        trigger = { zz_md_creation_available = yes zz_md_same_preview_government = yes var:zz_md_preview_tier = 1 zz_md_creation_release_allowed = yes }
+        hidden_effect = { if = { limit = { var:zz_md_preview_tier = 1 } zz_md_commit_creation_effect = yes } else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 } }
+    }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0112 = {
+    type = character_event
+    title = zz_md_tier_duchy
+    desc = zz_md_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_confirm
+        trigger = { zz_md_creation_available = yes zz_md_same_preview_government = yes var:zz_md_preview_tier = 2 zz_md_creation_release_allowed = yes }
+        hidden_effect = { if = { limit = { var:zz_md_preview_tier = 2 } zz_md_commit_creation_effect = yes } else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 } }
+    }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0113 = {
+    type = character_event
+    title = zz_md_tier_kingdom
+    desc = zz_md_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_confirm
+        trigger = { zz_md_creation_available = yes zz_md_same_preview_government = yes var:zz_md_preview_tier = 3 zz_md_creation_release_allowed = yes }
+        hidden_effect = { if = { limit = { var:zz_md_preview_tier = 3 } zz_md_commit_creation_effect = yes } else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 } }
+    }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0114 = {
+    type = character_event
+    title = zz_md_tier_empire
+    desc = zz_md_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_confirm
+        trigger = { zz_md_creation_available = yes zz_md_same_preview_government = yes var:zz_md_preview_tier = 4 zz_md_creation_release_allowed = yes }
+        hidden_effect = { if = { limit = { var:zz_md_preview_tier = 4 } zz_md_commit_creation_effect = yes } else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 } }
+    }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0115 = {
+    type = character_event
+    title = zz_md_tier_hegemony
+    desc = zz_md_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_confirm
+        trigger = { zz_md_creation_available = yes zz_md_same_preview_government = yes var:zz_md_preview_tier = 5 zz_md_creation_release_allowed = yes }
+        hidden_effect = { if = { limit = { var:zz_md_preview_tier = 5 } zz_md_commit_creation_effect = yes } else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 } }
+    }
+    option = { name = zz_md_cancel hidden_effect = { zz_md_creation_cleanup_effect = yes } }
+}
+zz_md.0120 = {
+    type = character_event
+    title = zz_md_created_title
+    desc = { desc = zz_md_created_desc first_valid = { triggered_desc = { trigger = { exists = var:zz_md_created_old_default exists = var:zz_md_created_old_primary } desc = zz_md_created_change_desc } desc = zz_md_created_change_unknown_desc } }
+    theme = stewardship
+    option = { name = zz_md_ok }
+}
+zz_md.0121 = {
+    type = character_event
+    title = zz_md_stopped_title
+    desc = zz_md_stopped_desc
+    theme = stewardship
+    option = { name = zz_md_ok }
+}
+zz_md.0122 = {
+    type = character_event
+    title = zz_md_failed_title
+    desc = zz_md_failed_desc
+    theme = stewardship
+    option = { name = zz_md_ok }
+}

@@ -1,0 +1,65 @@
+﻿zz_md_create_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_create_decision_desc
+    selection_tooltip = zz_md_create_decision_tooltip
+    confirm_text = zz_md_create_decision_confirm
+    is_shown = { is_ai = no }
+    is_valid = { custom_description = { text = zz_md_supported zz_md_government_supported = yes }
+        custom_description = { text = zz_md_creation_idle_tt is_alive = yes NOT = { has_variable = zz_md_create_busy } NOT = { has_variable = zz_md_create_failed } NOT = { has_variable = zz_md_res_failed } }
+        custom_description = { text = zz_md_creation_not_pending_tt NOT = { has_variable = zz_md_create_pending } } }
+    effect = { zz_md_begin_creation_effect = yes }
+    ai_check_interval = 0
+    ai_potential = { always = no }
+}
+zz_md_manage_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_manage_decision_desc
+    selection_tooltip = zz_md_manage_decision_tooltip
+    confirm_text = zz_md_manage_decision_confirm
+    is_shown = { is_ai = no }
+    is_valid = { always = yes }
+    effect = { zz_md_open_manager_effect = yes }
+    ai_check_interval = 0
+    ai_potential = { always = no }
+}
+
+zz_md_merge_resources_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_merge_resources_decision_desc
+    selection_tooltip = zz_md_merge_resources_decision_tooltip
+    confirm_text = zz_md_merge_resources_decision_confirm
+    is_shown = { is_ai = no exists = domicile domicile = { OR = { is_domicile_type = camp is_domicile_type = yurt } } }
+    is_valid = { custom_description = { text = zz_md_resource_merge_requirements_tt zz_md_resource_merge_available = yes } }
+    effect = { trigger_event = zz_md.0300 }
+    ai_check_interval = 0 ai_potential = { always = no }
+}
+
+zz_md_recover_japanese_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_recover_japanese_decision_desc selection_tooltip = zz_md_recover_japanese_decision_desc confirm_text = zz_md_confirm
+    decision_group_type = debug
+    is_shown = { debug_only = yes is_ai = no has_variable = zz_swap_incomplete }
+    is_valid = { custom_description = { text = zz_md_recovery_requirements_tt zz_md_japanese_recovery_candidate = yes } }
+    effect = { trigger_event = zz_md.0400 }
+    ai_check_interval = 0 ai_potential = { always = no }
+}
+
+zz_md_attest_recovery_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_attest_recovery_decision_desc selection_tooltip = zz_md_attest_recovery_decision_desc confirm_text = zz_md_confirm
+    decision_group_type = debug
+    is_shown = { debug_only = yes is_ai = no has_variable = zz_md_recovery_requires_native_readback }
+    is_valid = { custom_description = { text = zz_md_recovery_requirements_tt zz_md_japanese_recovery_candidate = yes } }
+    effect = { zz_md_attest_japanese_recovery_effect = yes }
+    ai_check_interval = 0 ai_potential = { always = no }
+}
+
+zz_md_recheck_creation_decision = {
+    picture = { reference = "gfx/interface/illustrations/decisions/decision_realm.dds" }
+    desc = zz_md_recheck_creation_decision_desc selection_tooltip = zz_md_recheck_creation_decision_desc confirm_text = zz_md_confirm
+    decision_group_type = debug
+    is_shown = { debug_only = yes is_ai = no has_variable = zz_md_create_failed }
+    is_valid = { custom_description = { text = zz_md_legacy_title_requirement_tt exists = var:zz_md_last_created_title } }
+    effect = { trigger_event = zz_md.0404 }
+    ai_check_interval = 0 ai_potential = { always = no }
+}

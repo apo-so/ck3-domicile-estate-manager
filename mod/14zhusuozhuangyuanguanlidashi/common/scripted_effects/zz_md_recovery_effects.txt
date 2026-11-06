@@ -1,0 +1,830 @@
+﻿zz_md_prepare_recovery_scopes_effect = {
+    root = { save_scope_as = actor save_scope_as = recipient }
+    var:zz_md_last_swap_a = { save_scope_as = zz_md_a }
+    var:zz_md_last_swap_b = { save_scope_as = zz_md_b }
+}
+zz_md_recover_japanese_missing_effect = {
+    if = {
+        limit = { debug_only = yes zz_md_japanese_recovery_candidate = yes }
+        zz_md_prepare_recovery_scopes_effect = yes
+
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_archive_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_archive_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_archive_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_archive_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_archive_06 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_armory_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_armory_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_armory_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_armory_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_armory_06 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_brewery_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_brewery_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_brewery_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_brewery_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_brewery_06 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_shrine_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_shrine_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_shrine_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_shrine_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_shrine_06 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_tea_house_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_tea_house_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_tea_house_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_tea_house_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_tea_house_06 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_01 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_01 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_01 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_01 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_01 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_01 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_02 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_02 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_02 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_02 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_02 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_02 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_03 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_03 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_03 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_03 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_03 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_03 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_04 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_04 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_04 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_04 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_04 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_04 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_05 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_05 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_05 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_05 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_05 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_05 } } }
+        if = { limit = { has_variable = zz_md_swap_a_japanese_watch_house_06 var:zz_md_last_swap_b = { NOT = { has_domicile_building = japanese_watch_house_06 } } } var:zz_md_last_swap_b = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_06 } } }
+        if = { limit = { has_variable = zz_md_swap_b_japanese_watch_house_06 var:zz_md_last_swap_a = { NOT = { has_domicile_building = japanese_watch_house_06 } } } var:zz_md_last_swap_a = { zz_md_add_building_named_effect = { BUILDING = japanese_watch_house_06 } } }
+        if = {
+            limit = { zz_md_japanese_manor_postcheck = yes }
+            set_variable = { name = zz_md_recovery_requires_native_readback value = yes }
+            trigger_event = zz_md.0401
+        }
+        else = { trigger_event = zz_md.0402 }
+    }
+    else = { trigger_event = zz_md.0402 }
+}
+zz_md_attest_japanese_recovery_effect = {
+    # Operator confirms full saved native PRE/POST slots/resources before invoking this debug-only step.
+    if = {
+        limit = { debug_only = yes has_variable = zz_md_recovery_requires_native_readback zz_md_japanese_recovery_candidate = yes }
+        zz_md_prepare_recovery_scopes_effect = yes
+        if = {
+            limit = { zz_md_japanese_manor_postcheck = yes }
+
+            remove_variable = zz_md_swap_a_japanese_archive_01
+            remove_variable = zz_md_swap_b_japanese_archive_01
+            remove_variable = zz_md_swap_a_japanese_archive_02
+            remove_variable = zz_md_swap_b_japanese_archive_02
+            remove_variable = zz_md_swap_a_japanese_archive_03
+            remove_variable = zz_md_swap_b_japanese_archive_03
+            remove_variable = zz_md_swap_a_japanese_archive_04
+            remove_variable = zz_md_swap_b_japanese_archive_04
+            remove_variable = zz_md_swap_a_japanese_archive_05
+            remove_variable = zz_md_swap_b_japanese_archive_05
+            remove_variable = zz_md_swap_a_japanese_archive_06
+            remove_variable = zz_md_swap_b_japanese_archive_06
+            remove_variable = zz_md_swap_a_japanese_armorer_01
+            remove_variable = zz_md_swap_b_japanese_armorer_01
+            remove_variable = zz_md_swap_a_japanese_armorer_02
+            remove_variable = zz_md_swap_b_japanese_armorer_02
+            remove_variable = zz_md_swap_a_japanese_armorer_03
+            remove_variable = zz_md_swap_b_japanese_armorer_03
+            remove_variable = zz_md_swap_a_japanese_armorer_04
+            remove_variable = zz_md_swap_b_japanese_armorer_04
+            remove_variable = zz_md_swap_a_japanese_armorer_05
+            remove_variable = zz_md_swap_b_japanese_armorer_05
+            remove_variable = zz_md_swap_a_japanese_armorer_06
+            remove_variable = zz_md_swap_b_japanese_armorer_06
+            remove_variable = zz_md_swap_a_japanese_armory_01
+            remove_variable = zz_md_swap_b_japanese_armory_01
+            remove_variable = zz_md_swap_a_japanese_armory_02
+            remove_variable = zz_md_swap_b_japanese_armory_02
+            remove_variable = zz_md_swap_a_japanese_armory_03
+            remove_variable = zz_md_swap_b_japanese_armory_03
+            remove_variable = zz_md_swap_a_japanese_armory_04
+            remove_variable = zz_md_swap_b_japanese_armory_04
+            remove_variable = zz_md_swap_a_japanese_armory_05
+            remove_variable = zz_md_swap_b_japanese_armory_05
+            remove_variable = zz_md_swap_a_japanese_armory_06
+            remove_variable = zz_md_swap_b_japanese_armory_06
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_01
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_01
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_02
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_02
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_03
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_03
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_04
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_04
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_05
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_05
+            remove_variable = zz_md_swap_a_japanese_asobi_colony_06
+            remove_variable = zz_md_swap_b_japanese_asobi_colony_06
+            remove_variable = zz_md_swap_a_japanese_barracks_01
+            remove_variable = zz_md_swap_b_japanese_barracks_01
+            remove_variable = zz_md_swap_a_japanese_barracks_02
+            remove_variable = zz_md_swap_b_japanese_barracks_02
+            remove_variable = zz_md_swap_a_japanese_barracks_03
+            remove_variable = zz_md_swap_b_japanese_barracks_03
+            remove_variable = zz_md_swap_a_japanese_barracks_04
+            remove_variable = zz_md_swap_b_japanese_barracks_04
+            remove_variable = zz_md_swap_a_japanese_barracks_05
+            remove_variable = zz_md_swap_b_japanese_barracks_05
+            remove_variable = zz_md_swap_a_japanese_barracks_06
+            remove_variable = zz_md_swap_b_japanese_barracks_06
+            remove_variable = zz_md_swap_a_japanese_bladesmith_01
+            remove_variable = zz_md_swap_b_japanese_bladesmith_01
+            remove_variable = zz_md_swap_a_japanese_bladesmith_02
+            remove_variable = zz_md_swap_b_japanese_bladesmith_02
+            remove_variable = zz_md_swap_a_japanese_bladesmith_03
+            remove_variable = zz_md_swap_b_japanese_bladesmith_03
+            remove_variable = zz_md_swap_a_japanese_bladesmith_04
+            remove_variable = zz_md_swap_b_japanese_bladesmith_04
+            remove_variable = zz_md_swap_a_japanese_bladesmith_05
+            remove_variable = zz_md_swap_b_japanese_bladesmith_05
+            remove_variable = zz_md_swap_a_japanese_bladesmith_06
+            remove_variable = zz_md_swap_b_japanese_bladesmith_06
+            remove_variable = zz_md_swap_a_japanese_bowyer_01
+            remove_variable = zz_md_swap_b_japanese_bowyer_01
+            remove_variable = zz_md_swap_a_japanese_bowyer_02
+            remove_variable = zz_md_swap_b_japanese_bowyer_02
+            remove_variable = zz_md_swap_a_japanese_bowyer_03
+            remove_variable = zz_md_swap_b_japanese_bowyer_03
+            remove_variable = zz_md_swap_a_japanese_bowyer_04
+            remove_variable = zz_md_swap_b_japanese_bowyer_04
+            remove_variable = zz_md_swap_a_japanese_bowyer_05
+            remove_variable = zz_md_swap_b_japanese_bowyer_05
+            remove_variable = zz_md_swap_a_japanese_bowyer_06
+            remove_variable = zz_md_swap_b_japanese_bowyer_06
+            remove_variable = zz_md_swap_a_japanese_brewery_01
+            remove_variable = zz_md_swap_b_japanese_brewery_01
+            remove_variable = zz_md_swap_a_japanese_brewery_02
+            remove_variable = zz_md_swap_b_japanese_brewery_02
+            remove_variable = zz_md_swap_a_japanese_brewery_03
+            remove_variable = zz_md_swap_b_japanese_brewery_03
+            remove_variable = zz_md_swap_a_japanese_brewery_04
+            remove_variable = zz_md_swap_b_japanese_brewery_04
+            remove_variable = zz_md_swap_a_japanese_brewery_05
+            remove_variable = zz_md_swap_b_japanese_brewery_05
+            remove_variable = zz_md_swap_a_japanese_brewery_06
+            remove_variable = zz_md_swap_b_japanese_brewery_06
+            remove_variable = zz_md_swap_a_japanese_carpenter_01
+            remove_variable = zz_md_swap_b_japanese_carpenter_01
+            remove_variable = zz_md_swap_a_japanese_carpenter_02
+            remove_variable = zz_md_swap_b_japanese_carpenter_02
+            remove_variable = zz_md_swap_a_japanese_carpenter_03
+            remove_variable = zz_md_swap_b_japanese_carpenter_03
+            remove_variable = zz_md_swap_a_japanese_carpenter_04
+            remove_variable = zz_md_swap_b_japanese_carpenter_04
+            remove_variable = zz_md_swap_a_japanese_carpenter_05
+            remove_variable = zz_md_swap_b_japanese_carpenter_05
+            remove_variable = zz_md_swap_a_japanese_carpenter_06
+            remove_variable = zz_md_swap_b_japanese_carpenter_06
+            remove_variable = zz_md_swap_a_japanese_cemetery_01
+            remove_variable = zz_md_swap_b_japanese_cemetery_01
+            remove_variable = zz_md_swap_a_japanese_cemetery_02
+            remove_variable = zz_md_swap_b_japanese_cemetery_02
+            remove_variable = zz_md_swap_a_japanese_cemetery_03
+            remove_variable = zz_md_swap_b_japanese_cemetery_03
+            remove_variable = zz_md_swap_a_japanese_cemetery_04
+            remove_variable = zz_md_swap_b_japanese_cemetery_04
+            remove_variable = zz_md_swap_a_japanese_cemetery_05
+            remove_variable = zz_md_swap_b_japanese_cemetery_05
+            remove_variable = zz_md_swap_a_japanese_cemetery_06
+            remove_variable = zz_md_swap_b_japanese_cemetery_06
+            remove_variable = zz_md_swap_a_japanese_farrier_01
+            remove_variable = zz_md_swap_b_japanese_farrier_01
+            remove_variable = zz_md_swap_a_japanese_farrier_02
+            remove_variable = zz_md_swap_b_japanese_farrier_02
+            remove_variable = zz_md_swap_a_japanese_farrier_03
+            remove_variable = zz_md_swap_b_japanese_farrier_03
+            remove_variable = zz_md_swap_a_japanese_farrier_04
+            remove_variable = zz_md_swap_b_japanese_farrier_04
+            remove_variable = zz_md_swap_a_japanese_farrier_05
+            remove_variable = zz_md_swap_b_japanese_farrier_05
+            remove_variable = zz_md_swap_a_japanese_farrier_06
+            remove_variable = zz_md_swap_b_japanese_farrier_06
+            remove_variable = zz_md_swap_a_japanese_fields_01
+            remove_variable = zz_md_swap_b_japanese_fields_01
+            remove_variable = zz_md_swap_a_japanese_fields_02
+            remove_variable = zz_md_swap_b_japanese_fields_02
+            remove_variable = zz_md_swap_a_japanese_fields_03
+            remove_variable = zz_md_swap_b_japanese_fields_03
+            remove_variable = zz_md_swap_a_japanese_fields_04
+            remove_variable = zz_md_swap_b_japanese_fields_04
+            remove_variable = zz_md_swap_a_japanese_fields_05
+            remove_variable = zz_md_swap_b_japanese_fields_05
+            remove_variable = zz_md_swap_a_japanese_fields_06
+            remove_variable = zz_md_swap_b_japanese_fields_06
+            remove_variable = zz_md_swap_a_japanese_gambling_den_01
+            remove_variable = zz_md_swap_b_japanese_gambling_den_01
+            remove_variable = zz_md_swap_a_japanese_gambling_den_02
+            remove_variable = zz_md_swap_b_japanese_gambling_den_02
+            remove_variable = zz_md_swap_a_japanese_gambling_den_03
+            remove_variable = zz_md_swap_b_japanese_gambling_den_03
+            remove_variable = zz_md_swap_a_japanese_gambling_den_04
+            remove_variable = zz_md_swap_b_japanese_gambling_den_04
+            remove_variable = zz_md_swap_a_japanese_gambling_den_05
+            remove_variable = zz_md_swap_b_japanese_gambling_den_05
+            remove_variable = zz_md_swap_a_japanese_gambling_den_06
+            remove_variable = zz_md_swap_b_japanese_gambling_den_06
+            remove_variable = zz_md_swap_a_japanese_garden_01
+            remove_variable = zz_md_swap_b_japanese_garden_01
+            remove_variable = zz_md_swap_a_japanese_garden_02
+            remove_variable = zz_md_swap_b_japanese_garden_02
+            remove_variable = zz_md_swap_a_japanese_garden_03
+            remove_variable = zz_md_swap_b_japanese_garden_03
+            remove_variable = zz_md_swap_a_japanese_garden_04
+            remove_variable = zz_md_swap_b_japanese_garden_04
+            remove_variable = zz_md_swap_a_japanese_garden_05
+            remove_variable = zz_md_swap_b_japanese_garden_05
+            remove_variable = zz_md_swap_a_japanese_garden_06
+            remove_variable = zz_md_swap_b_japanese_garden_06
+            remove_variable = zz_md_swap_a_japanese_granary_01
+            remove_variable = zz_md_swap_b_japanese_granary_01
+            remove_variable = zz_md_swap_a_japanese_granary_02
+            remove_variable = zz_md_swap_b_japanese_granary_02
+            remove_variable = zz_md_swap_a_japanese_granary_03
+            remove_variable = zz_md_swap_b_japanese_granary_03
+            remove_variable = zz_md_swap_a_japanese_granary_04
+            remove_variable = zz_md_swap_b_japanese_granary_04
+            remove_variable = zz_md_swap_a_japanese_granary_05
+            remove_variable = zz_md_swap_b_japanese_granary_05
+            remove_variable = zz_md_swap_a_japanese_granary_06
+            remove_variable = zz_md_swap_b_japanese_granary_06
+            remove_variable = zz_md_swap_a_japanese_guest_house_01
+            remove_variable = zz_md_swap_b_japanese_guest_house_01
+            remove_variable = zz_md_swap_a_japanese_guest_house_02
+            remove_variable = zz_md_swap_b_japanese_guest_house_02
+            remove_variable = zz_md_swap_a_japanese_guest_house_03
+            remove_variable = zz_md_swap_b_japanese_guest_house_03
+            remove_variable = zz_md_swap_a_japanese_guest_house_04
+            remove_variable = zz_md_swap_b_japanese_guest_house_04
+            remove_variable = zz_md_swap_a_japanese_guest_house_05
+            remove_variable = zz_md_swap_b_japanese_guest_house_05
+            remove_variable = zz_md_swap_a_japanese_guest_house_06
+            remove_variable = zz_md_swap_b_japanese_guest_house_06
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_01
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_01
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_02
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_02
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_03
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_03
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_04
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_04
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_05
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_05
+            remove_variable = zz_md_swap_a_japanese_horse_pastures_06
+            remove_variable = zz_md_swap_b_japanese_horse_pastures_06
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_01
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_01
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_02
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_02
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_03
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_03
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_04
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_04
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_05
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_05
+            remove_variable = zz_md_swap_a_japanese_hunting_lodge_06
+            remove_variable = zz_md_swap_b_japanese_hunting_lodge_06
+            remove_variable = zz_md_swap_a_japanese_infiltrators_01
+            remove_variable = zz_md_swap_b_japanese_infiltrators_01
+            remove_variable = zz_md_swap_a_japanese_infiltrators_02
+            remove_variable = zz_md_swap_b_japanese_infiltrators_02
+            remove_variable = zz_md_swap_a_japanese_infiltrators_03
+            remove_variable = zz_md_swap_b_japanese_infiltrators_03
+            remove_variable = zz_md_swap_a_japanese_infiltrators_04
+            remove_variable = zz_md_swap_b_japanese_infiltrators_04
+            remove_variable = zz_md_swap_a_japanese_infiltrators_05
+            remove_variable = zz_md_swap_b_japanese_infiltrators_05
+            remove_variable = zz_md_swap_a_japanese_infiltrators_06
+            remove_variable = zz_md_swap_b_japanese_infiltrators_06
+            remove_variable = zz_md_swap_a_japanese_kazan_display_01
+            remove_variable = zz_md_swap_b_japanese_kazan_display_01
+            remove_variable = zz_md_swap_a_japanese_kazan_display_02
+            remove_variable = zz_md_swap_b_japanese_kazan_display_02
+            remove_variable = zz_md_swap_a_japanese_kazan_display_03
+            remove_variable = zz_md_swap_b_japanese_kazan_display_03
+            remove_variable = zz_md_swap_a_japanese_kazan_display_04
+            remove_variable = zz_md_swap_b_japanese_kazan_display_04
+            remove_variable = zz_md_swap_a_japanese_kazan_display_05
+            remove_variable = zz_md_swap_b_japanese_kazan_display_05
+            remove_variable = zz_md_swap_a_japanese_kazan_display_06
+            remove_variable = zz_md_swap_b_japanese_kazan_display_06
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_01
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_01
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_02
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_02
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_03
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_03
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_04
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_04
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_05
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_05
+            remove_variable = zz_md_swap_a_japanese_koshu_cellars_06
+            remove_variable = zz_md_swap_b_japanese_koshu_cellars_06
+            remove_variable = zz_md_swap_a_japanese_lacquerer_01
+            remove_variable = zz_md_swap_b_japanese_lacquerer_01
+            remove_variable = zz_md_swap_a_japanese_lacquerer_02
+            remove_variable = zz_md_swap_b_japanese_lacquerer_02
+            remove_variable = zz_md_swap_a_japanese_lacquerer_03
+            remove_variable = zz_md_swap_b_japanese_lacquerer_03
+            remove_variable = zz_md_swap_a_japanese_lacquerer_04
+            remove_variable = zz_md_swap_b_japanese_lacquerer_04
+            remove_variable = zz_md_swap_a_japanese_lacquerer_05
+            remove_variable = zz_md_swap_b_japanese_lacquerer_05
+            remove_variable = zz_md_swap_a_japanese_lacquerer_06
+            remove_variable = zz_md_swap_b_japanese_lacquerer_06
+            remove_variable = zz_md_swap_a_japanese_law_library_01
+            remove_variable = zz_md_swap_b_japanese_law_library_01
+            remove_variable = zz_md_swap_a_japanese_law_library_02
+            remove_variable = zz_md_swap_b_japanese_law_library_02
+            remove_variable = zz_md_swap_a_japanese_law_library_03
+            remove_variable = zz_md_swap_b_japanese_law_library_03
+            remove_variable = zz_md_swap_a_japanese_law_library_04
+            remove_variable = zz_md_swap_b_japanese_law_library_04
+            remove_variable = zz_md_swap_a_japanese_law_library_05
+            remove_variable = zz_md_swap_b_japanese_law_library_05
+            remove_variable = zz_md_swap_a_japanese_law_library_06
+            remove_variable = zz_md_swap_b_japanese_law_library_06
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_01
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_01
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_02
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_02
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_03
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_03
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_04
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_04
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_05
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_05
+            remove_variable = zz_md_swap_a_japanese_main_carpenter_06
+            remove_variable = zz_md_swap_b_japanese_main_carpenter_06
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_01
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_01
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_02
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_02
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_03
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_03
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_04
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_04
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_05
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_05
+            remove_variable = zz_md_swap_a_japanese_main_tax_collectors_06
+            remove_variable = zz_md_swap_b_japanese_main_tax_collectors_06
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_01
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_01
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_02
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_02
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_03
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_03
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_04
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_04
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_05
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_05
+            remove_variable = zz_md_swap_a_japanese_manor_library_confucian_06
+            remove_variable = zz_md_swap_b_japanese_manor_library_confucian_06
+            remove_variable = zz_md_swap_a_japanese_manor_main_01
+            remove_variable = zz_md_swap_b_japanese_manor_main_01
+            remove_variable = zz_md_swap_a_japanese_manor_main_02
+            remove_variable = zz_md_swap_b_japanese_manor_main_02
+            remove_variable = zz_md_swap_a_japanese_manor_main_03
+            remove_variable = zz_md_swap_b_japanese_manor_main_03
+            remove_variable = zz_md_swap_a_japanese_manor_main_04
+            remove_variable = zz_md_swap_b_japanese_manor_main_04
+            remove_variable = zz_md_swap_a_japanese_manor_main_05
+            remove_variable = zz_md_swap_b_japanese_manor_main_05
+            remove_variable = zz_md_swap_a_japanese_manor_main_06
+            remove_variable = zz_md_swap_b_japanese_manor_main_06
+            remove_variable = zz_md_swap_a_japanese_manor_office_01
+            remove_variable = zz_md_swap_b_japanese_manor_office_01
+            remove_variable = zz_md_swap_a_japanese_manor_office_02
+            remove_variable = zz_md_swap_b_japanese_manor_office_02
+            remove_variable = zz_md_swap_a_japanese_manor_office_03
+            remove_variable = zz_md_swap_b_japanese_manor_office_03
+            remove_variable = zz_md_swap_a_japanese_manor_office_04
+            remove_variable = zz_md_swap_b_japanese_manor_office_04
+            remove_variable = zz_md_swap_a_japanese_manor_office_05
+            remove_variable = zz_md_swap_b_japanese_manor_office_05
+            remove_variable = zz_md_swap_a_japanese_manor_office_06
+            remove_variable = zz_md_swap_b_japanese_manor_office_06
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_01
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_01
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_02
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_02
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_03
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_03
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_04
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_04
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_05
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_05
+            remove_variable = zz_md_swap_a_japanese_manor_poetry_library_06
+            remove_variable = zz_md_swap_b_japanese_manor_poetry_library_06
+            remove_variable = zz_md_swap_a_japanese_manor_retainer_accomodations_01
+            remove_variable = zz_md_swap_b_japanese_manor_retainer_accomodations_01
+            remove_variable = zz_md_swap_a_japanese_manor_retainer_accomodations_02
+            remove_variable = zz_md_swap_b_japanese_manor_retainer_accomodations_02
+            remove_variable = zz_md_swap_a_japanese_manor_retainer_accomodations_03
+            remove_variable = zz_md_swap_b_japanese_manor_retainer_accomodations_03
+            remove_variable = zz_md_swap_a_japanese_manor_retainer_accomodations_04
+            remove_variable = zz_md_swap_b_japanese_manor_retainer_accomodations_04
+            remove_variable = zz_md_swap_a_japanese_manor_retainer_accomodations_05
+            remove_variable = zz_md_swap_b_japanese_manor_retainer_accomodations_05
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_01
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_01
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_02
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_02
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_03
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_03
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_04
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_04
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_05
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_05
+            remove_variable = zz_md_swap_a_japanese_manor_servants_quarters_06
+            remove_variable = zz_md_swap_b_japanese_manor_servants_quarters_06
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_01
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_01
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_02
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_02
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_03
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_03
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_04
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_04
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_05
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_05
+            remove_variable = zz_md_swap_a_japanese_manor_trophy_room_06
+            remove_variable = zz_md_swap_b_japanese_manor_trophy_room_06
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_01
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_01
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_02
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_02
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_03
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_03
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_04
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_04
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_05
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_05
+            remove_variable = zz_md_swap_a_japanese_matcha_factory_06
+            remove_variable = zz_md_swap_b_japanese_matcha_factory_06
+            remove_variable = zz_md_swap_a_japanese_medicine_house_01
+            remove_variable = zz_md_swap_b_japanese_medicine_house_01
+            remove_variable = zz_md_swap_a_japanese_medicine_house_02
+            remove_variable = zz_md_swap_b_japanese_medicine_house_02
+            remove_variable = zz_md_swap_a_japanese_medicine_house_03
+            remove_variable = zz_md_swap_b_japanese_medicine_house_03
+            remove_variable = zz_md_swap_a_japanese_medicine_house_04
+            remove_variable = zz_md_swap_b_japanese_medicine_house_04
+            remove_variable = zz_md_swap_a_japanese_medicine_house_05
+            remove_variable = zz_md_swap_b_japanese_medicine_house_05
+            remove_variable = zz_md_swap_a_japanese_medicine_house_06
+            remove_variable = zz_md_swap_b_japanese_medicine_house_06
+            remove_variable = zz_md_swap_a_japanese_messenger_service_01
+            remove_variable = zz_md_swap_b_japanese_messenger_service_01
+            remove_variable = zz_md_swap_a_japanese_messenger_service_02
+            remove_variable = zz_md_swap_b_japanese_messenger_service_02
+            remove_variable = zz_md_swap_a_japanese_messenger_service_03
+            remove_variable = zz_md_swap_b_japanese_messenger_service_03
+            remove_variable = zz_md_swap_a_japanese_messenger_service_04
+            remove_variable = zz_md_swap_b_japanese_messenger_service_04
+            remove_variable = zz_md_swap_a_japanese_messenger_service_05
+            remove_variable = zz_md_swap_b_japanese_messenger_service_05
+            remove_variable = zz_md_swap_a_japanese_messenger_service_06
+            remove_variable = zz_md_swap_b_japanese_messenger_service_06
+            remove_variable = zz_md_swap_a_japanese_monastery_01
+            remove_variable = zz_md_swap_b_japanese_monastery_01
+            remove_variable = zz_md_swap_a_japanese_monastery_02
+            remove_variable = zz_md_swap_b_japanese_monastery_02
+            remove_variable = zz_md_swap_a_japanese_monastery_03
+            remove_variable = zz_md_swap_b_japanese_monastery_03
+            remove_variable = zz_md_swap_a_japanese_monastery_04
+            remove_variable = zz_md_swap_b_japanese_monastery_04
+            remove_variable = zz_md_swap_a_japanese_monastery_05
+            remove_variable = zz_md_swap_b_japanese_monastery_05
+            remove_variable = zz_md_swap_a_japanese_monastery_06
+            remove_variable = zz_md_swap_b_japanese_monastery_06
+            remove_variable = zz_md_swap_a_japanese_orchard_01
+            remove_variable = zz_md_swap_b_japanese_orchard_01
+            remove_variable = zz_md_swap_a_japanese_orchard_02
+            remove_variable = zz_md_swap_b_japanese_orchard_02
+            remove_variable = zz_md_swap_a_japanese_orchard_03
+            remove_variable = zz_md_swap_b_japanese_orchard_03
+            remove_variable = zz_md_swap_a_japanese_orchard_04
+            remove_variable = zz_md_swap_b_japanese_orchard_04
+            remove_variable = zz_md_swap_a_japanese_orchard_05
+            remove_variable = zz_md_swap_b_japanese_orchard_05
+            remove_variable = zz_md_swap_a_japanese_orchard_06
+            remove_variable = zz_md_swap_b_japanese_orchard_06
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_01
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_01
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_02
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_02
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_03
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_03
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_04
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_04
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_05
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_05
+            remove_variable = zz_md_swap_a_japanese_ox_breeder_06
+            remove_variable = zz_md_swap_b_japanese_ox_breeder_06
+            remove_variable = zz_md_swap_a_japanese_performance_stage_01
+            remove_variable = zz_md_swap_b_japanese_performance_stage_01
+            remove_variable = zz_md_swap_a_japanese_performance_stage_02
+            remove_variable = zz_md_swap_b_japanese_performance_stage_02
+            remove_variable = zz_md_swap_a_japanese_performance_stage_03
+            remove_variable = zz_md_swap_b_japanese_performance_stage_03
+            remove_variable = zz_md_swap_a_japanese_performance_stage_04
+            remove_variable = zz_md_swap_b_japanese_performance_stage_04
+            remove_variable = zz_md_swap_a_japanese_performance_stage_05
+            remove_variable = zz_md_swap_b_japanese_performance_stage_05
+            remove_variable = zz_md_swap_a_japanese_performance_stage_06
+            remove_variable = zz_md_swap_b_japanese_performance_stage_06
+            remove_variable = zz_md_swap_a_japanese_prison_01
+            remove_variable = zz_md_swap_b_japanese_prison_01
+            remove_variable = zz_md_swap_a_japanese_prison_02
+            remove_variable = zz_md_swap_b_japanese_prison_02
+            remove_variable = zz_md_swap_a_japanese_prison_03
+            remove_variable = zz_md_swap_b_japanese_prison_03
+            remove_variable = zz_md_swap_a_japanese_prison_04
+            remove_variable = zz_md_swap_b_japanese_prison_04
+            remove_variable = zz_md_swap_a_japanese_prison_05
+            remove_variable = zz_md_swap_b_japanese_prison_05
+            remove_variable = zz_md_swap_a_japanese_prison_06
+            remove_variable = zz_md_swap_b_japanese_prison_06
+            remove_variable = zz_md_swap_a_japanese_rice_broker_01
+            remove_variable = zz_md_swap_b_japanese_rice_broker_01
+            remove_variable = zz_md_swap_a_japanese_rice_broker_02
+            remove_variable = zz_md_swap_b_japanese_rice_broker_02
+            remove_variable = zz_md_swap_a_japanese_rice_broker_03
+            remove_variable = zz_md_swap_b_japanese_rice_broker_03
+            remove_variable = zz_md_swap_a_japanese_rice_broker_04
+            remove_variable = zz_md_swap_b_japanese_rice_broker_04
+            remove_variable = zz_md_swap_a_japanese_rice_broker_05
+            remove_variable = zz_md_swap_b_japanese_rice_broker_05
+            remove_variable = zz_md_swap_a_japanese_rice_broker_06
+            remove_variable = zz_md_swap_b_japanese_rice_broker_06
+            remove_variable = zz_md_swap_a_japanese_riding_school_01
+            remove_variable = zz_md_swap_b_japanese_riding_school_01
+            remove_variable = zz_md_swap_a_japanese_riding_school_02
+            remove_variable = zz_md_swap_b_japanese_riding_school_02
+            remove_variable = zz_md_swap_a_japanese_riding_school_03
+            remove_variable = zz_md_swap_b_japanese_riding_school_03
+            remove_variable = zz_md_swap_a_japanese_riding_school_04
+            remove_variable = zz_md_swap_b_japanese_riding_school_04
+            remove_variable = zz_md_swap_a_japanese_riding_school_05
+            remove_variable = zz_md_swap_b_japanese_riding_school_05
+            remove_variable = zz_md_swap_a_japanese_riding_school_06
+            remove_variable = zz_md_swap_b_japanese_riding_school_06
+            remove_variable = zz_md_swap_a_japanese_roastery_01
+            remove_variable = zz_md_swap_b_japanese_roastery_01
+            remove_variable = zz_md_swap_a_japanese_roastery_02
+            remove_variable = zz_md_swap_b_japanese_roastery_02
+            remove_variable = zz_md_swap_a_japanese_roastery_03
+            remove_variable = zz_md_swap_b_japanese_roastery_03
+            remove_variable = zz_md_swap_a_japanese_roastery_04
+            remove_variable = zz_md_swap_b_japanese_roastery_04
+            remove_variable = zz_md_swap_a_japanese_roastery_05
+            remove_variable = zz_md_swap_b_japanese_roastery_05
+            remove_variable = zz_md_swap_a_japanese_roastery_06
+            remove_variable = zz_md_swap_b_japanese_roastery_06
+            remove_variable = zz_md_swap_a_japanese_rock_garden_01
+            remove_variable = zz_md_swap_b_japanese_rock_garden_01
+            remove_variable = zz_md_swap_a_japanese_rock_garden_02
+            remove_variable = zz_md_swap_b_japanese_rock_garden_02
+            remove_variable = zz_md_swap_a_japanese_rock_garden_03
+            remove_variable = zz_md_swap_b_japanese_rock_garden_03
+            remove_variable = zz_md_swap_a_japanese_rock_garden_04
+            remove_variable = zz_md_swap_b_japanese_rock_garden_04
+            remove_variable = zz_md_swap_a_japanese_rock_garden_05
+            remove_variable = zz_md_swap_b_japanese_rock_garden_05
+            remove_variable = zz_md_swap_a_japanese_rock_garden_06
+            remove_variable = zz_md_swap_b_japanese_rock_garden_06
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_01
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_01
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_02
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_02
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_03
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_03
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_04
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_04
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_05
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_05
+            remove_variable = zz_md_swap_a_japanese_schoolhouse_06
+            remove_variable = zz_md_swap_b_japanese_schoolhouse_06
+            remove_variable = zz_md_swap_a_japanese_shokubo_01
+            remove_variable = zz_md_swap_b_japanese_shokubo_01
+            remove_variable = zz_md_swap_a_japanese_shokubo_02
+            remove_variable = zz_md_swap_b_japanese_shokubo_02
+            remove_variable = zz_md_swap_a_japanese_shokubo_03
+            remove_variable = zz_md_swap_b_japanese_shokubo_03
+            remove_variable = zz_md_swap_a_japanese_shokubo_04
+            remove_variable = zz_md_swap_b_japanese_shokubo_04
+            remove_variable = zz_md_swap_a_japanese_shokubo_05
+            remove_variable = zz_md_swap_b_japanese_shokubo_05
+            remove_variable = zz_md_swap_a_japanese_shokubo_06
+            remove_variable = zz_md_swap_b_japanese_shokubo_06
+            remove_variable = zz_md_swap_a_japanese_shrine_01
+            remove_variable = zz_md_swap_b_japanese_shrine_01
+            remove_variable = zz_md_swap_a_japanese_shrine_02
+            remove_variable = zz_md_swap_b_japanese_shrine_02
+            remove_variable = zz_md_swap_a_japanese_shrine_03
+            remove_variable = zz_md_swap_b_japanese_shrine_03
+            remove_variable = zz_md_swap_a_japanese_shrine_04
+            remove_variable = zz_md_swap_b_japanese_shrine_04
+            remove_variable = zz_md_swap_a_japanese_shrine_05
+            remove_variable = zz_md_swap_b_japanese_shrine_05
+            remove_variable = zz_md_swap_a_japanese_shrine_06
+            remove_variable = zz_md_swap_b_japanese_shrine_06
+            remove_variable = zz_md_swap_a_japanese_spy_network_01
+            remove_variable = zz_md_swap_b_japanese_spy_network_01
+            remove_variable = zz_md_swap_a_japanese_spy_network_02
+            remove_variable = zz_md_swap_b_japanese_spy_network_02
+            remove_variable = zz_md_swap_a_japanese_spy_network_03
+            remove_variable = zz_md_swap_b_japanese_spy_network_03
+            remove_variable = zz_md_swap_a_japanese_spy_network_04
+            remove_variable = zz_md_swap_b_japanese_spy_network_04
+            remove_variable = zz_md_swap_a_japanese_spy_network_05
+            remove_variable = zz_md_swap_b_japanese_spy_network_05
+            remove_variable = zz_md_swap_a_japanese_spy_network_06
+            remove_variable = zz_md_swap_b_japanese_spy_network_06
+            remove_variable = zz_md_swap_a_japanese_stables_01
+            remove_variable = zz_md_swap_b_japanese_stables_01
+            remove_variable = zz_md_swap_a_japanese_stables_02
+            remove_variable = zz_md_swap_b_japanese_stables_02
+            remove_variable = zz_md_swap_a_japanese_stables_03
+            remove_variable = zz_md_swap_b_japanese_stables_03
+            remove_variable = zz_md_swap_a_japanese_stables_04
+            remove_variable = zz_md_swap_b_japanese_stables_04
+            remove_variable = zz_md_swap_a_japanese_stables_05
+            remove_variable = zz_md_swap_b_japanese_stables_05
+            remove_variable = zz_md_swap_a_japanese_stables_06
+            remove_variable = zz_md_swap_b_japanese_stables_06
+            remove_variable = zz_md_swap_a_japanese_stud_farm_01
+            remove_variable = zz_md_swap_b_japanese_stud_farm_01
+            remove_variable = zz_md_swap_a_japanese_stud_farm_02
+            remove_variable = zz_md_swap_b_japanese_stud_farm_02
+            remove_variable = zz_md_swap_a_japanese_stud_farm_03
+            remove_variable = zz_md_swap_b_japanese_stud_farm_03
+            remove_variable = zz_md_swap_a_japanese_stud_farm_04
+            remove_variable = zz_md_swap_b_japanese_stud_farm_04
+            remove_variable = zz_md_swap_a_japanese_stud_farm_05
+            remove_variable = zz_md_swap_b_japanese_stud_farm_05
+            remove_variable = zz_md_swap_a_japanese_stud_farm_06
+            remove_variable = zz_md_swap_b_japanese_stud_farm_06
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_01
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_01
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_02
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_02
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_03
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_03
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_04
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_04
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_05
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_05
+            remove_variable = zz_md_swap_a_japanese_sumo_hall_06
+            remove_variable = zz_md_swap_b_japanese_sumo_hall_06
+            remove_variable = zz_md_swap_a_japanese_tea_house_01
+            remove_variable = zz_md_swap_b_japanese_tea_house_01
+            remove_variable = zz_md_swap_a_japanese_tea_house_02
+            remove_variable = zz_md_swap_b_japanese_tea_house_02
+            remove_variable = zz_md_swap_a_japanese_tea_house_03
+            remove_variable = zz_md_swap_b_japanese_tea_house_03
+            remove_variable = zz_md_swap_a_japanese_tea_house_04
+            remove_variable = zz_md_swap_b_japanese_tea_house_04
+            remove_variable = zz_md_swap_a_japanese_tea_house_05
+            remove_variable = zz_md_swap_b_japanese_tea_house_05
+            remove_variable = zz_md_swap_a_japanese_tea_house_06
+            remove_variable = zz_md_swap_b_japanese_tea_house_06
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_01
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_01
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_02
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_02
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_03
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_03
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_04
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_04
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_05
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_05
+            remove_variable = zz_md_swap_a_japanese_tea_plantation_06
+            remove_variable = zz_md_swap_b_japanese_tea_plantation_06
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_01
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_01
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_02
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_02
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_03
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_03
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_04
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_04
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_05
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_05
+            remove_variable = zz_md_swap_a_japanese_tenant_farmers_06
+            remove_variable = zz_md_swap_b_japanese_tenant_farmers_06
+            remove_variable = zz_md_swap_a_japanese_watch_house_01
+            remove_variable = zz_md_swap_b_japanese_watch_house_01
+            remove_variable = zz_md_swap_a_japanese_watch_house_02
+            remove_variable = zz_md_swap_b_japanese_watch_house_02
+            remove_variable = zz_md_swap_a_japanese_watch_house_03
+            remove_variable = zz_md_swap_b_japanese_watch_house_03
+            remove_variable = zz_md_swap_a_japanese_watch_house_04
+            remove_variable = zz_md_swap_b_japanese_watch_house_04
+            remove_variable = zz_md_swap_a_japanese_watch_house_05
+            remove_variable = zz_md_swap_b_japanese_watch_house_05
+            remove_variable = zz_md_swap_a_japanese_watch_house_06
+            remove_variable = zz_md_swap_b_japanese_watch_house_06
+            remove_variable = zz_md_swap_a_japanese_workshop_01
+            remove_variable = zz_md_swap_b_japanese_workshop_01
+            remove_variable = zz_md_swap_a_japanese_workshop_02
+            remove_variable = zz_md_swap_b_japanese_workshop_02
+            remove_variable = zz_md_swap_a_japanese_workshop_03
+            remove_variable = zz_md_swap_b_japanese_workshop_03
+            remove_variable = zz_md_swap_a_japanese_workshop_04
+            remove_variable = zz_md_swap_b_japanese_workshop_04
+            remove_variable = zz_md_swap_a_japanese_workshop_05
+            remove_variable = zz_md_swap_b_japanese_workshop_05
+            remove_variable = zz_md_swap_a_japanese_workshop_06
+            remove_variable = zz_md_swap_b_japanese_workshop_06
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_01
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_01
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_02
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_02
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_03
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_03
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_04
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_04
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_05
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_05
+            remove_variable = zz_md_swap_a_japanese_yabusame_ground_06
+            remove_variable = zz_md_swap_b_japanese_yabusame_ground_06
+            remove_variable = zz_md_swap_a_sarugaku_stage_01
+            remove_variable = zz_md_swap_b_sarugaku_stage_01
+            remove_variable = zz_md_swap_a_sarugaku_stage_02
+            remove_variable = zz_md_swap_b_sarugaku_stage_02
+            remove_variable = zz_md_swap_a_sarugaku_stage_03
+            remove_variable = zz_md_swap_b_sarugaku_stage_03
+            remove_variable = zz_md_swap_a_sarugaku_stage_04
+            remove_variable = zz_md_swap_b_sarugaku_stage_04
+            remove_variable = zz_md_swap_a_sarugaku_stage_05
+            remove_variable = zz_md_swap_b_sarugaku_stage_05
+            remove_variable = zz_md_swap_a_sarugaku_stage_06
+            remove_variable = zz_md_swap_b_sarugaku_stage_06
+            remove_variable = zz_md_swap_busy
+            remove_variable = zz_swap_incomplete
+            remove_variable = zz_md_last_swap_a
+            remove_variable = zz_md_last_swap_b
+            remove_variable = zz_md_recovery_requires_native_readback
+            trigger_event = zz_md.0403
+        }
+        else = { trigger_event = zz_md.0402 }
+    }
+    else = { trigger_event = zz_md.0402 }
+}
+
+zz_md_recheck_legacy_creation_effect = {
+    if = {
+        limit = { debug_only = yes has_variable = zz_md_create_failed exists = var:zz_md_last_created_title has_variable = zz_md_legacy_creation_native_attested }
+        var:zz_md_last_created_title = { save_scope_as = zz_md_new_title }
+        if = {
+            limit = { zz_md_created_integrity_valid = yes }
+            # Only a fully preserved old T/D snapshot clears the obsolete creation assertion lock.
+            remove_variable = zz_md_legacy_creation_native_attested
+            remove_variable = zz_md_create_failed
+            remove_variable = zz_md_create_busy
+            zz_md_creation_cleanup_effect = yes
+            every_in_list = { variable = zz_md_before_titles zz_md_clear_creation_title_assets_effect = yes remove_variable = zz_md_before_creation_domicile remove_variable = zz_md_had_domicile_before_creation }
+            clear_variable_list = zz_md_before_titles
+            clear_variable_list = zz_md_before_domiciles
+            if = { limit = { exists = domicile } set_variable = { name = zz_md_created_new_default value = domicile } }
+            if = { limit = { exists = primary_title } set_variable = { name = zz_md_created_new_primary value = primary_title } }
+            zz_md_merge_resources_effect = yes
+            zz_md_open_manager_effect = yes
+            trigger_event = zz_md.0120
+        }
+        else = { trigger_event = zz_md.0402 }
+    }
+    else = { trigger_event = zz_md.0402 }
+}
+

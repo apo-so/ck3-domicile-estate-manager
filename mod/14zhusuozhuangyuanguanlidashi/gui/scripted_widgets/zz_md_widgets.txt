@@ -1,0 +1,2 @@
+﻿gui/zz_md_manager.gui = zz_md_manager_window
+gui/zz_md_manager.gui = zz_md_open_relay

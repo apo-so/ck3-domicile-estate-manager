@@ -1,0 +1,6 @@
+﻿namespace = zz_md
+zz_md.0400 = { type = character_event title = zz_md_recover_japanese_decision desc = zz_md_recover_japanese_decision_desc theme = stewardship option = { name = zz_md_confirm trigger = { custom_description = { text = zz_md_recovery_requirements_tt zz_md_japanese_recovery_candidate = yes } } hidden_effect = { zz_md_recover_japanese_missing_effect = yes } } option = { name = zz_md_cancel } }
+zz_md.0401 = { type = character_event title = zz_md_recovery_pending_title desc = zz_md_recovery_pending_desc theme = stewardship option = { name = zz_md_ok } }
+zz_md.0402 = { type = character_event title = zz_md_recovery_blocked_title desc = zz_md_recovery_blocked_desc theme = stewardship option = { name = zz_md_ok } }
+zz_md.0403 = { type = character_event title = zz_md_recovery_done_title desc = zz_md_recovery_done_desc theme = stewardship option = { name = zz_md_ok } }
+zz_md.0404 = { type = character_event title = zz_md_recheck_creation_decision desc = zz_md_recheck_creation_decision_desc theme = stewardship option = { name = zz_md_native_readback_confirm hidden_effect = { set_variable = { name = zz_md_legacy_creation_native_attested value = yes } zz_md_recheck_legacy_creation_effect = yes remove_variable = zz_md_legacy_creation_native_attested } } option = { name = zz_md_cancel } }

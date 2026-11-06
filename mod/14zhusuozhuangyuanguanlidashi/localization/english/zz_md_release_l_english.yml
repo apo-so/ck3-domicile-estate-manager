@@ -1,0 +1,10 @@
+﻿l_english:
+ zz_md_creation_idle_tt:0 "Previous creation and resource transfers have ended without an unresolved failure."
+ zz_md_swap_supported_tt:0 "Exchange this auxiliary domicile’s buildings with your default domicile of the same type. Both main buildings retain the higher level; all other buildings trade places. Includes estates, camps, yurts and ecclesiastical domiciles."
+ zz_md_resource_summary_target:0 "Gathered into [SCOPE.sTitle('zz_md_message_target_title').GetName]."
+ zz_md_resource_summary_numbers:0 "Processed [zz_md_message_pair_count|0] domiciles: your default gained [zz_md_message_total_received|2]; the sources lost [zz_md_message_total_moved|2] and retain [zz_md_message_total_remaining|2]."
+ zz_md_resource_summary_unknown:0 "Some domicile balances could not be confirmed. Check your domiciles and load a save from before the transfer."
+ zz_md_destroy_confirm_title:0 "Demolish domicile"
+ zz_md_destroy_confirm_desc:0 "You will demolish the buildings of [SCOPE.sTitle('zz_md_destroy_confirm_title').GetName] (domicile list entry [zz_md_destroy_confirm_number|0]) and destroy its title.\n\nBuildings provide their demolition refunds. Provisions or Herd are transferred to another domicile of the same type where possible; any remainder is lost. This cannot be undone."
+ zz_md_destroy_confirm:0 "Demolish this domicile"
+ zz_swap_unsupported_type:0 "Estate exchange with vassals is temporarily disabled."

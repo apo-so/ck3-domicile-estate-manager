@@ -1,0 +1,16 @@
+﻿namespace = zz_md
+zz_md.0500 = {
+    type = character_event
+    title = zz_md_destroy_confirm_title
+    desc = zz_md_destroy_confirm_desc
+    theme = stewardship
+    option = {
+        name = zz_md_destroy_confirm
+        trigger = { zz_md_destroy_confirmation_allowed = yes }
+        hidden_effect = {
+            scope:zz_md_destroy_confirm_title = { save_scope_as = selected_title }
+            zz_md_destroy_selected_effect = yes
+        }
+    }
+    option = { name = zz_md_cancel }
+}

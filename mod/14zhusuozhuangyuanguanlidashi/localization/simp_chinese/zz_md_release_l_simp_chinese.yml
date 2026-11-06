@@ -1,0 +1,10 @@
+﻿l_simp_chinese:
+ zz_md_creation_idle_tt:0 "此前的创建与资源合并已结束，且没有尚未解决的失败。"
+ zz_md_swap_supported_tt:0 "将此辅助住所与本人的同类型默认住所交换建筑。主建筑采用双方较高等级，其余建筑完整互换；适用于庄园、营地、毡帐和教会住所。"
+ zz_md_resource_summary_target:0 "汇集至[SCOPE.sTitle('zz_md_message_target_title').GetName]。"
+ zz_md_resource_summary_numbers:0 "已处理[zz_md_message_pair_count|0]处住所：默认住所增加[zz_md_message_total_received|2]，来源住所减少[zz_md_message_total_moved|2]、仍保留[zz_md_message_total_remaining|2]。"
+ zz_md_resource_summary_unknown:0 "部分住所的余额无法确认，请查看当前住所后载入操作前的存档。"
+ zz_md_destroy_confirm_title:0 "拆除住所"
+ zz_md_destroy_confirm_desc:0 "你将拆除[SCOPE.sTitle('zz_md_destroy_confirm_title').GetName]（住所列表编号[zz_md_destroy_confirm_number|0]）的建筑，并销毁其头衔。\n\n建筑按拆除规则返还资源，给养或牧群优先转移到你其他同类型住所；未转移的部分随住所消失。此操作不可撤销。"
+ zz_md_destroy_confirm:0 "拆除这处住所"
+ zz_swap_unsupported_type:0 "与封臣交换庄园暂时关闭。"

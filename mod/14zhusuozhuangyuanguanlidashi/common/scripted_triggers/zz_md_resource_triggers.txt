@@ -1,0 +1,17 @@
+﻿# Root character; only owned same-type D objects. Never merge character-global balances.
+zz_md_resource_merge_available = {
+    is_ai = no is_alive = yes exists = domicile
+    NOT = { has_variable = zz_md_res_busy }
+    NOT = { has_variable = zz_md_res_failed }
+    NOT = { has_variable = zz_swap_incomplete }
+}
+zz_md_resource_pair_valid = {
+    exists = scope:zz_md_res_source exists = scope:zz_md_res_target
+    exists = domicile domicile = scope:zz_md_res_target
+    scope:zz_md_res_source = { owner = root this != scope:zz_md_res_target }
+    scope:zz_md_res_target = { owner = root }
+    OR = {
+        AND = { scope:zz_md_res_source = { is_domicile_type = camp } scope:zz_md_res_target = { is_domicile_type = camp } }
+        AND = { scope:zz_md_res_source = { is_domicile_type = yurt } scope:zz_md_res_target = { is_domicile_type = yurt } }
+    }
+}

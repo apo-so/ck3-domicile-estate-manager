@@ -1,0 +1,192 @@
+﻿zz_md_creation_cleanup_effect = {
+    remove_variable = zz_md_create_pending
+    remove_variable = zz_md_preview_government
+    remove_variable = zz_md_preview_tier
+}
+zz_md_begin_creation_effect = {
+    if = {
+        limit = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } }
+        set_variable = { name = zz_md_create_pending value = yes }
+        if = { limit = { has_government = administrative_government } set_variable = { name = zz_md_preview_government value = 1 } }
+        else_if = { limit = { has_government = landless_adventurer_government } set_variable = { name = zz_md_preview_government value = 2 } }
+        else_if = { limit = { has_government = nomad_government } set_variable = { name = zz_md_preview_government value = 3 } }
+        else_if = { limit = { has_government = celestial_government } set_variable = { name = zz_md_preview_government value = 4 } }
+        else_if = { limit = { has_government = steppe_admin_government } set_variable = { name = zz_md_preview_government value = 5 } }
+        else_if = { limit = { has_government = meritocratic_government } set_variable = { name = zz_md_preview_government value = 6 } }
+        else_if = { limit = { has_government = japan_administrative_government } set_variable = { name = zz_md_preview_government value = 7 } }
+        else_if = { limit = { has_government = japan_feudal_government } set_variable = { name = zz_md_preview_government value = 8 } }
+        else_if = { limit = { has_government = ecclesiastical_government } set_variable = { name = zz_md_preview_government value = 9 } }
+        trigger_event = zz_md.0100
+    }
+}
+zz_md_commit_creation_effect = {
+    if = {
+        limit = { zz_md_creation_available = yes zz_md_same_preview_government = yes has_variable = zz_md_create_pending zz_md_creation_release_allowed = yes zz_md_old_creation_assets_known = yes }
+        set_variable = { name = zz_md_create_busy value = yes }
+        remove_variable = zz_md_last_created_title
+        remove_variable = zz_md_last_created_domicile
+        clear_variable_list = zz_md_before_titles
+        clear_variable_list = zz_md_before_domiciles
+        every_held_title = {
+            zz_md_capture_creation_title_assets_effect = yes
+            remove_variable = zz_md_before_creation_domicile
+            remove_variable = zz_md_had_domicile_before_creation
+            if = {
+                limit = { exists = title_domicile }
+                set_variable = { name = zz_md_before_creation_domicile value = title_domicile }
+                set_variable = { name = zz_md_had_domicile_before_creation value = yes }
+            }
+            save_scope_as = zz_md_before_t
+            root = { add_to_variable_list = { name = zz_md_before_titles target = scope:zz_md_before_t } }
+            if = { limit = { exists = title_domicile } title_domicile = { save_scope_as = zz_md_before_d } root = { add_to_variable_list = { name = zz_md_before_domiciles target = scope:zz_md_before_d } } }
+        }
+        remove_variable = zz_md_created_old_default
+        remove_variable = zz_md_created_new_default
+        remove_variable = zz_md_created_old_primary
+        remove_variable = zz_md_created_new_primary
+        if = { limit = { exists = domicile } set_variable = { name = zz_md_created_old_default value = domicile } }
+        if = { limit = { exists = primary_title } set_variable = { name = zz_md_created_old_primary value = primary_title } }
+        if = {
+            limit = { has_government = administrative_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = administrative_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = administrative_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = administrative_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = administrative_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = administrative_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = landless_adventurer_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = landless_adventurer_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = landless_adventurer_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = landless_adventurer_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = landless_adventurer_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = landless_adventurer_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = nomad_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = nomad_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = nomad_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = nomad_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = nomad_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = nomad_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = celestial_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = celestial_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = celestial_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = celestial_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = celestial_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = celestial_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = steppe_admin_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = steppe_admin_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = steppe_admin_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = steppe_admin_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = steppe_admin_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = steppe_admin_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = meritocratic_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = meritocratic_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = meritocratic_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = meritocratic_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = meritocratic_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = meritocratic_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = japan_administrative_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_administrative_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_administrative_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_administrative_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_administrative_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_administrative_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = japan_feudal_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_feudal_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_feudal_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_feudal_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_feudal_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = japan_feudal_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        else_if = {
+            limit = { has_government = ecclesiastical_government }
+            if = { limit = { var:zz_md_preview_tier = 1 } create_domicile_title = { name = zz_md_created_name holder = root government = ecclesiastical_government tier = county save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 2 } create_domicile_title = { name = zz_md_created_name holder = root government = ecclesiastical_government tier = duchy save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 3 } create_domicile_title = { name = zz_md_created_name holder = root government = ecclesiastical_government tier = kingdom save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 4 } create_domicile_title = { name = zz_md_created_name holder = root government = ecclesiastical_government tier = empire save_scope_as = zz_md_new_title } }
+            else_if = { limit = { var:zz_md_preview_tier = 5 } create_domicile_title = { name = zz_md_created_name holder = root government = ecclesiastical_government tier = hegemony save_scope_as = zz_md_new_title } }
+        }
+        if = {
+            limit = { exists = scope:zz_md_new_title }
+            set_variable = { name = zz_md_last_created_title value = scope:zz_md_new_title }
+            if = {
+                limit = {
+                    scope:zz_md_new_title = { holder = root exists = title_domicile title_domicile = { owner = root } }
+                    NOT = { any_in_list = { variable = zz_md_before_titles this = scope:zz_md_new_title } }
+                    NOT = { any_in_list = { variable = zz_md_before_domiciles this = scope:zz_md_new_title.title_domicile } }
+                }
+                scope:zz_md_new_title = {
+                    set_variable = { name = zz_md_created_title value = yes }
+                    set_variable = { name = zz_md_schema_version value = 3 }
+                    set_variable = { name = zz_md_origin_domicile value = title_domicile }
+                }
+            }
+            if = { limit = { scope:zz_md_new_title = { exists = title_domicile } } set_variable = { name = zz_md_last_created_domicile value = scope:zz_md_new_title.title_domicile } }
+        }
+        if = {
+            limit = {
+                exists = scope:zz_md_new_title
+                scope:zz_md_new_title = { holder = root exists = title_domicile }
+                zz_md_same_preview_government = yes
+                zz_md_old_creation_buildings_preserved = yes
+                NOT = { any_in_list = { variable = zz_md_before_titles this = scope:zz_md_new_title } }
+                NOT = { any_in_list = { variable = zz_md_before_domiciles this = scope:zz_md_new_title.title_domicile } }
+                NOT = { any_in_list = { variable = zz_md_before_titles NOT = { holder = root } } }
+                NOT = {
+                    any_in_list = {
+                        variable = zz_md_before_titles
+                        has_variable = zz_md_had_domicile_before_creation
+                        NOT = { exists = title_domicile exists = var:zz_md_before_creation_domicile title_domicile = var:zz_md_before_creation_domicile }
+                    }
+                }
+                OR = {
+                    AND = { var:zz_md_preview_tier = 1 scope:zz_md_new_title = { tier = tier_county } }
+                    AND = { var:zz_md_preview_tier = 2 scope:zz_md_new_title = { tier = tier_duchy } }
+                    AND = { var:zz_md_preview_tier = 3 scope:zz_md_new_title = { tier = tier_kingdom } }
+                    AND = { var:zz_md_preview_tier = 4 scope:zz_md_new_title = { tier = tier_empire } }
+                    AND = { var:zz_md_preview_tier = 5 scope:zz_md_new_title = { tier = tier_hegemony } }
+                }
+                OR = {
+                    AND = { has_government = administrative_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = estate } } }
+                    AND = { has_government = landless_adventurer_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = camp } } }
+                    AND = { has_government = nomad_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = yurt } } }
+                    AND = { has_government = celestial_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = east_asian_estate } } }
+                    AND = { has_government = steppe_admin_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = east_asian_estate } } }
+                    AND = { has_government = meritocratic_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = east_asian_estate } } }
+                    AND = { has_government = japan_administrative_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = japanese_manor } } }
+                    AND = { has_government = japan_feudal_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = japanese_manor } } }
+                    AND = { has_government = ecclesiastical_government scope:zz_md_new_title = { title_domicile = { is_domicile_type = ecclesiastical_domicile } } }
+                }
+            }
+            remove_variable = zz_md_create_busy
+            zz_md_creation_cleanup_effect = yes
+            every_in_list = {
+                variable = zz_md_before_titles
+                zz_md_clear_creation_title_assets_effect = yes
+                remove_variable = zz_md_before_creation_domicile
+                remove_variable = zz_md_had_domicile_before_creation
+            }
+            clear_variable_list = zz_md_before_titles
+            clear_variable_list = zz_md_before_domiciles
+            if = { limit = { exists = domicile } set_variable = { name = zz_md_created_new_default value = domicile } }
+            if = { limit = { exists = primary_title } set_variable = { name = zz_md_created_new_primary value = primary_title } }
+            zz_md_merge_resources_effect = yes
+            zz_md_open_manager_effect = yes
+            trigger_event = zz_md.0120
+        }
+        else = { set_variable = { name = zz_md_create_failed value = yes } trigger_event = zz_md.0122 }
+    }
+    else = { zz_md_creation_cleanup_effect = yes trigger_event = zz_md.0121 }
+}

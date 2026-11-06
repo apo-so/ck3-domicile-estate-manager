@@ -1,0 +1,66 @@
+﻿# Character root. Supported government mapping and real failed-operation records only.
+zz_md_validation_allowed = { has_variable = zz_md_validation_mode }
+zz_md_creation_release_allowed = { always = yes }
+zz_md_creation_available = {
+    is_ai = no
+    is_alive = yes
+    NOT = { has_variable = zz_md_create_busy }
+    NOT = { has_variable = zz_md_create_failed }
+    NOT = { has_variable = zz_md_res_failed }
+    zz_md_government_supported = yes
+}
+zz_md_same_preview_government = {
+    OR = {
+        AND = { var:zz_md_preview_government = 1 has_government = administrative_government }
+        AND = { var:zz_md_preview_government = 2 has_government = landless_adventurer_government }
+        AND = { var:zz_md_preview_government = 3 has_government = nomad_government }
+        AND = { var:zz_md_preview_government = 4 has_government = celestial_government }
+        AND = { var:zz_md_preview_government = 5 has_government = steppe_admin_government }
+        AND = { var:zz_md_preview_government = 6 has_government = meritocratic_government }
+        AND = { var:zz_md_preview_government = 7 has_government = japan_administrative_government }
+        AND = { var:zz_md_preview_government = 8 has_government = japan_feudal_government }
+        AND = { var:zz_md_preview_government = 9 has_government = ecclesiastical_government }
+    }
+}
+zz_md_has_selected_domicile = {
+    exists = scope:selected_title
+    scope:selected_title = { exists = holder exists = title_domicile }
+}
+zz_md_selected_bound = {
+    zz_md_has_selected_domicile = yes
+    scope:selected_title = { has_variable = zz_md_view_domicile var:zz_md_view_domicile = title_domicile }
+}
+zz_md_pending_open_valid = {
+    exists = var:zz_md_open_title
+    exists = var:zz_md_open_domicile
+    var:zz_md_open_title = { exists = holder exists = title_domicile title_domicile = root.var:zz_md_open_domicile }
+}
+
+# R11: native primary/default/rank changes accepted by user; no political preservation assertion.
+
+zz_md_government_supported = {
+    OR = {
+        has_government = administrative_government
+        has_government = landless_adventurer_government
+        has_government = nomad_government
+        has_government = celestial_government
+        has_government = steppe_admin_government
+        has_government = meritocratic_government
+        has_government = japan_administrative_government
+        has_government = japan_feudal_government
+        has_government = ecclesiastical_government
+    }
+}
+
+zz_md_selected_swap_supported = {
+    exists = domicile
+    zz_md_has_selected_domicile = yes
+    OR = {
+        AND = { domicile = { is_domicile_type = estate } scope:selected_title = { title_domicile = { is_domicile_type = estate } } }
+        AND = { domicile = { is_domicile_type = east_asian_estate } scope:selected_title = { title_domicile = { is_domicile_type = east_asian_estate } } }
+        AND = { domicile = { is_domicile_type = japanese_manor } scope:selected_title = { title_domicile = { is_domicile_type = japanese_manor } } }
+            AND = { domicile = { is_domicile_type = camp } scope:selected_title = { title_domicile = { is_domicile_type = camp } } }
+        AND = { domicile = { is_domicile_type = yurt } scope:selected_title = { title_domicile = { is_domicile_type = yurt } } }
+        AND = { domicile = { is_domicile_type = ecclesiastical_domicile } scope:selected_title = { title_domicile = { is_domicile_type = ecclesiastical_domicile } } }
+    }
+}

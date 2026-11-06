@@ -1,0 +1,123 @@
+﻿# Interaction context, actor is the player. All actions recheck their selected inputs.
+zz_md_ltm_dispatch_effect = {
+    if = {
+        limit = { zz_md_ltm_action_allowed = yes }
+        scope:target = { save_scope_as = zz_md_ltm_selected }
+        if = { limit = { zz_md_ltm_has_marked = yes } scope:actor.var:zz_md_ltm_marked_title = { save_scope_as = zz_md_ltm_marked } }
+        if = {
+            limit = { scope:target = { tier = tier_barony exists = de_jure_liege exists = title_province } }
+            scope:target.de_jure_liege = { save_scope_as = zz_md_ltm_county }
+            scope:target.title_province = { save_scope_as = zz_md_ltm_province }
+        }
+        else_if = {
+            limit = { scope:target = { tier = tier_county exists = title_province } }
+            scope:target = { save_scope_as = zz_md_ltm_county }
+            scope:target.title_province = { save_scope_as = zz_md_ltm_province }
+        }
+        else_if = {
+            limit = { exists = scope:target.title_capital_county.title_province }
+            scope:target.title_capital_county = { save_scope_as = zz_md_ltm_county }
+            scope:target.title_capital_county.title_province = { save_scope_as = zz_md_ltm_province }
+        }
+        switch = {
+            trigger = yes
+            scope:zz_md_ltm_mark = {
+                scope:actor = {
+                    set_variable = { name = zz_md_ltm_marked_title value = scope:target }
+                    send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_mark_done desc = zz_md_ltm_selected_desc left_icon = scope:target }
+                }
+            }
+            scope:zz_md_ltm_create = {
+                scope:target = { save_scope_as = zz_md_ltm_template }
+                scope:actor = { trigger_event = zz_md_ltm.0001 }
+            }
+            scope:zz_md_ltm_grant = {
+                if = {
+                    limit = { scope:zz_md_ltm_marked = { exists = title_domicile } }
+                    open_interaction_window = { interaction = zz_md_grant_domicile_title_interaction actor = scope:actor recipient = scope:recipient target_title = scope:zz_md_ltm_marked }
+                }
+                else = {
+                    create_title_and_vassal_change = { type = granted save_scope_as = zz_md_ltm_change add_claim_on_loss = no }
+                    scope:zz_md_ltm_marked = { change_title_holder = { holder = scope:recipient change = scope:zz_md_ltm_change take_baronies = no } }
+                    resolve_title_and_vassal_change = scope:zz_md_ltm_change
+                    scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_grant_done desc = zz_md_ltm_marked_desc left_icon = scope:zz_md_ltm_marked right_icon = scope:recipient } }
+                }
+            }
+            scope:zz_md_ltm_revoke = {
+                if = {
+                    limit = { scope:target = { exists = title_domicile } }
+                    open_interaction_window = { interaction = zz_md_confiscate_domicile_title_interaction actor = scope:actor recipient = scope:recipient target_title = scope:target }
+                }
+                else = {
+                    create_title_and_vassal_change = { type = revoked save_scope_as = zz_md_ltm_change add_claim_on_loss = no }
+                    scope:target = { change_title_holder = { holder = scope:actor change = scope:zz_md_ltm_change take_baronies = no government_base = scope:actor } }
+                    resolve_title_and_vassal_change = scope:zz_md_ltm_change
+                    scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_revoke_done desc = zz_md_ltm_selected_desc left_icon = scope:target } }
+                }
+            }
+            scope:zz_md_ltm_capital = {
+                if = {
+                    limit = { exists = scope:zz_md_ltm_county }
+                    scope:zz_md_ltm_marked = { set_capital_county = scope:zz_md_ltm_county }
+                    scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_capital_done desc = zz_md_ltm_marked_desc left_icon = scope:zz_md_ltm_marked } }
+                }
+            }
+            scope:zz_md_ltm_move = {
+                if = {
+                    limit = { exists = scope:zz_md_ltm_marked.title_domicile exists = scope:zz_md_ltm_province }
+                    scope:zz_md_ltm_marked.title_domicile = { move_domicile = scope:zz_md_ltm_province }
+                    scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_move_done desc = zz_md_ltm_marked_desc left_icon = scope:zz_md_ltm_marked } }
+                }
+            }
+            scope:zz_md_ltm_dejure = {
+                scope:target = { set_de_jure_liege_title = scope:zz_md_ltm_marked }
+                scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_dejure_done desc = zz_md_ltm_selected_desc left_icon = scope:target } }
+            }
+            scope:zz_md_ltm_destroy = {
+                if = {
+                    limit = { scope:target = { exists = title_domicile } }
+                    scope:target = { save_scope_as = selected_title }
+                    scope:actor = { zz_md_destroy_request_effect = yes }
+                }
+                else = {
+                    scope:target.holder = { destroy_title = scope:target }
+                    if = {
+                        limit = { scope:target = { NOT = { exists = holder } } }
+                        scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_destroy_done desc = zz_md_ltm_selected_desc left_icon = scope:actor } }
+                    }
+                }
+            }
+        }
+    }
+    else = { scope:actor = { send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_changed desc = zz_md_ltm_requirements_tt left_icon = scope:actor } } }
+}
+# Character event root; invocation-local template scope survives the event, no shared draft variable.
+zz_md_ltm_create_title_effect = {
+    if = {
+        limit = { exists = scope:zz_md_ltm_template }
+        save_scope_as = zz_md_ltm_founder
+        create_dynamic_title = { tier = $TIER$ name = zz_md_ltm_new_title_name }
+        scope:new_title = {
+            save_scope_as = zz_md_ltm_created
+            set_coa = scope:zz_md_ltm_template
+            set_color_from_title = scope:zz_md_ltm_template
+            if = { limit = { exists = scope:zz_md_ltm_county } set_capital_county = scope:zz_md_ltm_county }
+            set_variable = { name = zz_md_ltm_created_title value = yes }
+        }
+        create_title_and_vassal_change = { type = created save_scope_as = zz_md_ltm_change add_claim_on_loss = no }
+        scope:zz_md_ltm_created = { change_title_holder = { holder = scope:zz_md_ltm_founder change = scope:zz_md_ltm_change take_baronies = no } }
+        resolve_title_and_vassal_change = scope:zz_md_ltm_change
+        # Preserve the original manager's creation order: assign first, then landless flags.
+        scope:zz_md_ltm_created = {
+            set_landless_title = yes
+            set_definitive_form = yes
+            set_always_follows_primary_heir = no
+            set_no_automatic_claims = no
+        }
+        if = {
+            limit = { scope:zz_md_ltm_created = { holder = root } }
+            set_variable = { name = zz_md_ltm_marked_title value = scope:zz_md_ltm_created }
+            send_interface_message = { type = msg_generic_neutral title = zz_md_ltm_create_done desc = zz_md_ltm_created_desc left_icon = scope:zz_md_ltm_created }
+        }
+    }
+}

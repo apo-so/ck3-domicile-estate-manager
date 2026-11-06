@@ -1,0 +1,7 @@
+﻿# Character root. A/B are explicit D scopes; actor owns A, recipient owns B.
+# Exact current Japanese can_construct aspiration requirements, before any removal.
+# Other can_construct requirements are not covered by this targeted guard.
+zz_md_pair_japanese_aspirations_valid = {
+    # User-requested transfer of existing buildings ignores construction aspirations.
+    always = yes
+}

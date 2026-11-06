@@ -1,0 +1,12 @@
+﻿l_english:
+ zz_md_destroy_short:0 "Destroy"
+ zz_md_destroy:0 "Destroy domicile"
+ zz_md_destroy_tt:0 "After confirmation, demolish the buildings and destroy this domicile title. Building refunds and resource transfers appear in the message feed. Provisions or Herd that cannot be transferred will be lost with the domicile."
+ zz_md_destroy_result_title:0 "Domicile demolition"
+ zz_md_destroy_result_target:0 "Target title: [SCOPE.sTitle('zz_md_destroy_message_title').GetName]"
+ zz_md_destroy_result_done:0 "Title destroyed."
+ zz_md_destroy_result_refused:0 "The domicile title could not be destroyed. The building refunds and resource transfers below have already occurred; check the current domicile."
+ zz_md_destroy_result_refund:0 "Building refunds: [zz_md_destroy_message_gold|2] Gold, [zz_md_destroy_message_prestige|2] Prestige, [zz_md_destroy_message_piety|2] Piety, and [zz_md_destroy_message_influence|2] Influence."
+ zz_md_destroy_result_provisions:0 "Original Provisions [zz_md_destroy_message_requested|2]: transferred [zz_md_destroy_message_received|2], lost with the domicile [zz_md_destroy_message_lost|2]."
+ zz_md_destroy_result_herd:0 "Original Herd [zz_md_destroy_message_requested|2]: transferred [zz_md_destroy_message_received|2], lost with the domicile [zz_md_destroy_message_lost|2]."
+ zz_md_destroy_result_domicile_remains:0 "This domicile is still associated with a title you hold. Refresh the domicile list to check it."

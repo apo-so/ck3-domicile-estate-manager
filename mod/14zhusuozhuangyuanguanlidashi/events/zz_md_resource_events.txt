@@ -1,0 +1,6 @@
+﻿namespace = zz_md
+zz_md.0300 = {
+    type = character_event title = zz_md_merge_resources_decision desc = zz_md_merge_resources_decision_desc theme = stewardship
+    option = { name = zz_md_merge_confirm trigger = { zz_md_resource_merge_available = yes } hidden_effect = { set_variable = { name = zz_md_res_notice_requested value = yes } zz_md_merge_resources_effect = yes } }
+    option = { name = zz_md_cancel }
+}

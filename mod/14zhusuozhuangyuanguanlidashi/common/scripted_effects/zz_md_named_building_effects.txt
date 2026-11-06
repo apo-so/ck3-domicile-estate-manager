@@ -1,0 +1,35 @@
+﻿# Current = affected D; ROOT is inherited from the caller. Parameter is a known building key.
+zz_md_add_building_named_effect = {
+    set_variable = { name = zz_md_scripted_building_add value = yes }
+    owner = { set_variable = { name = zz_md_scripted_building_rebuild value = yes } }
+    add_domicile_building = $BUILDING$
+    owner = { remove_variable = zz_md_scripted_building_rebuild }
+    remove_variable = zz_md_scripted_building_add
+    if = {
+        limit = { has_domicile_building = $BUILDING$ exists = owner owner = { debug_only = yes zz_md_validation_allowed = yes } }
+        save_scope_as = zz_md_message_building_domicile
+        owner = {
+            if = {
+                limit = { any_held_title = { exists = title_domicile title_domicile = scope:zz_md_message_building_domicile } }
+                every_held_title = {
+                    limit = { exists = title_domicile title_domicile = scope:zz_md_message_building_domicile }
+                    save_scope_as = zz_md_message_building_title
+                }
+                send_interface_message = {
+                    type = zz_md_building_adjusted
+                    left_icon = this
+                    custom_tooltip = zz_md_building_adjusted_desc
+                    custom_tooltip = $BUILDING$_domicile_building
+                }
+            }
+            else = {
+                send_interface_message = {
+                    type = zz_md_building_adjusted
+                    left_icon = this
+                    custom_tooltip = zz_md_building_title_unknown_desc
+                    custom_tooltip = $BUILDING$_domicile_building
+                }
+            }
+        }
+    }
+}

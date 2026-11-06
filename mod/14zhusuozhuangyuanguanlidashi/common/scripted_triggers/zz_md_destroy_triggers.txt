@@ -1,0 +1,41 @@
+﻿# Character root, selected_title from the exact clicked row/title details page.
+# Conditions implement explicit native-title protection and actual ownership, not gameplay balance.
+zz_md_destroy_selected_allowed = {
+    exists = scope:selected_title
+    scope:selected_title = {
+        exists = holder
+        holder = root
+        exists = title_domicile
+        title_domicile = { owner = root }
+        has_variable = zz_md_created_title
+        has_variable = zz_md_schema_version
+        OR = {
+            var:zz_md_schema_version = 2
+            AND = {
+                var:zz_md_schema_version = 3
+                exists = var:zz_md_origin_domicile
+                title_domicile = var:zz_md_origin_domicile
+            }
+        }
+    }
+}
+
+zz_md_destroy_confirmation_allowed = {
+    exists = scope:zz_md_destroy_confirm_title
+    scope:zz_md_destroy_confirm_title = {
+        exists = holder
+        holder = root
+        exists = title_domicile
+        title_domicile = { owner = root }
+        has_variable = zz_md_created_title
+        has_variable = zz_md_schema_version
+        OR = {
+            var:zz_md_schema_version = 2
+            AND = {
+                var:zz_md_schema_version = 3
+                exists = var:zz_md_origin_domicile
+                title_domicile = var:zz_md_origin_domicile
+            }
+        }
+    }
+}

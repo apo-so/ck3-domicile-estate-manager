@@ -1,0 +1,115 @@
+﻿zz_md_open = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { zz_md_has_selected_domicile = yes }
+    effect = { if = { limit = { zz_md_has_selected_domicile = yes } zz_md_open_request_effect = yes } }
+}
+zz_md_bound = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { zz_md_selected_bound = yes }
+}
+zz_md_default = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { exists = domicile zz_md_has_selected_domicile = yes scope:selected_title = { title_domicile = root.domicile } }
+}
+zz_md_open_pending = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { zz_md_pending_open_valid = yes }
+}
+zz_md_open_clear = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { always = yes }
+    effect = { if = { limit = { always = yes } remove_variable = zz_md_open_title remove_variable = zz_md_open_domicile } }
+}
+zz_md_manager_visible = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { has_variable = zz_md_manager_visible }
+}
+zz_md_manager_open = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { is_ai = no }
+    effect = { if = { limit = { is_ai = no } zz_md_open_manager_effect = yes } }
+}
+zz_md_refresh = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { is_ai = no }
+    effect = { if = { limit = { is_ai = no } zz_md_refresh_effect = yes } }
+}
+zz_md_close = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { always = yes }
+    effect = { if = { limit = { always = yes } remove_variable = zz_md_manager_visible } }
+}
+zz_md_validation_toggle = {
+    scope = character
+    is_shown = { debug_only = yes }
+    is_valid = { debug_only = yes is_ai = no }
+    effect = { if = { limit = { debug_only = yes is_ai = no } if = { limit = { has_variable = zz_md_validation_mode } remove_variable = zz_md_validation_mode } else = { set_variable = { name = zz_md_validation_mode value = yes } } } }
+}
+zz_md_create = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } }
+    effect = { if = { limit = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } } zz_md_begin_creation_effect = yes } }
+}
+
+zz_md_prepare_swap = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = {
+        zz_md_has_selected_domicile = yes
+        custom_description = { text = zz_md_swap_supported_tt zz_md_selected_swap_supported = yes }
+        scope:selected_title = { holder = root title_domicile != root.domicile }
+        exists = domicile
+        
+        
+    }
+    effect = { zz_md_prepare_own_swap_effect = yes }
+}
+
+
+# Presentation-only fold state; does not change validation or swap eligibility.
+zz_md_test_options_visible = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { has_variable = zz_md_test_options_visible }
+}
+zz_md_test_options_toggle = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { always = yes }
+    effect = {
+        if = { limit = { has_variable = zz_md_test_options_visible } remove_variable = zz_md_test_options_visible }
+        else = { set_variable = { name = zz_md_test_options_visible value = yes } }
+    }
+}
+
+zz_md_destroy = {
+    scope = character
+    is_shown = { zz_md_destroy_selected_allowed = yes }
+    is_valid = { zz_md_destroy_selected_allowed = yes }
+    effect = { zz_md_destroy_request_effect = yes }
+}
+
+# Title view only: the exchange action belongs to an owned domicile title.
+zz_md_title_swap_visible = {
+    scope = character
+    is_shown = { zz_md_has_selected_domicile = yes scope:selected_title = { holder = root } }
+    is_valid = { always = yes }
+}
+
+# Pure UI binding: no ownership, resource, or building mutation.
+zz_md_bind_title_card = {
+    scope = character
+    is_shown = { always = yes }
+    is_valid = { zz_md_has_selected_domicile = yes }
+    effect = { zz_md_bind_selected_effect = yes }
+}

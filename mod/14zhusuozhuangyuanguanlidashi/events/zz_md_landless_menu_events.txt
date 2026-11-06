@@ -1,0 +1,13 @@
+﻿namespace = zz_md_ltm
+zz_md_ltm.0001 = {
+    type = character_event
+    theme = realm
+    title = zz_md_ltm_create_title
+    desc = zz_md_ltm_create_event_desc
+    option = { name = zz_md_ltm_tier_county trigger = { exists = scope:zz_md_ltm_template } hidden_effect = { zz_md_ltm_create_title_effect = { TIER = county } } }
+    option = { name = zz_md_ltm_tier_duchy trigger = { exists = scope:zz_md_ltm_template } hidden_effect = { zz_md_ltm_create_title_effect = { TIER = duchy } } }
+    option = { name = zz_md_ltm_tier_kingdom trigger = { exists = scope:zz_md_ltm_template } hidden_effect = { zz_md_ltm_create_title_effect = { TIER = kingdom } } }
+    option = { name = zz_md_ltm_tier_empire trigger = { exists = scope:zz_md_ltm_template } hidden_effect = { zz_md_ltm_create_title_effect = { TIER = empire } } }
+    option = { name = zz_md_ltm_tier_hegemony trigger = { exists = scope:zz_md_ltm_template } hidden_effect = { zz_md_ltm_create_title_effect = { TIER = hegemony } } }
+    option = { name = zz_md_cancel }
+}

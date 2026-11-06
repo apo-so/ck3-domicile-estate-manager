@@ -1,0 +1,395 @@
+﻿zz_md_merge_provisions_pair_effect = {
+    if = {
+        limit = { zz_md_resource_pair_valid = yes scope:zz_md_res_source = { is_domicile_type = camp } }
+        set_variable = { name = zz_md_res_source value = scope:zz_md_res_source }
+        set_variable = { name = zz_md_res_target value = scope:zz_md_res_target }
+        set_variable = { name = zz_md_res_s_before value = scope:zz_md_res_source.provisions }
+        set_variable = { name = zz_md_res_t_before value = scope:zz_md_res_target.provisions }
+        set_variable = { name = zz_md_res_requested value = var:zz_md_res_s_before }
+        set_variable = { name = zz_md_res_received value = 0 }
+        set_variable = { name = zz_md_res_moved value = 0 }
+        set_variable = { name = zz_md_res_remaining value = var:zz_md_res_s_before }
+        set_variable = { name = zz_md_res_kind value = flag:provisions }
+        zz_md_resource_ledger_begin_effect = yes
+        save_scope_value_as = { name = zz_md_res_required_total value = { value = var:zz_md_res_s_before add = var:zz_md_res_t_before } }
+        if = {
+            limit = { var:zz_md_res_s_before = 0 }
+            zz_md_resource_notice_zero_effect = yes
+        }
+        else_if = {
+            limit = { scope:zz_md_res_target = { max_provisions >= scope:zz_md_res_required_total } var:zz_md_res_s_before > 0 var:zz_md_res_t_before >= 0 }
+            # Credit first; only an observed positive credit may authorize a source debit.
+            scope:zz_md_res_target = { change_provisions = root.var:zz_md_res_requested }
+            zz_md_resource_observe_credit_effect = yes
+            set_variable = { name = zz_md_res_phase value = flag:after_credit }
+            set_variable = { name = zz_md_res_received value = { value = scope:zz_md_res_target.provisions subtract = var:zz_md_res_t_before } }
+            if = {
+                limit = { zz_md_resource_pair_valid = yes var:zz_md_res_received >= 0 var:zz_md_res_received <= var:zz_md_res_requested }
+                if = {
+                    limit = { var:zz_md_res_received > 0 }
+                    set_variable = { name = zz_md_res_phase value = flag:debit_attempt }
+                    scope:zz_md_res_source = { change_provisions = { value = root.var:zz_md_res_received multiply = -1 } }
+                }
+                set_variable = { name = zz_md_res_moved value = { value = var:zz_md_res_s_before subtract = scope:zz_md_res_source.provisions } }
+                set_variable = { name = zz_md_res_phase value = flag:after_debit }
+                if = {
+                    limit = { zz_md_resource_pair_valid = yes var:zz_md_res_moved >= 0 var:zz_md_res_moved <= var:zz_md_res_received }
+                    # Withdraw only excess target credit if the source debit was partial/refused.
+                    if = {
+                        limit = { var:zz_md_res_moved < var:zz_md_res_received }
+                        set_variable = { name = zz_md_res_compensation_requested value = { value = var:zz_md_res_received subtract = var:zz_md_res_moved } }
+                        set_variable = { name = zz_md_res_phase value = flag:compensation_attempt }
+                        scope:zz_md_res_target = { change_provisions = { value = root.var:zz_md_res_moved subtract = root.var:zz_md_res_received } }
+                    }
+                    set_variable = { name = zz_md_res_phase value = flag:postcheck }
+                    set_variable = { name = zz_md_res_remaining value = scope:zz_md_res_source.provisions }
+                    save_scope_value_as = { name = zz_md_res_expected_source value = { value = var:zz_md_res_s_before subtract = var:zz_md_res_moved } }
+                    save_scope_value_as = { name = zz_md_res_expected_target value = { value = var:zz_md_res_t_before add = var:zz_md_res_moved } }
+                    if = {
+                        limit = {
+                            zz_md_resource_pair_valid = yes
+                            scope:zz_md_res_source = { provisions = scope:zz_md_res_expected_source }
+                            scope:zz_md_res_target = { provisions = scope:zz_md_res_expected_target }
+                        }
+                        if = { limit = { var:zz_md_res_moved = var:zz_md_res_requested } zz_md_resource_notice_done_effect = yes }
+                        else = { zz_md_resource_notice_partial_effect = yes }
+                    }
+                    else = { zz_md_resource_fail_effect = yes }
+                }
+                else = { zz_md_resource_fail_effect = yes }
+            }
+            else = { zz_md_resource_fail_effect = yes }
+        }
+        else = { zz_md_resource_notice_capacity_effect = yes }
+        zz_md_resource_collect_pair_effect = yes
+    }
+}
+
+zz_md_merge_herd_pair_effect = {
+    if = {
+        limit = { zz_md_resource_pair_valid = yes scope:zz_md_res_source = { is_domicile_type = yurt } }
+        set_variable = { name = zz_md_res_source value = scope:zz_md_res_source }
+        set_variable = { name = zz_md_res_target value = scope:zz_md_res_target }
+        set_variable = { name = zz_md_res_s_before value = scope:zz_md_res_source.herd }
+        set_variable = { name = zz_md_res_t_before value = scope:zz_md_res_target.herd }
+        set_variable = { name = zz_md_res_requested value = var:zz_md_res_s_before }
+        set_variable = { name = zz_md_res_received value = 0 }
+        set_variable = { name = zz_md_res_moved value = 0 }
+        set_variable = { name = zz_md_res_remaining value = var:zz_md_res_s_before }
+        set_variable = { name = zz_md_res_kind value = flag:herd }
+        zz_md_resource_ledger_begin_effect = yes
+        save_scope_value_as = { name = zz_md_res_required_total value = { value = var:zz_md_res_s_before add = var:zz_md_res_t_before } }
+        if = {
+            limit = { var:zz_md_res_s_before = 0 }
+            zz_md_resource_notice_zero_effect = yes
+        }
+        else_if = {
+            limit = { scope:zz_md_res_target = { max_herd >= scope:zz_md_res_required_total } var:zz_md_res_s_before > 0 var:zz_md_res_t_before >= 0 }
+            # Credit first; only an observed positive credit may authorize a source debit.
+            scope:zz_md_res_target = { change_herd = root.var:zz_md_res_requested }
+            zz_md_resource_observe_credit_effect = yes
+            set_variable = { name = zz_md_res_phase value = flag:after_credit }
+            set_variable = { name = zz_md_res_received value = { value = scope:zz_md_res_target.herd subtract = var:zz_md_res_t_before } }
+            if = {
+                limit = { zz_md_resource_pair_valid = yes var:zz_md_res_received >= 0 var:zz_md_res_received <= var:zz_md_res_requested }
+                if = {
+                    limit = { var:zz_md_res_received > 0 }
+                    set_variable = { name = zz_md_res_phase value = flag:debit_attempt }
+                    scope:zz_md_res_source = { change_herd = { value = root.var:zz_md_res_received multiply = -1 } }
+                }
+                set_variable = { name = zz_md_res_moved value = { value = var:zz_md_res_s_before subtract = scope:zz_md_res_source.herd } }
+                set_variable = { name = zz_md_res_phase value = flag:after_debit }
+                if = {
+                    limit = { zz_md_resource_pair_valid = yes var:zz_md_res_moved >= 0 var:zz_md_res_moved <= var:zz_md_res_received }
+                    # Withdraw only excess target credit if the source debit was partial/refused.
+                    if = {
+                        limit = { var:zz_md_res_moved < var:zz_md_res_received }
+                        set_variable = { name = zz_md_res_compensation_requested value = { value = var:zz_md_res_received subtract = var:zz_md_res_moved } }
+                        set_variable = { name = zz_md_res_phase value = flag:compensation_attempt }
+                        scope:zz_md_res_target = { change_herd = { value = root.var:zz_md_res_moved subtract = root.var:zz_md_res_received } }
+                    }
+                    set_variable = { name = zz_md_res_phase value = flag:postcheck }
+                    set_variable = { name = zz_md_res_remaining value = scope:zz_md_res_source.herd }
+                    save_scope_value_as = { name = zz_md_res_expected_source value = { value = var:zz_md_res_s_before subtract = var:zz_md_res_moved } }
+                    save_scope_value_as = { name = zz_md_res_expected_target value = { value = var:zz_md_res_t_before add = var:zz_md_res_moved } }
+                    if = {
+                        limit = {
+                            zz_md_resource_pair_valid = yes
+                            scope:zz_md_res_source = { herd = scope:zz_md_res_expected_source }
+                            scope:zz_md_res_target = { herd = scope:zz_md_res_expected_target }
+                        }
+                        if = { limit = { var:zz_md_res_moved = var:zz_md_res_requested } zz_md_resource_notice_done_effect = yes }
+                        else = { zz_md_resource_notice_partial_effect = yes }
+                    }
+                    else = { zz_md_resource_fail_effect = yes }
+                }
+                else = { zz_md_resource_fail_effect = yes }
+            }
+            else = { zz_md_resource_fail_effect = yes }
+        }
+        else = { zz_md_resource_notice_capacity_effect = yes }
+        zz_md_resource_collect_pair_effect = yes
+    }
+}
+
+zz_md_resource_notice_zero_effect = {
+    zz_md_resource_notice_effect = { TYPE = zz_md_resource_zero STATUS = zz_md_resource_zero_desc }
+}
+
+zz_md_resource_notice_done_effect = {
+    zz_md_resource_notice_effect = { TYPE = zz_md_resource_done STATUS = zz_md_resource_done_desc }
+}
+
+zz_md_resource_notice_partial_effect = {
+    zz_md_resource_notice_effect = { TYPE = zz_md_resource_partial STATUS = zz_md_resource_partial_desc }
+}
+
+zz_md_resource_notice_capacity_effect = {
+    zz_md_resource_notice_effect = { TYPE = zz_md_resource_capacity STATUS = zz_md_resource_capacity_desc }
+}
+
+zz_md_resource_notice_failed_effect = {
+    zz_md_resource_notice_effect = { TYPE = zz_md_resource_failed STATUS = zz_md_resource_failed_desc }
+}
+
+zz_md_resource_fail_effect = {
+    set_variable = { name = zz_md_res_failed value = yes }
+    # Retain the first failed pair and actual/unknown readback. Never blindly retry unknown loss.
+    if = {
+        limit = { NOT = { has_variable = zz_md_res_failure_captured } }
+        set_variable = { name = zz_md_res_failure_phase value = var:zz_md_res_phase }
+        zz_md_resource_read_final_effect = yes
+        set_variable = { name = zz_md_res_failure_captured value = yes }
+        zz_md_resource_notice_failed_effect = yes
+    }
+}
+zz_md_merge_resources_effect = {
+    if = {
+        limit = { zz_md_resource_merge_available = yes }
+        set_variable = { name = zz_md_res_busy value = yes }
+        set_variable = { name = zz_md_res_batch value = yes }
+        set_variable = { name = zz_md_res_total_requested value = 0 }
+        set_variable = { name = zz_md_res_total_moved value = 0 }
+        set_variable = { name = zz_md_res_total_remaining value = 0 }
+        set_variable = { name = zz_md_res_pair_count value = 0 }
+        set_variable = { name = zz_md_res_totals_known value = yes }
+        remove_variable = zz_md_res_batch_target_before
+        if = { limit = { domicile = { is_domicile_type = camp } } set_variable = { name = zz_md_res_batch_target_before value = domicile.provisions } }
+        else_if = { limit = { domicile = { is_domicile_type = yurt } } set_variable = { name = zz_md_res_batch_target_before value = domicile.herd } }
+        remove_variable = zz_md_res_target_title_found
+        domicile = { save_scope_as = zz_md_res_target }
+        every_held_title = {
+            limit = { exists = title_domicile title_domicile = root.domicile }
+            save_scope_as = zz_md_notice_target_title
+            root = { set_variable = { name = zz_md_res_target_title_found value = yes } }
+        }
+        if = {
+            limit = { has_variable = zz_md_res_target_title_found }
+            every_held_title = {
+                limit = { holder = root exists = title_domicile title_domicile != root.domicile }
+                save_scope_as = zz_md_notice_source_title
+                title_domicile = { save_scope_as = zz_md_res_source }
+                root = {
+                    if = {
+                        limit = { NOT = { has_variable = zz_md_res_failed } zz_md_resource_pair_valid = yes }
+                        if = { limit = { scope:zz_md_res_source = { is_domicile_type = camp } } zz_md_merge_provisions_pair_effect = yes }
+                        else_if = { limit = { scope:zz_md_res_source = { is_domicile_type = yurt } } zz_md_merge_herd_pair_effect = yes }
+                    }
+                }
+            }
+        }
+        zz_md_resource_batch_notice_effect = yes
+        remove_variable = zz_md_res_batch
+        remove_variable = zz_md_res_notice_requested
+        if = {
+            limit = { NOT = { has_variable = zz_md_res_failed } }
+            remove_variable = zz_md_res_busy
+            remove_variable = zz_md_res_target_title_found
+        }
+    }
+}
+
+# Message text is generated inside this effect, using per-message saved scalars.
+# It never renders a later value from the character's mutable transaction variables.
+zz_md_resource_notice_effect = {
+    if = {
+        limit = { OR = { NOT = { has_variable = zz_md_res_batch } AND = { debug_only = yes zz_md_validation_allowed = yes } } }
+    send_interface_message = {
+        type = $TYPE$
+        left_icon = this
+        if = { limit = { var:zz_md_res_kind = flag:provisions } custom_tooltip = zz_md_provisions }
+        else_if = { limit = { var:zz_md_res_kind = flag:herd } custom_tooltip = zz_md_herd }
+        else = { custom_tooltip = zz_md_resource_kind_unknown_desc }
+        if = {
+            limit = { exists = scope:zz_md_notice_source_title exists = scope:zz_md_notice_target_title }
+            scope:zz_md_notice_source_title = { save_scope_as = zz_md_message_source_title }
+            scope:zz_md_notice_target_title = { save_scope_as = zz_md_message_target_title }
+            custom_tooltip = zz_md_resource_pair_desc
+        }
+        else = { custom_tooltip = zz_md_resource_titles_unknown_desc }
+        if = {
+            limit = { has_variable = zz_md_res_failed }
+            if = { limit = { debug_only = yes zz_md_validation_allowed = yes } zz_md_resource_failure_message_fields_effect = yes }
+        }
+        else = {
+            save_scope_value_as = { name = zz_md_message_requested value = var:zz_md_res_requested }
+            save_scope_value_as = { name = zz_md_message_received value = var:zz_md_res_received }
+            save_scope_value_as = { name = zz_md_message_moved value = var:zz_md_res_moved }
+            save_scope_value_as = { name = zz_md_message_remaining value = var:zz_md_res_remaining }
+            custom_tooltip = zz_md_resource_numbers_desc
+        }
+        custom_tooltip = $STATUS$
+    }
+    }
+}
+
+# Character-owned, first-failure ledger. Missing final fields mean UNKNOWN, never zero.
+zz_md_resource_ledger_begin_effect = {
+    if = {
+        limit = { NOT = { has_variable = zz_md_res_failed } }
+        remove_variable = zz_md_res_failure_captured
+        remove_variable = zz_md_res_failure_phase
+        remove_variable = zz_md_res_t_after_credit
+        remove_variable = zz_md_res_source_final
+        remove_variable = zz_md_res_target_final
+        remove_variable = zz_md_res_source_final_known
+        remove_variable = zz_md_res_target_final_known
+        remove_variable = zz_md_res_actual_debit
+        remove_variable = zz_md_res_actual_credit
+        remove_variable = zz_md_res_net_delta
+        remove_variable = zz_md_res_compensation_returned
+        set_variable = { name = zz_md_res_compensation_requested value = 0 }
+        set_variable = { name = zz_md_res_phase value = flag:before_credit }
+    }
+}
+zz_md_resource_observe_credit_effect = {
+    if = {
+        limit = { var:zz_md_res_kind = flag:provisions exists = var:zz_md_res_target var:zz_md_res_target = { is_domicile_type = camp } }
+        set_variable = { name = zz_md_res_t_after_credit value = var:zz_md_res_target.provisions }
+    }
+    if = {
+        limit = { var:zz_md_res_kind = flag:herd exists = var:zz_md_res_target var:zz_md_res_target = { is_domicile_type = yurt } }
+        set_variable = { name = zz_md_res_t_after_credit value = var:zz_md_res_target.herd }
+    }
+}
+zz_md_resource_read_final_effect = {
+    if = {
+        limit = { var:zz_md_res_kind = flag:provisions exists = var:zz_md_res_source var:zz_md_res_source = { is_domicile_type = camp } }
+        set_variable = { name = zz_md_res_source_final value = var:zz_md_res_source.provisions }
+        set_variable = { name = zz_md_res_source_final_known value = yes }
+    }
+    if = {
+        limit = { var:zz_md_res_kind = flag:herd exists = var:zz_md_res_source var:zz_md_res_source = { is_domicile_type = yurt } }
+        set_variable = { name = zz_md_res_source_final value = var:zz_md_res_source.herd }
+        set_variable = { name = zz_md_res_source_final_known value = yes }
+    }
+    if = {
+        limit = { var:zz_md_res_kind = flag:provisions exists = var:zz_md_res_target var:zz_md_res_target = { is_domicile_type = camp } }
+        set_variable = { name = zz_md_res_target_final value = var:zz_md_res_target.provisions }
+        set_variable = { name = zz_md_res_target_final_known value = yes }
+    }
+    if = {
+        limit = { var:zz_md_res_kind = flag:herd exists = var:zz_md_res_target var:zz_md_res_target = { is_domicile_type = yurt } }
+        set_variable = { name = zz_md_res_target_final value = var:zz_md_res_target.herd }
+        set_variable = { name = zz_md_res_target_final_known value = yes }
+    }
+    if = { limit = { has_variable = zz_md_res_source_final_known } set_variable = { name = zz_md_res_actual_debit value = { value = var:zz_md_res_s_before subtract = var:zz_md_res_source_final } } }
+    if = { limit = { has_variable = zz_md_res_target_final_known } set_variable = { name = zz_md_res_actual_credit value = { value = var:zz_md_res_target_final subtract = var:zz_md_res_t_before } } }
+    if = { limit = { has_variable = zz_md_res_source_final_known has_variable = zz_md_res_target_final_known } set_variable = { name = zz_md_res_net_delta value = { value = var:zz_md_res_source_final add = var:zz_md_res_target_final subtract = var:zz_md_res_s_before subtract = var:zz_md_res_t_before } } }
+    if = { limit = { has_variable = zz_md_res_t_after_credit has_variable = zz_md_res_target_final_known } set_variable = { name = zz_md_res_compensation_returned value = { value = var:zz_md_res_t_after_credit subtract = var:zz_md_res_target_final } } }
+}
+zz_md_resource_failure_message_fields_effect = {
+    save_scope_value_as = { name = zz_md_message_requested value = var:zz_md_res_requested }
+    save_scope_value_as = { name = zz_md_message_source_before value = var:zz_md_res_s_before }
+    save_scope_value_as = { name = zz_md_message_target_before value = var:zz_md_res_t_before }
+    save_scope_value_as = { name = zz_md_message_compensation_requested value = var:zz_md_res_compensation_requested }
+    custom_tooltip = zz_md_resource_failure_pre_desc
+    if = { limit = { var:zz_md_res_failure_phase = flag:before_credit } custom_tooltip = zz_md_resource_phase_before_credit_desc }
+    else_if = { limit = { var:zz_md_res_failure_phase = flag:after_credit } custom_tooltip = zz_md_resource_phase_after_credit_desc }
+    else_if = { limit = { var:zz_md_res_failure_phase = flag:debit_attempt } custom_tooltip = zz_md_resource_phase_debit_attempt_desc }
+    else_if = { limit = { var:zz_md_res_failure_phase = flag:after_debit } custom_tooltip = zz_md_resource_phase_after_debit_desc }
+    else_if = { limit = { var:zz_md_res_failure_phase = flag:compensation_attempt } custom_tooltip = zz_md_resource_phase_compensation_attempt_desc }
+    else_if = { limit = { var:zz_md_res_failure_phase = flag:postcheck } custom_tooltip = zz_md_resource_phase_postcheck_desc }
+    else = { custom_tooltip = zz_md_resource_phase_unknown_desc }
+    if = {
+        limit = { has_variable = zz_md_res_source_final_known }
+        save_scope_value_as = { name = zz_md_message_source_final value = var:zz_md_res_source_final }
+        save_scope_value_as = { name = zz_md_message_actual_debit value = var:zz_md_res_actual_debit }
+        custom_tooltip = zz_md_resource_failure_source_desc
+    }
+    else = { custom_tooltip = zz_md_resource_failure_source_unknown_desc }
+    if = {
+        limit = { has_variable = zz_md_res_target_final_known }
+        save_scope_value_as = { name = zz_md_message_target_final value = var:zz_md_res_target_final }
+        save_scope_value_as = { name = zz_md_message_actual_credit value = var:zz_md_res_actual_credit }
+        custom_tooltip = zz_md_resource_failure_target_desc
+    }
+    else = { custom_tooltip = zz_md_resource_failure_target_unknown_desc }
+    if = {
+        limit = { has_variable = zz_md_res_t_after_credit }
+        save_scope_value_as = { name = zz_md_message_credit_observed value = { value = var:zz_md_res_t_after_credit subtract = var:zz_md_res_t_before } }
+        custom_tooltip = zz_md_resource_failure_credit_desc
+    }
+    else = { custom_tooltip = zz_md_resource_failure_credit_unknown_desc }
+    if = {
+        limit = { has_variable = zz_md_res_net_delta }
+        save_scope_value_as = { name = zz_md_message_net_delta value = var:zz_md_res_net_delta }
+        custom_tooltip = zz_md_resource_failure_net_delta_desc
+    }
+    else = { custom_tooltip = zz_md_resource_failure_net_delta_unknown_desc }
+    if = {
+        limit = { has_variable = zz_md_res_compensation_returned }
+        save_scope_value_as = { name = zz_md_message_compensation_returned value = var:zz_md_res_compensation_returned }
+        custom_tooltip = zz_md_resource_failure_compensation_returned_desc
+    }
+    else = { custom_tooltip = zz_md_resource_failure_compensation_returned_unknown_desc }
+}
+
+zz_md_resource_collect_pair_effect = {
+    if = {
+        limit = { has_variable = zz_md_res_batch }
+        change_variable = { name = zz_md_res_pair_count add = 1 }
+        change_variable = { name = zz_md_res_total_requested add = var:zz_md_res_requested }
+        if = {
+            limit = { exists = scope:zz_md_res_source scope:zz_md_res_source = { owner = root is_domicile_type = camp } }
+            set_variable = { name = zz_md_res_remaining value = scope:zz_md_res_source.provisions }
+        }
+        else_if = {
+            limit = { exists = scope:zz_md_res_source scope:zz_md_res_source = { owner = root is_domicile_type = yurt } }
+            set_variable = { name = zz_md_res_remaining value = scope:zz_md_res_source.herd }
+        }
+        else = { remove_variable = zz_md_res_totals_known }
+        if = {
+            limit = { has_variable = zz_md_res_totals_known }
+            change_variable = { name = zz_md_res_total_remaining add = var:zz_md_res_remaining }
+            change_variable = { name = zz_md_res_total_moved add = { value = var:zz_md_res_requested subtract = var:zz_md_res_remaining } }
+        }
+    }
+}
+zz_md_resource_batch_notice_effect = {
+    if = {
+        limit = { OR = { var:zz_md_res_total_requested > 0 has_variable = zz_md_res_failed has_variable = zz_md_res_notice_requested } }
+        send_interface_message = {
+            type = zz_md_resource_summary
+            left_icon = this
+            if = {
+                limit = { exists = scope:zz_md_notice_target_title }
+                scope:zz_md_notice_target_title = { save_scope_as = zz_md_message_target_title }
+                custom_tooltip = zz_md_resource_summary_target
+            }
+            if = { limit = { domicile = { is_domicile_type = camp } } custom_tooltip = zz_md_provisions }
+            else_if = { limit = { domicile = { is_domicile_type = yurt } } custom_tooltip = zz_md_herd }
+            if = {
+                limit = { has_variable = zz_md_res_totals_known exists = domicile has_variable = zz_md_res_batch_target_before }
+                if = { limit = { domicile = { is_domicile_type = camp } } save_scope_value_as = { name = zz_md_message_total_received value = { value = domicile.provisions subtract = var:zz_md_res_batch_target_before } } }
+                else_if = { limit = { domicile = { is_domicile_type = yurt } } save_scope_value_as = { name = zz_md_message_total_received value = { value = domicile.herd subtract = var:zz_md_res_batch_target_before } } }
+                save_scope_value_as = { name = zz_md_message_total_moved value = var:zz_md_res_total_moved }
+                save_scope_value_as = { name = zz_md_message_total_remaining value = var:zz_md_res_total_remaining }
+                save_scope_value_as = { name = zz_md_message_pair_count value = var:zz_md_res_pair_count }
+                custom_tooltip = zz_md_resource_summary_numbers
+            }
+            else = { custom_tooltip = zz_md_resource_summary_unknown }
+            if = { limit = { has_variable = zz_md_res_failed } custom_tooltip = zz_md_resource_failed_desc }
+        }
+    }
+}

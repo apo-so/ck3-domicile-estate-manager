@@ -1,0 +1,193 @@
+﻿# All effects below have character root. Only selected_title identifies the deletion target.
+# Saved scopes are invocation-local; the owner retains last-result scalars only, never a reclaimable resource balance.
+zz_md_destroy_selected_effect = { hidden_effect_new_object = { zz_md_destroy_execute_effect = yes } }
+zz_md_destroy_execute_effect = {
+    if = {
+        limit = { zz_md_destroy_selected_allowed = yes }
+        scope:selected_title = { save_scope_as = zz_md_destroy_title title_domicile = { save_scope_as = zz_md_destroy_source } }
+        set_variable = { name = zz_md_destroy_last_title value = scope:zz_md_destroy_title }
+        set_variable = { name = zz_md_destroy_last_domicile value = scope:zz_md_destroy_source }
+        remove_variable = zz_md_destroy_target_found
+        remove_variable = zz_md_destroy_last_target
+        set_variable = { name = zz_md_destroy_last_status value = flag:attempted }
+        set_variable = { name = zz_md_destroy_resource_kind value = flag:none }
+        set_variable = { name = zz_md_destroy_resource_requested value = 0 }
+        set_variable = { name = zz_md_destroy_resource_received value = 0 }
+        set_variable = { name = zz_md_destroy_resource_source_before value = 0 }
+        set_variable = { name = zz_md_destroy_resource_source_after value = 0 }
+        set_variable = { name = zz_md_destroy_resource_lost value = 0 }
+        # Retire the superseded test-candidate ledger; it never feeds a new transfer.
+        remove_variable = zz_md_destroy_unplaced_provisions
+        remove_variable = zz_md_destroy_unplaced_herd
+        remove_variable = zz_md_destroy_resource_pending_before
+        remove_variable = zz_md_destroy_resource_pending_after
+        if = { limit = { scope:zz_md_destroy_source = { is_domicile_type = camp } } zz_md_destroy_transfer_provisions_effect = yes }
+        else_if = { limit = { scope:zz_md_destroy_source = { is_domicile_type = yurt } } zz_md_destroy_transfer_herd_effect = yes }
+        set_variable = { name = zz_md_destroy_before_gold value = gold }
+        set_variable = { name = zz_md_destroy_before_prestige value = prestige }
+        set_variable = { name = zz_md_destroy_before_piety value = piety }
+        set_variable = { name = zz_md_destroy_before_influence value = influence }
+        scope:zz_md_destroy_source = { zz_md_liquidate_destroy_buildings_effect = yes }
+        set_variable = { name = zz_md_destroy_refund_gold value = { value = gold subtract = var:zz_md_destroy_before_gold } }
+        set_variable = { name = zz_md_destroy_refund_prestige value = { value = prestige subtract = var:zz_md_destroy_before_prestige } }
+        set_variable = { name = zz_md_destroy_refund_piety value = { value = piety subtract = var:zz_md_destroy_before_piety } }
+        set_variable = { name = zz_md_destroy_refund_influence value = { value = influence subtract = var:zz_md_destroy_before_influence } }
+        destroy_title = scope:zz_md_destroy_title
+        if = {
+            limit = { scope:zz_md_destroy_title = { NOT = { exists = holder } } }
+            set_variable = { name = zz_md_destroy_last_status value = flag:destroyed }
+        }
+        else = { set_variable = { name = zz_md_destroy_last_status value = flag:refused } }
+        if = { limit = { exists = scope:zz_md_destroy_title.title_domicile } set_variable = { name = zz_md_destroy_domicile_remains value = yes } }
+        else = { remove_variable = zz_md_destroy_domicile_remains }
+        # Untransferred resources disappear only after confirmed title destruction.
+        # If destruction was refused, the native source keeps its untransferred remainder.
+        if = { limit = { var:zz_md_destroy_resource_kind = flag:provisions } zz_md_destroy_discard_provisions_effect = yes }
+        else_if = { limit = { var:zz_md_destroy_resource_kind = flag:herd } zz_md_destroy_discard_herd_effect = yes }
+        if = {
+            limit = { has_variable = zz_md_open_title var:zz_md_open_title = scope:zz_md_destroy_title }
+            remove_variable = zz_md_open_title
+            remove_variable = zz_md_open_domicile
+        }
+        zz_md_refresh_effect = yes
+        zz_md_destroy_notice_effect = yes
+    }
+}
+
+# Reuses the existing native resource API and owner/type scopes; no max_provisions gate.
+zz_md_destroy_transfer_provisions_effect = {
+    set_variable = { name = zz_md_destroy_resource_kind value = flag:provisions }
+    set_variable = { name = zz_md_destroy_resource_source_before value = scope:zz_md_destroy_source.provisions }
+    set_variable = { name = zz_md_destroy_resource_requested value = var:zz_md_destroy_resource_source_before }
+    # Prefer actual default D if it can accept this resource and is not being deleted.
+    if = {
+        limit = { exists = domicile domicile = { owner = root this != scope:zz_md_destroy_source is_domicile_type = camp } }
+        domicile = { save_scope_as = zz_md_destroy_target }
+        set_variable = { name = zz_md_destroy_target_found value = yes }
+    }
+    else = {
+        every_held_title = {
+            limit = {
+                NOT = { root = { has_variable = zz_md_destroy_target_found } }
+                holder = root exists = title_domicile
+                title_domicile = { owner = root this != scope:zz_md_destroy_source is_domicile_type = camp }
+            }
+            title_domicile = { save_scope_as = zz_md_destroy_target }
+            root = { set_variable = { name = zz_md_destroy_target_found value = yes } }
+        }
+    }
+    if = {
+        limit = { has_variable = zz_md_destroy_target_found }
+        set_variable = { name = zz_md_destroy_last_target value = scope:zz_md_destroy_target }
+        set_variable = { name = zz_md_destroy_target_before value = scope:zz_md_destroy_target.provisions }
+        scope:zz_md_destroy_target = { change_provisions = root.var:zz_md_destroy_resource_requested }
+        set_variable = { name = zz_md_destroy_resource_received value = { value = scope:zz_md_destroy_target.provisions subtract = var:zz_md_destroy_target_before } }
+        # Debit only the native credit actually received by the other domicile.
+        set_variable = { name = zz_md_destroy_debit_requested value = { value = var:zz_md_destroy_resource_received min = 0 max = var:zz_md_destroy_resource_source_before } }
+        scope:zz_md_destroy_source = { change_provisions = { value = root.var:zz_md_destroy_debit_requested multiply = -1 } }
+    }
+    set_variable = { name = zz_md_destroy_resource_source_after value = scope:zz_md_destroy_source.provisions }
+}
+zz_md_destroy_discard_provisions_effect = {
+    if = {
+        limit = { var:zz_md_destroy_last_status = flag:destroyed }
+        set_variable = { name = zz_md_destroy_resource_lost value = { value = var:zz_md_destroy_resource_requested subtract = var:zz_md_destroy_resource_received min = 0 } }
+        # Clear even a retained engine D record; no resource balance survives for later reclaim.
+        if = {
+            limit = { exists = scope:zz_md_destroy_source }
+            scope:zz_md_destroy_source = { change_provisions = { value = provisions multiply = -1 } }
+            set_variable = { name = zz_md_destroy_resource_source_after value = scope:zz_md_destroy_source.provisions }
+        }
+    }
+}
+
+# Reuses the existing native resource API and owner/type scopes; no max_herd gate.
+zz_md_destroy_transfer_herd_effect = {
+    set_variable = { name = zz_md_destroy_resource_kind value = flag:herd }
+    set_variable = { name = zz_md_destroy_resource_source_before value = scope:zz_md_destroy_source.herd }
+    set_variable = { name = zz_md_destroy_resource_requested value = var:zz_md_destroy_resource_source_before }
+    # Prefer actual default D if it can accept this resource and is not being deleted.
+    if = {
+        limit = { exists = domicile domicile = { owner = root this != scope:zz_md_destroy_source is_domicile_type = yurt } }
+        domicile = { save_scope_as = zz_md_destroy_target }
+        set_variable = { name = zz_md_destroy_target_found value = yes }
+    }
+    else = {
+        every_held_title = {
+            limit = {
+                NOT = { root = { has_variable = zz_md_destroy_target_found } }
+                holder = root exists = title_domicile
+                title_domicile = { owner = root this != scope:zz_md_destroy_source is_domicile_type = yurt }
+            }
+            title_domicile = { save_scope_as = zz_md_destroy_target }
+            root = { set_variable = { name = zz_md_destroy_target_found value = yes } }
+        }
+    }
+    if = {
+        limit = { has_variable = zz_md_destroy_target_found }
+        set_variable = { name = zz_md_destroy_last_target value = scope:zz_md_destroy_target }
+        set_variable = { name = zz_md_destroy_target_before value = scope:zz_md_destroy_target.herd }
+        scope:zz_md_destroy_target = { change_herd = root.var:zz_md_destroy_resource_requested }
+        set_variable = { name = zz_md_destroy_resource_received value = { value = scope:zz_md_destroy_target.herd subtract = var:zz_md_destroy_target_before } }
+        # Debit only the native credit actually received by the other domicile.
+        set_variable = { name = zz_md_destroy_debit_requested value = { value = var:zz_md_destroy_resource_received min = 0 max = var:zz_md_destroy_resource_source_before } }
+        scope:zz_md_destroy_source = { change_herd = { value = root.var:zz_md_destroy_debit_requested multiply = -1 } }
+    }
+    set_variable = { name = zz_md_destroy_resource_source_after value = scope:zz_md_destroy_source.herd }
+}
+zz_md_destroy_discard_herd_effect = {
+    if = {
+        limit = { var:zz_md_destroy_last_status = flag:destroyed }
+        set_variable = { name = zz_md_destroy_resource_lost value = { value = var:zz_md_destroy_resource_requested subtract = var:zz_md_destroy_resource_received min = 0 } }
+        # Clear even a retained engine D record; no resource balance survives for later reclaim.
+        if = {
+            limit = { exists = scope:zz_md_destroy_source }
+            scope:zz_md_destroy_source = { change_herd = { value = herd multiply = -1 } }
+            set_variable = { name = zz_md_destroy_resource_source_after value = scope:zz_md_destroy_source.herd }
+        }
+    }
+}
+
+zz_md_destroy_notice_effect = {
+    send_interface_message = {
+        type = zz_md_destroy_result
+        left_icon = this
+        # Per-message saved values freeze each notice even after another title is destroyed.
+        scope:zz_md_destroy_title = { save_scope_as = zz_md_destroy_message_title }
+        custom_tooltip = zz_md_destroy_result_target
+        if = { limit = { var:zz_md_destroy_last_status = flag:destroyed } custom_tooltip = zz_md_destroy_result_done }
+        else = { custom_tooltip = zz_md_destroy_result_refused }
+        save_scope_value_as = { name = zz_md_destroy_message_gold value = var:zz_md_destroy_refund_gold }
+        save_scope_value_as = { name = zz_md_destroy_message_prestige value = var:zz_md_destroy_refund_prestige }
+        save_scope_value_as = { name = zz_md_destroy_message_piety value = var:zz_md_destroy_refund_piety }
+        save_scope_value_as = { name = zz_md_destroy_message_influence value = var:zz_md_destroy_refund_influence }
+        custom_tooltip = zz_md_destroy_result_refund
+        if = {
+            limit = { NOT = { var:zz_md_destroy_resource_kind = flag:none } }
+            save_scope_value_as = { name = zz_md_destroy_message_requested value = var:zz_md_destroy_resource_requested }
+            save_scope_value_as = { name = zz_md_destroy_message_received value = var:zz_md_destroy_resource_received }
+            save_scope_value_as = { name = zz_md_destroy_message_lost value = var:zz_md_destroy_resource_lost }
+            if = { limit = { var:zz_md_destroy_resource_kind = flag:provisions } custom_tooltip = zz_md_destroy_result_provisions }
+            else = { custom_tooltip = zz_md_destroy_result_herd }
+        }
+        if = {
+            limit = {
+                has_variable = zz_md_destroy_domicile_remains
+                any_held_title = { holder = root exists = title_domicile title_domicile = scope:zz_md_destroy_source }
+            }
+            custom_tooltip = zz_md_destroy_result_domicile_remains
+        }
+    }
+}
+
+zz_md_destroy_request_effect = {
+    hidden_effect_new_object = {
+        if = {
+            limit = { zz_md_destroy_selected_allowed = yes }
+            zz_md_refresh_effect = yes
+            scope:selected_title = { save_scope_as = zz_md_destroy_confirm_title }
+            save_scope_value_as = { name = zz_md_destroy_confirm_number value = scope:selected_title.var:zz_md_display_number }
+            trigger_event = zz_md.0500
+        }
+    }
+}

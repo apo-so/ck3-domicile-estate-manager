@@ -1,0 +1,94 @@
+﻿# Interaction context: actor player, recipient character, target recipient-owned title.
+# Conditions are object/type validity or the existing native domicile protection.
+zz_md_ltm_selected_valid = {
+    exists = scope:target
+    trigger_if = { limit = { exists = scope:target } scope:target = { exists = holder holder = scope:recipient } }
+}
+zz_md_ltm_has_marked = { scope:actor = { exists = var:zz_md_ltm_marked_title } }
+# Title scope. Exclude native residence identity carriers even if their domicile is absent.
+zz_md_ltm_ordinary_title = {
+    exists = holder
+    NOT = { exists = title_domicile }
+    is_noble_family_title = no
+    is_nomad_title = no
+    has_clerical_region = no
+    NAND = { this = holder.primary_title holder = { has_government = landless_adventurer_government } }
+}
+zz_md_ltm_destination_valid = {
+    scope:target = {
+        OR = {
+            AND = { tier = tier_barony exists = de_jure_liege exists = title_province }
+            AND = { tier = tier_county exists = title_province }
+            exists = title_capital_county.title_province
+        }
+    }
+}
+zz_md_ltm_mark_allowed = { zz_md_ltm_selected_valid = yes }
+zz_md_ltm_create_allowed = { zz_md_ltm_selected_valid = yes }
+zz_md_ltm_grant_allowed = {
+    zz_md_ltm_selected_valid = yes
+    zz_md_ltm_has_marked = yes
+    scope:actor != scope:recipient
+    trigger_if = {
+        limit = { zz_md_ltm_has_marked = yes }
+        scope:actor.var:zz_md_ltm_marked_title = {
+            holder = scope:actor
+            trigger_if = { limit = { exists = title_domicile } zz_md_transfer_title_eligible = yes }
+            trigger_else = { zz_md_ltm_ordinary_title = yes }
+        }
+    }
+}
+zz_md_ltm_revoke_allowed = {
+    zz_md_ltm_selected_valid = yes
+    scope:actor != scope:recipient
+    scope:target = {
+        trigger_if = { limit = { exists = title_domicile } zz_md_transfer_title_eligible = yes }
+        trigger_else = { zz_md_ltm_ordinary_title = yes }
+    }
+}
+zz_md_ltm_capital_allowed = {
+    zz_md_ltm_selected_valid = yes
+    zz_md_ltm_has_marked = yes
+    zz_md_ltm_destination_valid = yes
+}
+zz_md_ltm_move_allowed = {
+    zz_md_ltm_selected_valid = yes
+    zz_md_ltm_has_marked = yes
+    zz_md_ltm_destination_valid = yes
+    trigger_if = {
+        limit = { zz_md_ltm_has_marked = yes }
+        scope:actor.var:zz_md_ltm_marked_title = { exists = title_domicile }
+    }
+}
+zz_md_ltm_dejure_allowed = {
+    zz_md_ltm_selected_valid = yes
+    zz_md_ltm_has_marked = yes
+    trigger_if = {
+        limit = { zz_md_ltm_has_marked = yes }
+        scope:target = { tier < scope:actor.var:zz_md_ltm_marked_title.tier }
+    }
+}
+zz_md_ltm_destroy_allowed = {
+    zz_md_ltm_selected_valid = yes
+    scope:target = {
+        trigger_if = {
+            limit = { exists = title_domicile }
+            holder = scope:actor
+            zz_md_transfer_proven_extra = yes
+        }
+        trigger_else = { zz_md_ltm_ordinary_title = yes }
+    }
+}
+zz_md_ltm_action_allowed = {
+    zz_md_ltm_selected_valid = yes
+    OR = {
+        AND = { scope:zz_md_ltm_mark = yes zz_md_ltm_mark_allowed = yes }
+        AND = { scope:zz_md_ltm_create = yes zz_md_ltm_create_allowed = yes }
+        AND = { scope:zz_md_ltm_revoke = yes zz_md_ltm_revoke_allowed = yes }
+        AND = { scope:zz_md_ltm_grant = yes zz_md_ltm_grant_allowed = yes }
+        AND = { scope:zz_md_ltm_capital = yes zz_md_ltm_capital_allowed = yes }
+        AND = { scope:zz_md_ltm_move = yes zz_md_ltm_move_allowed = yes }
+        AND = { scope:zz_md_ltm_dejure = yes zz_md_ltm_dejure_allowed = yes }
+        AND = { scope:zz_md_ltm_destroy = yes zz_md_ltm_destroy_allowed = yes }
+    }
+}

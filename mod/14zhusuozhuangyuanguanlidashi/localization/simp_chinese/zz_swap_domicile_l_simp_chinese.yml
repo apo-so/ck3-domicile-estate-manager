@@ -1,0 +1,20 @@
+﻿l_simp_chinese:
+ zz_swap_domicile_interaction:0 "交换庄园"
+ zz_swap_domicile_interaction_desc:0 "与此人交换双方庄园的附属建筑。支持家族庄园、东亚庄园和日式庄园；双方须为同类型庄园，且主建筑等级相同。"
+ zz_swap_type_mismatch:0 "双方庄园须为同一类型。"
+ zz_swap_tier_mismatch:0 "双方庄园的主建筑等级须相同。"
+
+ zz_swap_domicile.0001.t:0 "交换庄园"
+ zz_swap_domicile.0001.desc:0 "你将与[recipient.GetShortUINameNoTooltip]交换双方庄园的附属建筑，各建筑保留其等级。庄园的持有人与位置保持不变。\n\n此操作不可撤销。"
+ zz_swap_domicile.0001.a:0 "确认交换"
+ zz_swap_domicile.0001.b:0 "取消"
+
+ zz_swap_domicile.0002.t:0 "庄园交换完成"
+ zz_swap_domicile.0002.desc:0 "你与[recipient.GetShortUINameNoTooltip]的庄园建筑已完成交换。"
+ zz_swap_domicile.0002.a:0 "知道了"
+
+ zz_swap_not_ready:0 "双方须存活、庄园均无在建工程，且没有待恢复的未完成交换。"
+ zz_swap_domicile.0003.t:0 "庄园交换已停止"
+ zz_swap_domicile.0003.desc:0 "双方人物、封臣关系、庄园类型、主建筑等级或在建状态发生变化。本次未开始交换。"
+ zz_swap_domicile.0004.t:0 "庄园交换需要恢复"
+ zz_swap_domicile.0004.desc:0 "部分建筑未能按预期完成交换，双方进一步交换已暂停。此次操作可能已经改变建筑，请载入交换前的存档，并在报告问题时保留异常存档。"

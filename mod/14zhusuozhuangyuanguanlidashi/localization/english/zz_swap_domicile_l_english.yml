@@ -1,0 +1,20 @@
+﻿l_english:
+ zz_swap_domicile_interaction:0 "Swap Estate"
+ zz_swap_domicile_interaction_desc:0 "Exchange the additional buildings of your estates. Supports Estates, East Asian Estates, and Japanese Manors. Both estates must be of the same type and have the same main-building level."
+ zz_swap_type_mismatch:0 "Both estates must be of the same type."
+ zz_swap_tier_mismatch:0 "Both estates must have the same main-building level."
+
+ zz_swap_domicile.0001.t:0 "Swap Estate"
+ zz_swap_domicile.0001.desc:0 "You will exchange the additional buildings of your estate with those of [recipient.GetShortUINameNoTooltip]. Each building retains its level. Estate owners and locations remain unchanged.\n\nThis cannot be undone."
+ zz_swap_domicile.0001.a:0 "Confirm Swap"
+ zz_swap_domicile.0001.b:0 "Cancel"
+
+ zz_swap_domicile.0002.t:0 "Estate Swap Complete"
+ zz_swap_domicile.0002.desc:0 "Your estate buildings have been exchanged with those of [recipient.GetShortUINameNoTooltip]."
+ zz_swap_domicile.0002.a:0 "Done"
+
+ zz_swap_not_ready:0 "Both owners must be alive, both estates idle, and no previous incomplete swap may be pending."
+ zz_swap_domicile.0003.t:0 "Estate Swap Stopped"
+ zz_swap_domicile.0003.desc:0 "The owners, vassal relationship, estate type, main level or construction status changed. No exchange was started."
+ zz_swap_domicile.0004.t:0 "Estate Swap Requires Recovery"
+ zz_swap_domicile.0004.desc:0 "Some buildings could not be exchanged as intended. Further exchanges are paused for both owners. Buildings may already have changed; load a save from before the exchange and retain the affected save when reporting the problem."

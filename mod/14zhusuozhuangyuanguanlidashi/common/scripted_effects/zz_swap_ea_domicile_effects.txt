@@ -1,0 +1,10 @@
+﻿# Legacy public effect retained as adapter; one shared explicit-D kernel.
+zz_swap_ea_domicile_effect = {
+    if = {
+        limit = { zz_swap_can_execute = yes }
+        scope:zz_md_prepared_a = { save_scope_as = zz_md_a }
+        scope:zz_md_prepared_b = { save_scope_as = zz_md_b }
+        zz_md_swap_east_asian_estate_kernel = yes
+    }
+    else = { scope:actor = { trigger_event = zz_md.0202 } }
+}

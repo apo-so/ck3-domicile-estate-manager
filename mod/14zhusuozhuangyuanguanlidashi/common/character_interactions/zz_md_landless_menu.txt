@@ -1,0 +1,78 @@
+﻿# Native interaction option menu only. No scripted widget or standalone manager.
+zz_md_landless_title_manager_interaction = {
+    category = interaction_category_vassal
+    common_interaction = yes
+    interface_priority = 165
+    icon = grant_titles_interaction
+    desc = zz_md_ltm_desc
+    target_type = title
+    target_source = recipient
+    target_filter = recipient_domain_titles
+    use_diplomatic_range = no
+    ignores_pending_interaction_block = yes
+    ai_maybe = no
+    is_shown = { scope:actor = { is_ai = no } }
+    has_valid_target = { zz_md_ltm_selected_valid = yes }
+    can_be_picked_title = { zz_md_ltm_selected_valid = yes }
+    can_send = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_action_allowed = yes } }
+    send_options_exclusive = yes
+    send_option = {
+        flag = zz_md_ltm_mark
+        current_description = zz_md_ltm_mark_desc
+        starts_enabled = { always = yes }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_mark_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_create
+        current_description = zz_md_ltm_create_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_create_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_revoke
+        current_description = zz_md_ltm_revoke_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_revoke_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_grant
+        current_description = zz_md_ltm_grant_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_grant_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_capital
+        current_description = zz_md_ltm_capital_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_capital_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_move
+        current_description = zz_md_ltm_move_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_move_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_dejure
+        current_description = zz_md_ltm_dejure_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_dejure_allowed = yes } }
+    }
+    send_option = {
+        flag = zz_md_ltm_destroy
+        current_description = zz_md_ltm_destroy_desc
+        starts_enabled = { always = no }
+        can_invalidate_interaction = yes
+        is_valid = { custom_description = { text = zz_md_ltm_requirements_tt zz_md_ltm_destroy_allowed = yes } }
+    }
+    auto_accept = yes
+    on_accept = { zz_md_ltm_dispatch_effect = yes }
+    ai_will_do = { base = 0 }
+}

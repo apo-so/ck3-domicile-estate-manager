@@ -1,0 +1,2 @@
+﻿# R14: message scalars are captured inside send_interface_message and rendered by custom_tooltip.
+# Retired six scope-dependent display script_values after checking every localization consumer.
