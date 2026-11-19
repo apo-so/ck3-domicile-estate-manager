@@ -4299,6 +4299,7 @@
         if = { limit = { scope:zz_md_b = { has_domicile_building = sarugaku_stage_06 } } scope:actor = { set_variable = { name = zz_md_core_b_sarugaku_stage_06 value = yes } } }
     }
     zz_md_extra_core_snapshot_effect = yes
+    if = { limit = { scope:zz_md_a = { is_domicile_type = merchant_company } } scope:actor = { zz_md_company_capture_pair_effect = yes } }
     scope:actor = { set_variable = { name = zz_md_core_a_count value = scope:zz_md_a.zz_md_core_known_building_count } }
     scope:actor = { set_variable = { name = zz_md_core_a_location value = scope:zz_md_a.domicile_location } }
     scope:actor = { set_variable = { name = zz_md_core_a_provisions value = scope:zz_md_a.provisions } }
@@ -4432,6 +4433,7 @@ zz_md_core_upgrade_effect = {
         if = { limit = { OR = { NOT = { zz_md_core_assets_unchanged = yes } scope:zz_md_b = { NOT = { has_domicile_building = japanese_manor_main_06 } } } } zz_md_core_fail_effect = yes }
     }
     zz_md_extra_core_upgrade_effect = yes
+    if = { limit = { scope:zz_md_a = { is_domicile_type = merchant_company } } zz_md_company_raise_mains_effect = yes }
 }
 zz_md_core_clear_snapshot_effect = {
     remove_variable = zz_md_core_a_barracks_01
@@ -6582,6 +6584,8 @@ zz_md_core_clear_snapshot_effect = {
     remove_variable = zz_md_core_target_rank
     remove_variable = zz_md_core_sync_busy
     zz_md_extra_core_clear_snapshot_effect = yes
+    clear_variable_list = zz_md_company_a
+    clear_variable_list = zz_md_company_b
 }
 zz_md_sync_then_swap_effect = {
     if = {
@@ -6654,6 +6658,8 @@ zz_md_core_read_observed_ranks_effect = {
         if = { limit = { scope:zz_md_b = { has_domicile_building = japanese_manor_main_06 } } set_variable = { name = zz_md_core_observed_b_rank value = 6 } }
     }
     zz_md_extra_core_read_observed_ranks_effect = yes
+    if = { limit = { exists = scope:zz_md_a scope:zz_md_a = { is_domicile_type = merchant_company } } set_variable = { name = zz_md_core_observed_a_rank value = scope:zz_md_a.zz_md_company_main_rank } }
+    if = { limit = { exists = scope:zz_md_b scope:zz_md_b = { is_domicile_type = merchant_company } } set_variable = { name = zz_md_core_observed_b_rank value = scope:zz_md_b.zz_md_company_main_rank } }
 }
 zz_md_core_notice_effect = {
     zz_md_core_read_observed_ranks_effect = yes

@@ -21,7 +21,7 @@
  zz_md_manage_decision_desc:0 "查看你持有的住所头衔，打开各处住所，或与默认住所交换建筑。"
  zz_md_manage_decision_tooltip:0 "打开住所列表。"
  zz_md_manage_decision_confirm:0 "打开管理"
- zz_md_supported:0 "你的政体支持创建住所：行政制、无地冒险者、游牧制、天朝制、草原行政制、贤能制、日本行政制、日本封建制或教权制。"
+ zz_md_supported:0 "你的政体支持创建住所：行政制、无地冒险者、游牧制、天朝制、草原行政制、贤能制、日本行政制、日本封建制、教权制、商人或共和制。"
  zz_md_creation_title:0 "选择住所头衔等级"
  zz_md_creation_desc:0 "新住所沿用当前政体的住所类型。你希望为它设立何种等级的头衔？"
  zz_md_confirm_desc:0 "将创建所选等级的住所头衔及其住所。新住所可能成为默认住所；更高等级的头衔还可能改变你的主头衔、领属关系和军队。"

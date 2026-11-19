@@ -14,11 +14,12 @@ zz_md_own_structural_pair_valid = {
             AND = { scope:zz_md_a = { is_domicile_type = camp } scope:zz_md_b = { is_domicile_type = camp } }
         AND = { scope:zz_md_a = { is_domicile_type = yurt } scope:zz_md_b = { is_domicile_type = yurt } }
         AND = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile } scope:zz_md_b = { is_domicile_type = ecclesiastical_domicile } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company } scope:zz_md_b = { is_domicile_type = merchant_company } }
     }
 }
 zz_md_core_base_pair_valid = {
     OR = {
-        zz_md_own_structural_pair_valid = yes
+        zz_md_exchange_structural_pair_valid = yes
         AND = { scope:actor != scope:recipient
     exists = scope:actor
     exists = scope:recipient
@@ -2237,6 +2238,7 @@ zz_md_core_assets_unchanged = {
     scope:recipient = { piety = scope:actor.var:zz_md_core_recipient_piety }
     scope:recipient = { influence = scope:actor.var:zz_md_core_recipient_influence }
     zz_md_extra_core_assets_unchanged = yes
+    trigger_if = { limit = { scope:zz_md_a = { is_domicile_type = merchant_company } } zz_md_company_pair_matches = { LEFT = zz_md_company_a RIGHT = zz_md_company_b } }
 }
 
 zz_md_core_single_main = {

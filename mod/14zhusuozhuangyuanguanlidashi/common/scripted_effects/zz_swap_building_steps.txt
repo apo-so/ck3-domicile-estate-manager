@@ -1,0 +1,26 @@
+﻿# Current scope is the destination domicile. SOURCE is a character whose original inventory is frozen.
+zz_swap_capture_building = {
+    if = {
+        limit = { has_domicile_building = $BUILDING$ }
+        $SOURCE$ = {
+            add_to_variable_list = { name = zz_swap_building_snapshot target = flag:$BUILDING$ }
+        }
+    }
+}
+
+zz_swap_remove_unwanted_building = {
+    if = {
+        limit = {
+            has_domicile_building = $BUILDING$
+            NOT = { $SOURCE$ = { zz_swap_snapshot_has = { BUILDING = $BUILDING$ } } }
+        }
+        remove_domicile_building_no_refund = $BUILDING$
+    }
+}
+
+zz_swap_add_missing_tier = {
+    if = {
+        limit = { NOT = { has_domicile_building_or_higher = $BUILDING$ } }
+        add_domicile_building = $BUILDING$
+    }
+}

@@ -9,107 +9,95 @@
 # 同类型判定: actor 与 recipient 的庄园类型一致
 zz_domicile_type_matches = {
     OR = {
-        AND = {
-            scope:actor    = { domicile ?= { is_domicile_type = estate } }
-            scope:recipient = { domicile ?= { is_domicile_type = estate } }
-        }
-        AND = {
-            scope:actor    = { domicile ?= { is_domicile_type = east_asian_estate } }
-            scope:recipient = { domicile ?= { is_domicile_type = east_asian_estate } }
-        }
-        AND = {
-            scope:actor    = { domicile ?= { is_domicile_type = japanese_manor } }
-            scope:recipient = { domicile ?= { is_domicile_type = japanese_manor } }
-        }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = estate } } scope:recipient = { domicile ?= { is_domicile_type = estate } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = east_asian_estate } } scope:recipient = { domicile ?= { is_domicile_type = east_asian_estate } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = japanese_manor } } scope:recipient = { domicile ?= { is_domicile_type = japanese_manor } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = camp } } scope:recipient = { domicile ?= { is_domicile_type = camp } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = yurt } } scope:recipient = { domicile ?= { is_domicile_type = yurt } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = ecclesiastical_domicile } } scope:recipient = { domicile ?= { is_domicile_type = ecclesiastical_domicile } } }
+        AND = { scope:actor = { domicile ?= { is_domicile_type = merchant_company } } scope:recipient = { domicile ?= { is_domicile_type = merchant_company } } }
     }
 }
 
 # 同等级判定: 同类型 且 主建筑(main_0N)等级完全一致
-# 主建筑键 <type>_main_0[1..5] 已核对本体均存在 (buildings 目录)
+# Match exact main tiers from all seven Florin domicile catalogs.
 zz_domicile_tier_matches = {
     OR = {
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_01 } }
-            scope:recipient = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_01 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_02 } }
-            scope:recipient = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_02 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_03 } }
-            scope:recipient = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_03 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_04 } }
-            scope:recipient = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_04 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_05 } }
-            scope:recipient = { domicile = { is_domicile_type = estate has_domicile_building = estate_main_05 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_01 } }
-            scope:recipient = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_01 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_02 } }
-            scope:recipient = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_02 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_03 } }
-            scope:recipient = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_03 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_04 } }
-            scope:recipient = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_04 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_05 } }
-            scope:recipient = { domicile = { is_domicile_type = east_asian_estate has_domicile_building = east_asian_estate_main_05 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_01 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_01 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_02 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_02 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_03 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_03 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_04 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_04 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_05 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_05 } }
-        }
-        AND = {
-            scope:actor = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_06 } }
-            scope:recipient = { domicile = { is_domicile_type = japanese_manor has_domicile_building = japanese_manor_main_06 } }
-        }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = estate_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = estate_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = estate_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = estate_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = estate_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = estate_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = estate_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = estate_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = estate_main_05 } } scope:recipient = { domicile ?= { has_domicile_building = estate_main_05 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = east_asian_estate_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = east_asian_estate_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = east_asian_estate_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = east_asian_estate_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = east_asian_estate_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = east_asian_estate_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = east_asian_estate_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = east_asian_estate_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = east_asian_estate_main_05 } } scope:recipient = { domicile ?= { has_domicile_building = east_asian_estate_main_05 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_05 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_05 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = japanese_manor_main_06 } } scope:recipient = { domicile ?= { has_domicile_building = japanese_manor_main_06 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = camp_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = camp_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = camp_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = camp_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = camp_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = camp_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = camp_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = camp_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_05 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_05 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = yurt_main_06 } } scope:recipient = { domicile ?= { has_domicile_building = yurt_main_06 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = ecclesiastical_domicile_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_01 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_01 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_02 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_02 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_03 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_03 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_04 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_04 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_05 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_05 } } }
+        AND = { scope:actor = { domicile ?= { has_domicile_building = merchant_company_main_06 } } scope:recipient = { domicile ?= { has_domicile_building = merchant_company_main_06 } } }
     }
 }
 
 zz_swap_can_execute = {
     zz_md_vassal_swap_enabled = yes
-    exists = scope:actor exists = scope:recipient
-    scope:actor = { is_alive = yes exists = domicile NOT = { has_variable = zz_swap_incomplete } }
-    scope:recipient = { is_alive = yes this != scope:actor is_vassal_or_below_of = scope:actor exists = domicile NOT = { has_variable = zz_swap_incomplete } }
-    zz_domicile_type_matches = yes zz_domicile_tier_matches = yes
-    exists = scope:zz_md_prepared_a exists = scope:zz_md_prepared_b
-    scope:actor = { domicile = scope:zz_md_prepared_a }
-    scope:recipient = { domicile = scope:zz_md_prepared_b }
+    exists = scope:actor
+    exists = scope:recipient
+    exists = scope:zz_md_prepared_a
+    exists = scope:zz_md_prepared_b
+    NOT = { scope:zz_md_prepared_a = scope:zz_md_prepared_b }
+    scope:actor = { is_alive = yes domicile = scope:zz_md_prepared_a }
+    scope:recipient = { is_alive = yes this != scope:actor is_vassal_or_below_of = scope:actor domicile = scope:zz_md_prepared_b }
+    scope:zz_md_prepared_a = { owner = scope:actor }
+    scope:zz_md_prepared_b = { owner = scope:recipient }
+    zz_domicile_type_matches = yes
 }
 
 zz_swap_supported_types = {
-    scope:actor = { domicile = { OR = { is_domicile_type = estate is_domicile_type = east_asian_estate is_domicile_type = japanese_manor } } }
-    scope:recipient = { domicile = { OR = { is_domicile_type = estate is_domicile_type = east_asian_estate is_domicile_type = japanese_manor } } }
+    scope:actor = { domicile = { OR = { is_domicile_type = estate is_domicile_type = east_asian_estate is_domicile_type = japanese_manor is_domicile_type = camp is_domicile_type = yurt is_domicile_type = ecclesiastical_domicile is_domicile_type = merchant_company } } }
+    scope:recipient = { domicile = { OR = { is_domicile_type = estate is_domicile_type = east_asian_estate is_domicile_type = japanese_manor is_domicile_type = camp is_domicile_type = yurt is_domicile_type = ecclesiastical_domicile is_domicile_type = merchant_company } } }
 }
 
-# Explicit user request: cross-character estate exchange is temporarily closed.
-zz_md_vassal_swap_enabled = { always = no }
+# Shared by the vassal interaction and its event-time revalidation.
+zz_md_vassal_swap_enabled = { always = yes }
+
+zz_md_exchange_structural_pair_valid = {
+    OR = {
+        zz_md_own_structural_pair_valid = yes
+        AND = {
+            zz_md_is_vassal_exchange = yes
+            zz_swap_can_execute = yes
+            scope:zz_md_a = scope:zz_md_prepared_a
+            scope:zz_md_b = scope:zz_md_prepared_b
+        }
+    }
+}
+
+zz_md_is_vassal_exchange = {
+    exists = scope:zz_md_vassal_actor
+    scope:actor = scope:zz_md_vassal_actor
+    NOT = { scope:actor = scope:recipient }
+}

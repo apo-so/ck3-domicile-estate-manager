@@ -844,6 +844,14 @@ zz_md_created_integrity_valid = {
                 }
             }
         }
+        AND = {
+            OR = { has_government = merchant_government has_government = republic_government }
+            scope:zz_md_new_title = {
+                title_domicile = {
+                    is_domicile_type = merchant_company
+                }
+            }
+        }
     }
     any_in_list = { variable = zz_md_before_titles always = yes }
     any_in_list = { variable = zz_md_before_domiciles always = yes }

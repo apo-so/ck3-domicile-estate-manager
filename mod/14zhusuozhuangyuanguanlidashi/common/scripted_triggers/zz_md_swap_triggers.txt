@@ -30,12 +30,18 @@
         AND = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_02 } scope:zz_md_b = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_02 } }
         AND = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_03 } scope:zz_md_b = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_03 } }
         AND = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_04 } scope:zz_md_b = { is_domicile_type = ecclesiastical_domicile has_domicile_building = ecclesiastical_domicile_main_04 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_01 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_01 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_02 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_02 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_03 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_03 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_04 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_04 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_05 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_05 } }
+        AND = { scope:zz_md_a = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_06 } scope:zz_md_b = { is_domicile_type = merchant_company has_domicile_building = merchant_company_main_06 } }
     }
 }
 # Root/actor is transaction owner. A/B are explicit domicile scopes, never re-resolved in the kernel.
 zz_md_pair_valid = {
     OR = {
-        AND = { zz_md_own_structural_pair_valid = yes zz_md_pair_same_main = yes }
+        AND = { zz_md_exchange_structural_pair_valid = yes zz_md_pair_same_main = yes }
         AND = { scope:actor != scope:recipient
     exists = scope:actor
     exists = scope:recipient

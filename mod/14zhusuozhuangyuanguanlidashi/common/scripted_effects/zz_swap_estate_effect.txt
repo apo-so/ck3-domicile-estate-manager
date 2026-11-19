@@ -1,10 +1,1573 @@
-﻿# Legacy public effect retained as adapter; one shared explicit-D kernel.
+﻿# The same-tier main building stays in place, including all native domicile titles.
 zz_swap_estate_effect = {
+    scope:actor = { clear_variable_list = zz_swap_building_snapshot }
+    scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+    scope:zz_swap_a = { zz_swap_capture_estate = { SOURCE = scope:actor } }
+    scope:zz_swap_b = { zz_swap_capture_estate = { SOURCE = scope:recipient } }
+
+    scope:zz_swap_a = { zz_swap_apply_estate = { SOURCE = scope:recipient } }
+    scope:zz_swap_b = { zz_swap_apply_estate = { SOURCE = scope:actor } }
     if = {
-        limit = { zz_swap_can_execute = yes }
-        scope:zz_md_prepared_a = { save_scope_as = zz_md_a }
-        scope:zz_md_prepared_b = { save_scope_as = zz_md_b }
-        zz_md_swap_estate_kernel = yes
+        limit = {
+            scope:zz_swap_a = { zz_swap_matches_estate = { SOURCE = scope:recipient } }
+            scope:zz_swap_b = { zz_swap_matches_estate = { SOURCE = scope:actor } }
+        }
+        trigger_event = zz_swap_domicile.0100
     }
-    else = { scope:actor = { trigger_event = zz_md.0202 } }
+    else = {
+        # Use the original snapshots to restore both sides, then check the result.
+        scope:zz_swap_a = { zz_swap_apply_estate = { SOURCE = scope:actor } }
+        scope:zz_swap_b = { zz_swap_apply_estate = { SOURCE = scope:recipient } }
+        if = {
+            limit = {
+                scope:zz_swap_a = { zz_swap_matches_estate = { SOURCE = scope:actor } }
+                scope:zz_swap_b = { zz_swap_matches_estate = { SOURCE = scope:recipient } }
+            }
+            trigger_event = zz_swap_domicile.0102
+        }
+        else = { trigger_event = zz_swap_domicile.0103 }
+    }
+    scope:actor = { clear_variable_list = zz_swap_building_snapshot }
+    scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+}
+
+zz_swap_capture_estate = {
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barracks_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = bath_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = bath_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = bath_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = bath_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = courtyard_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = courtyard_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = courtyard_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = courtyard_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = estate_main_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = estate_main_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = estate_main_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = estate_main_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = estate_main_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grain_field_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = guest_room_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_education_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_education_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_observatory_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = library_observatory_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = market_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = office_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = office_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = office_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = office_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = olive_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = prison_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = prison_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = prison_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = prison_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = rice_field_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = silk_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_granary_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_granary_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = tea_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_large_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_large_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_large_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_small_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_small_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = temple_small_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = vineyard_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = watchtower_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_06 }
+}
+
+zz_swap_apply_estate = {
+    # Remove internal children before their external hosts.
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = prison_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = office_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_observatory_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_education_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = courtyard_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = bath_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = prison_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = office_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_observatory_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_education_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = courtyard_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = bath_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = prison_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = office_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = courtyard_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = bath_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = wine_cellar_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = trophy_room_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = servants_quarters_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = reception_hall_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = prison_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = office_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = living_quarters_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = library_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guest_room_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grand_solar_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = courtyard_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = bath_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_large_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_large_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_monastery_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_large_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_crypt_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_granary_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_kennel_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_grand_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_chariot_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = horse_pasture_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_leisure_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_fruit_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camel_pasture_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_textile_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_mason_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_small_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_granary_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_small_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = workshop_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = watchtower_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = vineyard_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = temple_small_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = tea_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = storage_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = stable_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = silk_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = rice_field_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = olive_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = market_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = guardhouse_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grazing_land_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = grain_field_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = garden_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barracks_01 }
+
+    # Rebuild external hosts first. Each branch follows the game's previous_building chain.
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_01 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_01 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_01 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_01 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guardhouse_01 } }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_01 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_01 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_01 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_01 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_01 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_01 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_01 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_small_01 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_01 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_01 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_01 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_02 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_02 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_02 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_02 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guardhouse_02 } }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_01 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_02 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+        zz_swap_add_missing_tier = { BUILDING = market_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_02 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+        zz_swap_add_missing_tier = { BUILDING = olive_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_02 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_02 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+        zz_swap_add_missing_tier = { BUILDING = silk_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_02 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_02 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+        zz_swap_add_missing_tier = { BUILDING = storage_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_02 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+        zz_swap_add_missing_tier = { BUILDING = tea_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_small_02 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_02 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_02 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_02 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_03 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_02 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_03 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_03 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_03 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guardhouse_03 } }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_01 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_02 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_03 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+        zz_swap_add_missing_tier = { BUILDING = market_02 }
+        zz_swap_add_missing_tier = { BUILDING = market_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_03 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+        zz_swap_add_missing_tier = { BUILDING = olive_02 }
+        zz_swap_add_missing_tier = { BUILDING = olive_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_03 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_03 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+        zz_swap_add_missing_tier = { BUILDING = silk_02 }
+        zz_swap_add_missing_tier = { BUILDING = silk_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_03 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_granary_03 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+        zz_swap_add_missing_tier = { BUILDING = storage_02 }
+        zz_swap_add_missing_tier = { BUILDING = storage_granary_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_03 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+        zz_swap_add_missing_tier = { BUILDING = storage_02 }
+        zz_swap_add_missing_tier = { BUILDING = storage_warehouse_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_03 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+        zz_swap_add_missing_tier = { BUILDING = tea_02 }
+        zz_swap_add_missing_tier = { BUILDING = tea_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_small_03 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_03 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_03 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_02 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_03 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_mason_03 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_textile_03 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_04 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_02 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_03 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camel_pasture_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_fruit_04 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_leisure_04 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guardhouse_04 } }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_01 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_02 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_03 }
+        zz_swap_add_missing_tier = { BUILDING = guardhouse_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = horse_pasture_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_04 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+        zz_swap_add_missing_tier = { BUILDING = market_02 }
+        zz_swap_add_missing_tier = { BUILDING = market_03 }
+        zz_swap_add_missing_tier = { BUILDING = market_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_04 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+        zz_swap_add_missing_tier = { BUILDING = olive_02 }
+        zz_swap_add_missing_tier = { BUILDING = olive_03 }
+        zz_swap_add_missing_tier = { BUILDING = olive_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_04 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_04 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+        zz_swap_add_missing_tier = { BUILDING = silk_02 }
+        zz_swap_add_missing_tier = { BUILDING = silk_03 }
+        zz_swap_add_missing_tier = { BUILDING = silk_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_chariot_04 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_grand_04 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_kennel_04 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_granary_04 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+        zz_swap_add_missing_tier = { BUILDING = storage_02 }
+        zz_swap_add_missing_tier = { BUILDING = storage_granary_03 }
+        zz_swap_add_missing_tier = { BUILDING = storage_granary_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = storage_warehouse_04 } }
+        zz_swap_add_missing_tier = { BUILDING = storage_01 }
+        zz_swap_add_missing_tier = { BUILDING = storage_02 }
+        zz_swap_add_missing_tier = { BUILDING = storage_warehouse_03 }
+        zz_swap_add_missing_tier = { BUILDING = storage_warehouse_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_04 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+        zz_swap_add_missing_tier = { BUILDING = tea_02 }
+        zz_swap_add_missing_tier = { BUILDING = tea_03 }
+        zz_swap_add_missing_tier = { BUILDING = tea_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_crypt_04 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_large_04 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_monastery_04 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_04 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_03 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_04 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_02 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_03 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_04 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_mason_04 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_textile_04 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_05 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_02 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_03 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_04 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camel_pasture_05 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_05 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_fruit_05 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_04 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_leisure_05 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_04 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_05 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_04 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_05 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_04 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = horse_pasture_05 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_05 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+        zz_swap_add_missing_tier = { BUILDING = market_02 }
+        zz_swap_add_missing_tier = { BUILDING = market_03 }
+        zz_swap_add_missing_tier = { BUILDING = market_04 }
+        zz_swap_add_missing_tier = { BUILDING = market_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_05 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+        zz_swap_add_missing_tier = { BUILDING = olive_02 }
+        zz_swap_add_missing_tier = { BUILDING = olive_03 }
+        zz_swap_add_missing_tier = { BUILDING = olive_04 }
+        zz_swap_add_missing_tier = { BUILDING = olive_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_05 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_04 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_05 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+        zz_swap_add_missing_tier = { BUILDING = silk_02 }
+        zz_swap_add_missing_tier = { BUILDING = silk_03 }
+        zz_swap_add_missing_tier = { BUILDING = silk_04 }
+        zz_swap_add_missing_tier = { BUILDING = silk_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_chariot_05 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_grand_05 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_kennel_05 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_05 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+        zz_swap_add_missing_tier = { BUILDING = tea_02 }
+        zz_swap_add_missing_tier = { BUILDING = tea_03 }
+        zz_swap_add_missing_tier = { BUILDING = tea_04 }
+        zz_swap_add_missing_tier = { BUILDING = tea_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_crypt_05 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_large_05 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_monastery_05 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_05 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_03 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_04 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_05 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_02 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_03 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_04 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_05 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_mason_05 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_textile_05 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barracks_06 } }
+        zz_swap_add_missing_tier = { BUILDING = barracks_01 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_02 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_03 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_04 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_05 }
+        zz_swap_add_missing_tier = { BUILDING = barracks_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camel_pasture_06 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_05 }
+        zz_swap_add_missing_tier = { BUILDING = camel_pasture_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = elephant_pasture_06 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_05 }
+        zz_swap_add_missing_tier = { BUILDING = elephant_pasture_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_fruit_06 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_04 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_05 }
+        zz_swap_add_missing_tier = { BUILDING = garden_fruit_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = garden_leisure_06 } }
+        zz_swap_add_missing_tier = { BUILDING = garden_01 }
+        zz_swap_add_missing_tier = { BUILDING = garden_02 }
+        zz_swap_add_missing_tier = { BUILDING = garden_03 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_04 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_05 }
+        zz_swap_add_missing_tier = { BUILDING = garden_leisure_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grain_field_06 } }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_04 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_05 }
+        zz_swap_add_missing_tier = { BUILDING = grain_field_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grazing_land_06 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_04 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_05 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = horse_pasture_06 } }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_01 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_02 }
+        zz_swap_add_missing_tier = { BUILDING = grazing_land_03 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_04 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_05 }
+        zz_swap_add_missing_tier = { BUILDING = horse_pasture_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = market_06 } }
+        zz_swap_add_missing_tier = { BUILDING = market_01 }
+        zz_swap_add_missing_tier = { BUILDING = market_02 }
+        zz_swap_add_missing_tier = { BUILDING = market_03 }
+        zz_swap_add_missing_tier = { BUILDING = market_04 }
+        zz_swap_add_missing_tier = { BUILDING = market_05 }
+        zz_swap_add_missing_tier = { BUILDING = market_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = olive_06 } }
+        zz_swap_add_missing_tier = { BUILDING = olive_01 }
+        zz_swap_add_missing_tier = { BUILDING = olive_02 }
+        zz_swap_add_missing_tier = { BUILDING = olive_03 }
+        zz_swap_add_missing_tier = { BUILDING = olive_04 }
+        zz_swap_add_missing_tier = { BUILDING = olive_05 }
+        zz_swap_add_missing_tier = { BUILDING = olive_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = rice_field_06 } }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_01 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_02 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_03 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_04 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_05 }
+        zz_swap_add_missing_tier = { BUILDING = rice_field_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = silk_06 } }
+        zz_swap_add_missing_tier = { BUILDING = silk_01 }
+        zz_swap_add_missing_tier = { BUILDING = silk_02 }
+        zz_swap_add_missing_tier = { BUILDING = silk_03 }
+        zz_swap_add_missing_tier = { BUILDING = silk_04 }
+        zz_swap_add_missing_tier = { BUILDING = silk_05 }
+        zz_swap_add_missing_tier = { BUILDING = silk_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_chariot_06 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_05 }
+        zz_swap_add_missing_tier = { BUILDING = stable_chariot_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_grand_06 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_05 }
+        zz_swap_add_missing_tier = { BUILDING = stable_grand_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = stable_kennel_06 } }
+        zz_swap_add_missing_tier = { BUILDING = stable_01 }
+        zz_swap_add_missing_tier = { BUILDING = stable_02 }
+        zz_swap_add_missing_tier = { BUILDING = stable_03 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_04 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_05 }
+        zz_swap_add_missing_tier = { BUILDING = stable_kennel_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = tea_06 } }
+        zz_swap_add_missing_tier = { BUILDING = tea_01 }
+        zz_swap_add_missing_tier = { BUILDING = tea_02 }
+        zz_swap_add_missing_tier = { BUILDING = tea_03 }
+        zz_swap_add_missing_tier = { BUILDING = tea_04 }
+        zz_swap_add_missing_tier = { BUILDING = tea_05 }
+        zz_swap_add_missing_tier = { BUILDING = tea_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_crypt_06 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_05 }
+        zz_swap_add_missing_tier = { BUILDING = temple_crypt_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_large_06 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_05 }
+        zz_swap_add_missing_tier = { BUILDING = temple_large_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = temple_monastery_06 } }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_01 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_02 }
+        zz_swap_add_missing_tier = { BUILDING = temple_small_03 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_04 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_05 }
+        zz_swap_add_missing_tier = { BUILDING = temple_monastery_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = vineyard_06 } }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_03 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_04 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_05 }
+        zz_swap_add_missing_tier = { BUILDING = vineyard_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = watchtower_06 } }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_01 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_02 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_03 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_04 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_05 }
+        zz_swap_add_missing_tier = { BUILDING = watchtower_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_carpenter_06 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_05 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_carpenter_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_mason_06 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_05 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_mason_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = workshop_textile_06 } }
+        zz_swap_add_missing_tier = { BUILDING = workshop_01 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_02 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_03 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_04 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_05 }
+        zz_swap_add_missing_tier = { BUILDING = workshop_textile_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = bath_01 } }
+        zz_swap_add_missing_tier = { BUILDING = bath_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_01 } }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = courtyard_01 } }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grand_solar_01 } }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_01 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_01 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = living_quarters_01 } }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = office_01 } }
+        zz_swap_add_missing_tier = { BUILDING = office_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = prison_01 } }
+        zz_swap_add_missing_tier = { BUILDING = prison_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = reception_hall_01 } }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = servants_quarters_01 } }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = trophy_room_01 } }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = wine_cellar_01 } }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = bath_02 } }
+        zz_swap_add_missing_tier = { BUILDING = bath_01 }
+        zz_swap_add_missing_tier = { BUILDING = bath_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_02 } }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_01 }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = courtyard_02 } }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grand_solar_02 } }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_01 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_02 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_02 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+        zz_swap_add_missing_tier = { BUILDING = library_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = living_quarters_02 } }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = office_02 } }
+        zz_swap_add_missing_tier = { BUILDING = office_01 }
+        zz_swap_add_missing_tier = { BUILDING = office_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = prison_02 } }
+        zz_swap_add_missing_tier = { BUILDING = prison_01 }
+        zz_swap_add_missing_tier = { BUILDING = prison_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = reception_hall_02 } }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_01 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = servants_quarters_02 } }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = trophy_room_02 } }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = wine_cellar_02 } }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_01 }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = bath_03 } }
+        zz_swap_add_missing_tier = { BUILDING = bath_01 }
+        zz_swap_add_missing_tier = { BUILDING = bath_02 }
+        zz_swap_add_missing_tier = { BUILDING = bath_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = cabinet_of_curiosities_03 } }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_01 }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_02 }
+        zz_swap_add_missing_tier = { BUILDING = cabinet_of_curiosities_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = courtyard_03 } }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grand_solar_03 } }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_01 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_02 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_03 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_education_03 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+        zz_swap_add_missing_tier = { BUILDING = library_02 }
+        zz_swap_add_missing_tier = { BUILDING = library_education_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_observatory_03 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+        zz_swap_add_missing_tier = { BUILDING = library_02 }
+        zz_swap_add_missing_tier = { BUILDING = library_observatory_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = living_quarters_03 } }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_02 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = office_03 } }
+        zz_swap_add_missing_tier = { BUILDING = office_01 }
+        zz_swap_add_missing_tier = { BUILDING = office_02 }
+        zz_swap_add_missing_tier = { BUILDING = office_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = prison_03 } }
+        zz_swap_add_missing_tier = { BUILDING = prison_01 }
+        zz_swap_add_missing_tier = { BUILDING = prison_02 }
+        zz_swap_add_missing_tier = { BUILDING = prison_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = reception_hall_03 } }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_01 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_02 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = servants_quarters_03 } }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_02 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = trophy_room_03 } }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = wine_cellar_03 } }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_01 }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_02 }
+        zz_swap_add_missing_tier = { BUILDING = wine_cellar_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = bath_04 } }
+        zz_swap_add_missing_tier = { BUILDING = bath_01 }
+        zz_swap_add_missing_tier = { BUILDING = bath_02 }
+        zz_swap_add_missing_tier = { BUILDING = bath_03 }
+        zz_swap_add_missing_tier = { BUILDING = bath_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = courtyard_04 } }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_01 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_02 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_03 }
+        zz_swap_add_missing_tier = { BUILDING = courtyard_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = grand_solar_04 } }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_01 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_02 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_03 }
+        zz_swap_add_missing_tier = { BUILDING = grand_solar_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_04 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_03 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_education_04 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+        zz_swap_add_missing_tier = { BUILDING = library_02 }
+        zz_swap_add_missing_tier = { BUILDING = library_education_03 }
+        zz_swap_add_missing_tier = { BUILDING = library_education_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = library_observatory_04 } }
+        zz_swap_add_missing_tier = { BUILDING = library_01 }
+        zz_swap_add_missing_tier = { BUILDING = library_02 }
+        zz_swap_add_missing_tier = { BUILDING = library_observatory_03 }
+        zz_swap_add_missing_tier = { BUILDING = library_observatory_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = living_quarters_04 } }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_02 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_03 }
+        zz_swap_add_missing_tier = { BUILDING = living_quarters_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = office_04 } }
+        zz_swap_add_missing_tier = { BUILDING = office_01 }
+        zz_swap_add_missing_tier = { BUILDING = office_02 }
+        zz_swap_add_missing_tier = { BUILDING = office_03 }
+        zz_swap_add_missing_tier = { BUILDING = office_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = prison_04 } }
+        zz_swap_add_missing_tier = { BUILDING = prison_01 }
+        zz_swap_add_missing_tier = { BUILDING = prison_02 }
+        zz_swap_add_missing_tier = { BUILDING = prison_03 }
+        zz_swap_add_missing_tier = { BUILDING = prison_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = reception_hall_04 } }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_01 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_02 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_03 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = servants_quarters_04 } }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_01 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_02 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_03 }
+        zz_swap_add_missing_tier = { BUILDING = servants_quarters_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = trophy_room_04 } }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_03 }
+        zz_swap_add_missing_tier = { BUILDING = trophy_room_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_05 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_03 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_04 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = reception_hall_05 } }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_01 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_02 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_03 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_04 }
+        zz_swap_add_missing_tier = { BUILDING = reception_hall_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = guest_room_06 } }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_01 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_02 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_03 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_04 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_05 }
+        zz_swap_add_missing_tier = { BUILDING = guest_room_06 }
+    }
 }

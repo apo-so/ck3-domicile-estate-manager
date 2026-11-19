@@ -1,5 +1,10 @@
 ﻿# Title scope. Exact current-vanilla keys; no resources/buildings mutated.
 zz_md_capture_creation_title_assets_effect = {
+    if = { limit = { exists = title_domicile title_domicile = { is_domicile_type = merchant_company } } zz_md_company_capture_creation_effect = yes }
+    else = { zz_md_capture_legacy_creation_title_assets_effect = yes }
+}
+
+zz_md_capture_legacy_creation_title_assets_effect = {
     remove_variable = zz_md_before_building_count
     remove_variable = zz_md_before_building_accolade_yurt_01
     remove_variable = zz_md_before_building_accolade_yurt_02
@@ -3735,6 +3740,7 @@ zz_md_capture_creation_title_assets_effect = {
     }
 }
 zz_md_clear_creation_title_assets_effect = {
+    clear_variable_list = zz_md_company_before
     remove_variable = zz_md_before_building_count
     remove_variable = zz_md_before_building_accolade_yurt_01
     remove_variable = zz_md_before_building_accolade_yurt_02

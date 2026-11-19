@@ -99,10 +99,12 @@ yurt_main_01 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	ai_value = {
 		value = nomadic_capital_main_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -135,10 +137,12 @@ yurt_main_02 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	ai_value = {
 		value = nomadic_capital_main_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -190,6 +194,7 @@ yurt_main_03 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	parameters = {
@@ -198,6 +203,7 @@ yurt_main_03 = {
 
 	ai_value = {
 		value = nomadic_capital_main_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -248,6 +254,7 @@ yurt_main_04 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	parameters = {
@@ -256,6 +263,7 @@ yurt_main_04 = {
 
 	ai_value = {
 		value = nomadic_capital_main_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -307,6 +315,7 @@ yurt_main_05 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	parameters = {
@@ -315,6 +324,7 @@ yurt_main_05 = {
 
 	ai_value = {
 		value = nomadic_capital_main_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -364,6 +374,7 @@ yurt_main_06 = {
 
 	province_modifier = {
 		defender_holding_advantage = 1
+		trade_good_horses_production_add = domicile_main_yurt_horses_production_add
 	}
 
 	parameters = {
@@ -372,6 +383,7 @@ yurt_main_06 = {
 
 	ai_value = {
 		value = nomadic_capital_main_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -405,6 +417,7 @@ raid_main_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -435,6 +448,7 @@ raid_main_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -466,6 +480,7 @@ raid_main_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -497,6 +512,7 @@ raid_main_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -528,6 +544,7 @@ raid_main_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -559,6 +576,7 @@ raid_main_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -588,6 +606,7 @@ herd_main_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -617,6 +636,7 @@ herd_main_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -647,6 +667,7 @@ herd_main_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -677,6 +698,7 @@ herd_main_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -707,6 +729,7 @@ herd_main_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -737,6 +760,7 @@ herd_main_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -769,6 +793,7 @@ kurultai_main_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -802,6 +827,7 @@ kurultai_main_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -836,6 +862,7 @@ kurultai_main_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -870,6 +897,7 @@ kurultai_main_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -904,6 +932,7 @@ kurultai_main_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -938,6 +967,7 @@ kurultai_main_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -966,6 +996,7 @@ herd_conversion_main_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -994,6 +1025,7 @@ herd_conversion_main_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1024,6 +1056,7 @@ herd_conversion_main_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1054,6 +1087,7 @@ herd_conversion_main_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1084,6 +1118,7 @@ herd_conversion_main_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1114,6 +1149,7 @@ herd_conversion_main_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1142,6 +1178,7 @@ lifestyle_xp_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1170,6 +1207,7 @@ lifestyle_xp_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1204,6 +1242,7 @@ lifestyle_xp_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1237,6 +1276,7 @@ lifestyle_xp_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1270,6 +1310,7 @@ lifestyle_xp_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1304,6 +1345,7 @@ lifestyle_xp_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1341,6 +1383,10 @@ fishing_yurt_01 = {
 		character_capital_monthly_county_fertility_decline_add = -0.1
 	}
 
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels_level_1
+	}
+
 	parameters = {
 		fishing_yurt_riverside_lakeside_fertility_bonus_lvl_1 = yes
 	}
@@ -1364,6 +1410,7 @@ fishing_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1402,6 +1449,10 @@ fishing_yurt_02 = {
 		character_capital_monthly_county_fertility_decline_add = -0.1
 	}
 
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels
+	}
+
 	parameters = {
 		fishing_yurt_riverside_lakeside_fertility_bonus_lvl_1 = yes
 	}
@@ -1424,6 +1475,7 @@ fishing_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1461,6 +1513,10 @@ fishing_yurt_03 = {
 		character_capital_monthly_county_fertility_decline_add = -0.1
 	}
 
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels
+	}
+
 	parameters = {
 		fishing_yurt_riverside_lakeside_fertility_bonus_lvl_2 = yes
 	}
@@ -1492,6 +1548,7 @@ fishing_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1529,6 +1586,10 @@ fishing_yurt_04 = {
 		character_capital_monthly_county_fertility_decline_add = -0.2
 	}
 
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels
+	}
+
 	parameters = {
 		fishing_yurt_riverside_lakeside_fertility_bonus_lvl_2 = yes
 	}
@@ -1560,6 +1621,7 @@ fishing_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1597,6 +1659,10 @@ fishing_yurt_05 = {
 		character_capital_monthly_county_fertility_decline_add = -0.2
 	}
 
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels
+	}
+
 	parameters = {
 		fishing_yurt_riverside_lakeside_fertility_bonus_lvl_2 = yes
 	}
@@ -1628,6 +1694,7 @@ fishing_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1663,6 +1730,10 @@ fishing_yurt_06 = {
 
 	character_modifier = {
 		character_capital_monthly_county_fertility_decline_add = -0.2
+	}
+
+	province_modifier = {
+		trade_good_fish_production_add = domicile_primary_production_add_6_levels
 	}
 
 	parameters = {
@@ -1704,6 +1775,7 @@ fishing_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1735,6 +1807,7 @@ herd_welfare_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1773,6 +1846,7 @@ herd_welfare_yurt_02 = {
 			}
 			add = 2
 		}
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1813,6 +1887,7 @@ herd_welfare_yurt_03 = {
 			add = 2
 		}
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1866,6 +1941,7 @@ herd_welfare_yurt_04 = {
 			}
 			add = 2
 		}
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1915,6 +1991,7 @@ herd_welfare_yurt_05 = {
 			}
 			add = 2
 		}
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1968,6 +2045,7 @@ herd_welfare_yurt_06 = {
 			}
 			add = 2
 		}
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -1994,8 +2072,14 @@ herd_capacity_yurt_01 = {
 		herd_capacity_add = 800
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2022,8 +2106,14 @@ herd_capacity_yurt_02 = {
 		herd_capacity_add = 600
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2050,9 +2140,15 @@ herd_capacity_yurt_03 = {
 		herd_capacity_add = 600
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2080,9 +2176,15 @@ herd_capacity_yurt_04 = {
 		herd_capacity_mult = 0.1
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2110,9 +2212,15 @@ herd_capacity_yurt_05 = {
 		herd_capacity_mult = 0.1
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2140,9 +2248,15 @@ herd_capacity_yurt_06 = {
 		herd_capacity_mult = 0.1
 	}
 
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2189,6 +2303,7 @@ camel_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2235,6 +2350,7 @@ camel_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2281,6 +2397,7 @@ camel_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2327,6 +2444,7 @@ camel_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2373,6 +2491,7 @@ camel_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2419,6 +2538,7 @@ camel_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2466,8 +2586,14 @@ goat_yurt_01 = {
 		desert_mountains_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2515,8 +2641,14 @@ goat_yurt_02 = {
 		desert_mountains_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2564,8 +2696,14 @@ goat_yurt_03 = {
 		desert_mountains_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2613,8 +2751,14 @@ goat_yurt_04 = {
 		desert_mountains_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2662,8 +2806,15 @@ goat_yurt_05 = {
 		desert_mountains_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_secondary_production_add
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2711,8 +2862,15 @@ goat_yurt_06 = {
 		desert_mountains_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_secondary_production_add
+		trade_good_cheese_production_add = domicile_primary_production_add_6_levels
+		trade_good_leather_production_add = domicile_yurt_leather_production_add
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2759,8 +2917,13 @@ reindeer_yurt_01 = {
 		taiga_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels_level_1
+	}
+
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2807,8 +2970,13 @@ reindeer_yurt_02 = {
 		taiga_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2855,8 +3023,13 @@ reindeer_yurt_03 = {
 		taiga_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2	
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2903,8 +3076,13 @@ reindeer_yurt_04 = {
 		taiga_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2951,8 +3129,13 @@ reindeer_yurt_05 = {
 		taiga_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -2999,8 +3182,13 @@ reindeer_yurt_06 = {
 		taiga_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5	
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3048,8 +3236,13 @@ sheep_yurt_01 = {
 		farmlands_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels_level_1
+	}
+
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3097,8 +3290,13 @@ sheep_yurt_02 = {
 		farmlands_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3146,8 +3344,13 @@ sheep_yurt_03 = {
 		farmlands_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3195,8 +3398,13 @@ sheep_yurt_04 = {
 		farmlands_fertility_growth_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3244,8 +3452,13 @@ sheep_yurt_05 = {
 		farmlands_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3293,8 +3506,13 @@ sheep_yurt_06 = {
 		farmlands_fertility_growth_mult = 0.15
 	}
 
+	province_modifier = {
+		trade_good_wool_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3327,6 +3545,7 @@ steal_herd_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3360,6 +3579,7 @@ steal_herd_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3394,6 +3614,7 @@ steal_herd_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3427,6 +3648,7 @@ steal_herd_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3460,6 +3682,7 @@ steal_herd_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3493,6 +3716,7 @@ steal_herd_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3522,6 +3746,7 @@ consumption_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_extremely_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3552,6 +3777,7 @@ consumption_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3582,6 +3808,7 @@ consumption_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3611,6 +3838,7 @@ consumption_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3640,6 +3868,7 @@ consumption_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3669,6 +3898,7 @@ consumption_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3698,6 +3928,7 @@ herd_wealth_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3728,6 +3959,7 @@ herd_wealth_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3758,6 +3990,7 @@ herd_wealth_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3787,6 +4020,7 @@ herd_wealth_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3816,6 +4050,7 @@ herd_wealth_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3845,6 +4080,7 @@ herd_wealth_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3875,6 +4111,7 @@ herder_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_literally_invaluable_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3905,6 +4142,7 @@ herder_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3934,6 +4172,7 @@ herder_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3962,6 +4201,7 @@ herder_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -3991,6 +4231,7 @@ herder_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4020,6 +4261,7 @@ herder_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4060,6 +4302,7 @@ character_warfare_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4098,6 +4341,7 @@ character_warfare_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4137,6 +4381,7 @@ character_warfare_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4185,6 +4430,7 @@ character_warfare_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4234,6 +4480,7 @@ character_warfare_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4289,6 +4536,7 @@ character_warfare_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4325,6 +4573,7 @@ falconry_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4358,6 +4607,7 @@ falconry_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4392,6 +4642,7 @@ falconry_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4425,6 +4676,7 @@ falconry_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4458,6 +4710,7 @@ falconry_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4492,6 +4745,7 @@ falconry_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4521,6 +4775,7 @@ knight_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4549,6 +4804,7 @@ knight_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4578,6 +4834,7 @@ knight_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4606,6 +4863,7 @@ knight_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4635,6 +4893,7 @@ knight_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4664,6 +4923,7 @@ knight_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4694,6 +4954,7 @@ commander_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4723,6 +4984,7 @@ commander_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4753,6 +5015,7 @@ commander_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4782,6 +5045,7 @@ commander_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4813,6 +5077,7 @@ commander_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4844,6 +5109,7 @@ commander_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4877,6 +5143,7 @@ bodyguard_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4910,6 +5177,7 @@ bodyguard_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4943,6 +5211,7 @@ bodyguard_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -4977,6 +5246,7 @@ bodyguard_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5010,6 +5280,7 @@ bodyguard_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5044,6 +5315,7 @@ bodyguard_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5074,6 +5346,7 @@ accolade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5104,6 +5377,7 @@ accolade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5134,6 +5408,7 @@ accolade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5164,6 +5439,7 @@ accolade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5194,6 +5470,7 @@ accolade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5224,6 +5501,7 @@ accolade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5265,6 +5543,7 @@ mass_warfare_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5301,6 +5580,7 @@ mass_warfare_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5338,6 +5618,7 @@ mass_warfare_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5387,6 +5668,7 @@ mass_warfare_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5430,6 +5712,7 @@ mass_warfare_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5483,6 +5766,7 @@ mass_warfare_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5518,6 +5802,7 @@ lcav_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5547,6 +5832,7 @@ lcav_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5577,6 +5863,7 @@ lcav_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5608,6 +5895,7 @@ lcav_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5640,6 +5928,7 @@ lcav_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5672,6 +5961,7 @@ lcav_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5709,6 +5999,7 @@ foot_archer_yurt_01 = {
 			}
 			multiply = 0
 		}
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5738,6 +6029,7 @@ foot_archer_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5767,6 +6059,7 @@ foot_archer_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5796,6 +6089,7 @@ foot_archer_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5825,6 +6119,7 @@ foot_archer_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5854,6 +6149,7 @@ foot_archer_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5884,6 +6180,7 @@ merc_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5917,6 +6214,7 @@ merc_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5951,6 +6249,7 @@ merc_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -5999,6 +6298,7 @@ merc_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6033,6 +6333,7 @@ merc_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6081,6 +6382,7 @@ merc_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6110,6 +6412,7 @@ herd_conversion_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6139,6 +6442,7 @@ herd_conversion_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6168,6 +6472,7 @@ herd_conversion_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6197,6 +6502,7 @@ herd_conversion_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6226,6 +6532,7 @@ herd_conversion_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6255,6 +6562,7 @@ herd_conversion_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6285,6 +6593,7 @@ raiding_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6315,6 +6624,7 @@ raiding_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6345,6 +6655,7 @@ raiding_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6375,6 +6686,7 @@ raiding_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6405,6 +6717,7 @@ raiding_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6435,6 +6748,7 @@ raiding_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6464,6 +6778,7 @@ stationing_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6493,6 +6808,7 @@ stationing_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6522,6 +6838,7 @@ stationing_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6551,6 +6868,7 @@ stationing_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6581,6 +6899,7 @@ stationing_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6611,6 +6930,7 @@ stationing_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6650,6 +6970,7 @@ court_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6688,6 +7009,7 @@ court_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6726,6 +7048,7 @@ court_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6779,6 +7102,7 @@ court_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6828,6 +7152,7 @@ court_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6882,6 +7207,7 @@ court_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6913,6 +7239,7 @@ tributary_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6945,6 +7272,7 @@ tributary_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -6977,6 +7305,7 @@ tributary_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7009,6 +7338,7 @@ tributary_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7041,6 +7371,7 @@ tributary_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7073,6 +7404,7 @@ tributary_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7101,6 +7433,7 @@ vassal_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7130,6 +7463,7 @@ vassal_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7159,6 +7493,7 @@ vassal_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7188,6 +7523,7 @@ vassal_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7217,6 +7553,7 @@ vassal_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7246,6 +7583,7 @@ vassal_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7275,6 +7613,7 @@ secret_scheme_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7304,6 +7643,7 @@ secret_scheme_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7333,6 +7673,7 @@ secret_scheme_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7362,6 +7703,7 @@ secret_scheme_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7391,6 +7733,7 @@ secret_scheme_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7420,6 +7763,7 @@ secret_scheme_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7448,6 +7792,7 @@ kurultai_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7477,6 +7822,7 @@ kurultai_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7506,6 +7852,7 @@ kurultai_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7535,6 +7882,7 @@ kurultai_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7564,6 +7912,7 @@ kurultai_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7593,6 +7942,7 @@ kurultai_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7625,6 +7975,7 @@ feast_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7657,6 +8008,7 @@ feast_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7689,6 +8041,7 @@ feast_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7721,6 +8074,7 @@ feast_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7753,6 +8107,7 @@ feast_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7785,6 +8140,7 @@ feast_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7813,6 +8169,7 @@ agent_dread_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7846,6 +8203,7 @@ agent_dread_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7879,6 +8237,7 @@ agent_dread_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7912,6 +8271,7 @@ agent_dread_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7945,6 +8305,7 @@ agent_dread_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -7978,6 +8339,7 @@ agent_dread_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8010,6 +8372,7 @@ dynasty_court_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8043,6 +8406,7 @@ dynasty_court_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8075,6 +8439,7 @@ dynasty_court_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8107,6 +8472,7 @@ dynasty_court_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8140,6 +8506,7 @@ dynasty_court_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8173,6 +8540,7 @@ dynasty_court_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8206,6 +8574,7 @@ culture_court_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8240,6 +8609,7 @@ culture_court_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8273,6 +8643,7 @@ culture_court_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8306,6 +8677,7 @@ culture_court_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8340,6 +8712,7 @@ culture_court_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8374,6 +8747,7 @@ culture_court_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8411,6 +8785,7 @@ family_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8447,6 +8822,7 @@ family_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8485,6 +8861,7 @@ family_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8536,6 +8913,7 @@ family_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8583,6 +8961,7 @@ family_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8633,6 +9012,7 @@ family_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8668,6 +9048,7 @@ renown_gain_yurt_01 = {
 
 	ai_value = {
 		value = 0
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8700,6 +9081,7 @@ renown_gain_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8732,6 +9114,7 @@ renown_gain_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8764,6 +9147,7 @@ renown_gain_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8796,6 +9180,7 @@ renown_gain_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8830,6 +9215,7 @@ renown_gain_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8869,6 +9255,7 @@ wet_nurse_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8912,6 +9299,7 @@ wet_nurse_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8945,6 +9333,7 @@ wet_nurse_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -8978,6 +9367,7 @@ wet_nurse_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9011,6 +9401,7 @@ wet_nurse_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9044,6 +9435,7 @@ wet_nurse_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9073,6 +9465,7 @@ personal_chamber_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9102,6 +9495,7 @@ personal_chamber_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9131,6 +9525,7 @@ personal_chamber_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9164,6 +9559,7 @@ personal_chamber_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9197,6 +9593,7 @@ personal_chamber_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9230,6 +9627,7 @@ personal_chamber_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9259,6 +9657,7 @@ recreation_chamber_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9288,6 +9687,7 @@ recreation_chamber_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9318,6 +9718,7 @@ recreation_chamber_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9348,6 +9749,7 @@ recreation_chamber_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9378,6 +9780,7 @@ recreation_chamber_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9408,6 +9811,7 @@ recreation_chamber_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9440,6 +9844,7 @@ marriage_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9472,6 +9877,7 @@ marriage_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9504,6 +9910,7 @@ marriage_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9536,6 +9943,7 @@ marriage_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9568,6 +9976,7 @@ marriage_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9600,6 +10009,7 @@ marriage_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9632,6 +10042,7 @@ better_children_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9664,6 +10075,7 @@ better_children_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9696,6 +10108,7 @@ better_children_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9728,6 +10141,7 @@ better_children_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9760,6 +10174,7 @@ better_children_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9792,6 +10207,7 @@ better_children_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9824,6 +10240,7 @@ friend_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9856,6 +10273,7 @@ friend_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9888,6 +10306,7 @@ friend_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9920,6 +10339,7 @@ friend_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9952,6 +10372,7 @@ friend_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -9984,6 +10405,7 @@ friend_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10017,6 +10439,7 @@ hostage_ward_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10050,6 +10473,7 @@ hostage_ward_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10083,6 +10507,7 @@ hostage_ward_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10116,6 +10541,7 @@ hostage_ward_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10149,6 +10575,7 @@ hostage_ward_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10182,6 +10609,7 @@ hostage_ward_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10211,11 +10639,12 @@ mystical_yurt_01 = {
 		epidemic_resistance = 2
 		monthly_piety_gain_mult = 0.1
 		monthly_income_from_herd_mult = 0.02
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10242,11 +10671,12 @@ mystical_yurt_02 = {
 		epidemic_resistance = 2
 		monthly_piety_gain_mult = 0.02
 		monthly_income_from_herd_mult = 0.02
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10273,11 +10703,12 @@ mystical_yurt_03 = {
 		epidemic_resistance = 4
 		monthly_piety_gain_mult = 0.03
 		monthly_income_from_herd_mult = 0.03
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10314,7 +10745,7 @@ mystical_yurt_04 = {
 		epidemic_resistance = 4
 		monthly_piety_gain_mult = 0.03
 		monthly_income_from_herd_mult = 0.03
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	province_modifier = {
@@ -10323,6 +10754,7 @@ mystical_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10359,7 +10791,7 @@ mystical_yurt_05 = {
 		epidemic_resistance = 4
 		monthly_piety_gain_mult = 0.05
 		monthly_income_from_herd_mult = 0.04
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	parameters = {
@@ -10368,6 +10800,7 @@ mystical_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10404,7 +10837,7 @@ mystical_yurt_06 = {
 		epidemic_resistance = 4
 		monthly_piety_gain_mult = 0.05
 		monthly_income_from_herd_mult = 0.04
-		monthly_county_control_growth_add = 0.04
+		character_capital_county_monthly_control_change_mult = 0.04
 	}
 
 	province_modifier = {
@@ -10417,6 +10850,7 @@ mystical_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10454,6 +10888,7 @@ astrologer_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10488,6 +10923,7 @@ astrologer_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10522,6 +10958,7 @@ astrologer_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10556,6 +10993,7 @@ astrologer_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10590,6 +11028,7 @@ astrologer_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10624,6 +11063,7 @@ astrologer_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10657,6 +11097,7 @@ physician_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10690,6 +11131,7 @@ physician_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10723,6 +11165,7 @@ physician_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10756,6 +11199,7 @@ physician_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10789,6 +11233,7 @@ physician_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10822,6 +11267,7 @@ physician_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10854,6 +11300,7 @@ fertility_mystical_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10886,6 +11333,7 @@ fertility_mystical_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10918,6 +11366,7 @@ fertility_mystical_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10950,6 +11399,7 @@ fertility_mystical_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -10982,6 +11432,7 @@ fertility_mystical_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11014,6 +11465,7 @@ fertility_mystical_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11057,6 +11509,7 @@ language_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11100,6 +11553,7 @@ language_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11143,6 +11597,7 @@ language_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11182,6 +11637,7 @@ language_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11222,6 +11678,7 @@ language_yurt_05 = {
 
 	ai_value = {
 		value = 5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11267,6 +11724,7 @@ language_yurt_06 = {
 
 	ai_value = {
 		value = 26
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11299,6 +11757,7 @@ omen_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11331,6 +11790,7 @@ omen_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11363,6 +11823,7 @@ omen_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11395,6 +11856,7 @@ omen_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11428,6 +11890,7 @@ omen_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11460,6 +11923,7 @@ omen_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11492,6 +11956,7 @@ kurultai_mystical_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11524,6 +11989,7 @@ kurultai_mystical_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11557,6 +12023,7 @@ kurultai_mystical_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11590,6 +12057,7 @@ kurultai_mystical_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11624,6 +12092,7 @@ kurultai_mystical_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11657,6 +12126,7 @@ kurultai_mystical_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11690,6 +12160,7 @@ knight_mystical_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11722,6 +12193,7 @@ knight_mystical_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11754,6 +12226,7 @@ knight_mystical_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11786,6 +12259,7 @@ knight_mystical_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11819,6 +12293,7 @@ knight_mystical_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11852,6 +12327,7 @@ knight_mystical_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11905,6 +12381,7 @@ trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -11956,6 +12433,7 @@ trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12007,6 +12485,7 @@ trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12063,6 +12542,7 @@ trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12115,6 +12595,7 @@ trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12171,6 +12652,7 @@ trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_exterior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12209,6 +12691,7 @@ paiza_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12242,6 +12725,7 @@ paiza_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12275,6 +12759,7 @@ paiza_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12312,6 +12797,7 @@ paiza_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12345,6 +12831,7 @@ paiza_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12382,6 +12869,7 @@ paiza_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12414,6 +12902,7 @@ innovation_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12447,6 +12936,7 @@ innovation_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12480,6 +12970,7 @@ innovation_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12513,6 +13004,7 @@ innovation_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12546,6 +13038,7 @@ innovation_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12579,6 +13072,7 @@ innovation_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12611,6 +13105,7 @@ merchant_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12643,6 +13138,7 @@ merchant_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12675,6 +13171,7 @@ merchant_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12707,6 +13204,7 @@ merchant_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12739,6 +13237,7 @@ merchant_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12771,6 +13270,7 @@ merchant_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12804,6 +13304,7 @@ fertility_trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12837,6 +13338,7 @@ fertility_trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12870,6 +13372,7 @@ fertility_trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12903,6 +13406,7 @@ fertility_trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12936,6 +13440,7 @@ fertility_trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -12969,6 +13474,7 @@ fertility_trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13002,6 +13508,7 @@ herd_trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13035,6 +13542,7 @@ herd_trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13068,6 +13576,7 @@ herd_trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13101,6 +13610,7 @@ herd_trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13134,6 +13644,7 @@ herd_trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13167,6 +13678,7 @@ herd_trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13199,6 +13711,7 @@ char_trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13231,6 +13744,7 @@ char_trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13264,6 +13778,7 @@ char_trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13296,6 +13811,7 @@ char_trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13328,6 +13844,7 @@ char_trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13360,6 +13877,7 @@ char_trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13392,6 +13910,7 @@ knight_trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13424,6 +13943,7 @@ knight_trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13456,6 +13976,7 @@ knight_trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13488,6 +14009,7 @@ knight_trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13520,6 +14042,7 @@ knight_trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13552,6 +14075,7 @@ knight_trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_6
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13602,6 +14126,7 @@ metalworkers_cultrad_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13646,6 +14171,7 @@ metalworkers_cultrad_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_1
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13690,6 +14216,7 @@ metalworkers_cultrad_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13734,6 +14261,7 @@ metalworkers_cultrad_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13776,6 +14304,7 @@ metalworkers_cultrad_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13820,6 +14349,7 @@ metalworkers_cultrad_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13863,8 +14393,13 @@ sorcerous_metallurgy_yurt_01 = {
 		monthly_piety_gain_per_knight_mult = 0.01
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels_level_1
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13906,9 +14441,14 @@ sorcerous_metallurgy_yurt_02 = {
 		domicile_monthly_piety_add = 0.05
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13951,9 +14491,14 @@ sorcerous_metallurgy_yurt_03 = {
 		monthly_piety_gain_per_knight_mult = 0.01
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -13995,9 +14540,14 @@ sorcerous_metallurgy_yurt_04 = {
 		domicile_monthly_piety_add = 0.1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14040,9 +14590,14 @@ sorcerous_metallurgy_yurt_05 = {
 		monthly_piety_gain_per_knight_mult = 0.01
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14087,9 +14642,14 @@ sorcerous_metallurgy_yurt_06 = {
 		martial_per_piety_level = 1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14133,6 +14693,7 @@ zealous_people_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14176,6 +14737,7 @@ zealous_people_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14219,6 +14781,7 @@ zealous_people_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14262,6 +14825,7 @@ zealous_people_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14305,6 +14869,7 @@ zealous_people_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14350,6 +14915,7 @@ zealous_people_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14396,6 +14962,7 @@ loyal_soldiers_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14442,6 +15009,7 @@ loyal_soldiers_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14488,6 +15056,7 @@ loyal_soldiers_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14534,6 +15103,7 @@ loyal_soldiers_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14580,6 +15150,7 @@ loyal_soldiers_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14626,6 +15197,7 @@ loyal_soldiers_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14675,6 +15247,7 @@ forbearing_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14724,6 +15297,7 @@ forbearing_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14773,6 +15347,7 @@ forbearing_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14822,6 +15397,7 @@ forbearing_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14870,6 +15446,7 @@ forbearing_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14919,6 +15496,7 @@ forbearing_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -14962,6 +15540,7 @@ stalwart_defenders_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15005,6 +15584,7 @@ stalwart_defenders_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_1
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15048,6 +15628,7 @@ stalwart_defenders_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15091,6 +15672,7 @@ stalwart_defenders_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15134,6 +15716,7 @@ stalwart_defenders_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15177,6 +15760,7 @@ stalwart_defenders_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15218,6 +15802,7 @@ legalistic_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15261,6 +15846,7 @@ legalistic_yurt_02 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15303,6 +15889,7 @@ legalistic_yurt_03 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15345,6 +15932,7 @@ legalistic_yurt_04 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15387,6 +15975,7 @@ legalistic_yurt_05 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15431,6 +16020,7 @@ legalistic_yurt_06 = {
 	ai_value = {
 		value = nomadic_capital_interior_building_6
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15474,8 +16064,13 @@ horse_breeder_yurt_01 = {
 		nomadic_horde_damage_mult = 0.1
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels_level_1
+	}
+
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15518,9 +16113,14 @@ horse_breeder_yurt_02 = {
 		nomadic_horde_damage_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_1
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15563,9 +16163,14 @@ horse_breeder_yurt_03 = {
 		nomadic_horde_damage_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_2
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15608,9 +16213,14 @@ horse_breeder_yurt_04 = {
 		nomadic_horde_damage_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_3
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15653,9 +16263,14 @@ horse_breeder_yurt_05 = {
 		nomadic_horde_damage_mult = 0.05
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_4
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15696,9 +16311,14 @@ horse_breeder_yurt_06 = {
 		light_cavalry_toughness_mult = 0.2
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+	}
+
 	ai_value = {
 		value = nomadic_capital_interior_building_5
 		
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15746,6 +16366,7 @@ paiza_metal_trade_yurt_01 = {
 
 	ai_value = {
 		value = nomadic_capital_very_important_building
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15792,6 +16413,7 @@ paiza_metal_trade_yurt_02 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_1
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15838,6 +16460,7 @@ paiza_metal_trade_yurt_03 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_2
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15884,6 +16507,7 @@ paiza_metal_trade_yurt_04 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_3
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15930,6 +16554,7 @@ paiza_metal_trade_yurt_05 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_4
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {
@@ -15976,6 +16601,7 @@ paiza_metal_trade_yurt_06 = {
 
 	ai_value = {
 		value = nomadic_capital_interior_building_5
+		multiply = ai_building_domicile_factor
 	}
 
 	asset = {

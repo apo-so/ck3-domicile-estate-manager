@@ -1,0 +1,750 @@
+﻿# The same-tier main building stays in place, including all native domicile titles.
+zz_md_vassal_exchange_camp = {
+    scope:actor = { clear_variable_list = zz_swap_building_snapshot }
+    scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+    scope:zz_swap_a = { zz_swap_capture_camp = { SOURCE = scope:actor } }
+    scope:zz_swap_b = { zz_swap_capture_camp = { SOURCE = scope:recipient } }
+
+    scope:zz_swap_a = { zz_swap_apply_camp = { SOURCE = scope:recipient } }
+    scope:zz_swap_b = { zz_swap_apply_camp = { SOURCE = scope:actor } }
+    if = {
+        limit = {
+            scope:zz_swap_a = { zz_swap_matches_camp = { SOURCE = scope:recipient } }
+            scope:zz_swap_b = { zz_swap_matches_camp = { SOURCE = scope:actor } }
+        }
+        trigger_event = zz_swap_domicile.0100
+    }
+    else = {
+        # Use the original snapshots to restore both sides, then check the result.
+        scope:zz_swap_a = { zz_swap_apply_camp = { SOURCE = scope:actor } }
+        scope:zz_swap_b = { zz_swap_apply_camp = { SOURCE = scope:recipient } }
+        if = {
+            limit = {
+                scope:zz_swap_a = { zz_swap_matches_camp = { SOURCE = scope:actor } }
+                scope:zz_swap_b = { zz_swap_matches_camp = { SOURCE = scope:recipient } }
+            }
+            trigger_event = zz_swap_domicile.0102
+        }
+        else = { trigger_event = zz_swap_domicile.0103 }
+    }
+    scope:actor = { clear_variable_list = zz_swap_building_snapshot }
+    scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+}
+
+zz_swap_capture_camp = {
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ample_steeds }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ascetics }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_bartering_grounds }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_kennel }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_negotiators }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_pleasure_tents }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_porters }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_proof_of_claims }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ransom_cages }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_scribes }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_shrine }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_siege_engineers }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_trackers }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_dentists_tools }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_morticians_tools }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_reference_corpus }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_surgeons_tools }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_torturers_tools }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_capering_fools }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_future_dreams }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_juicy_rumors }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_libations_for_the_lost }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_local_hangers_on }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_nightly_debates }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_trailing_musicians }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_wandering_poets }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_main_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_main_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_main_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_main_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_camp_hygiene }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_ditch }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_extra_watch }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_fixed_layout }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_good_siting }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_palisade }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_bakers }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_brewers }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_cooks }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_curers }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_herbalists }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_bodyguard_drills }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_camel_run }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_elephantry_reserve }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_horse_run }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_life_in_the_saddle }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_lockwagon }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_martial_study }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_mock_battle_drills }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_nightly_barding_drills }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_personal_bouts }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stick_game }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stump }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_training_circle }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_01 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_02 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_03 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_04 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_05 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_06 }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_arsenal }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_climbing_gear }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_mender }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_provisions }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_water }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_smithy }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_subdued_gear }
+    zz_swap_capture_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_sutler }
+}
+
+zz_swap_apply_camp = {
+    # Remove internal children before their external hosts.
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_sutler }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_subdued_gear }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_smithy }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_water }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_provisions }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_mender }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_climbing_gear }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_arsenal }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_training_circle }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stump }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stick_game }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_personal_bouts }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_nightly_barding_drills }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_mock_battle_drills }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_martial_study }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_lockwagon }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_life_in_the_saddle }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_horse_run }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_elephantry_reserve }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_camel_run }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_bodyguard_drills }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_herbalists }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_curers }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_cooks }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_brewers }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_bakers }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_palisade }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_good_siting }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_fixed_layout }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_extra_watch }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_ditch }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_camp_hygiene }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_wandering_poets }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_trailing_musicians }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_nightly_debates }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_local_hangers_on }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_libations_for_the_lost }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_juicy_rumors }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_future_dreams }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_capering_fools }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_torturers_tools }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_surgeons_tools }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_reference_corpus }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_morticians_tools }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_dentists_tools }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_trackers }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_siege_engineers }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_shrine }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_scribes }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ransom_cages }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_proof_of_claims }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_porters }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_pleasure_tents }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_negotiators }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_kennel }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_bartering_grounds }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ascetics }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_ample_steeds }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_06 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_05 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_04 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_03 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_02 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = supply_tent_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = proving_grounds_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = mess_tent_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = camp_fire_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = barber_tent_01 }
+    zz_swap_remove_unwanted_building = { SOURCE = $SOURCE$ BUILDING = baggage_train_01 }
+
+    # Rebuild external hosts first. Each branch follows the game's previous_building chain.
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_01 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_01 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_01 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_01 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_01 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_01 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_01 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_02 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_02 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_02 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_02 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_02 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_02 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_02 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_02 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_03 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_02 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_03 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_03 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_03 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_03 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_03 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_02 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_03 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_03 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_04 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_02 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_03 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_04 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_04 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_04 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_04 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_04 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_02 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_03 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_04 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_04 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_05 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_02 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_03 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_04 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_05 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_05 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_04 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_05 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_04 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_05 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_05 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_02 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_03 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_04 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_05 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_05 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_06 } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_01 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_02 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_03 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_04 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_05 }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_06 } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_05 }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_06 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_04 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_05 }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_06 } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_01 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_02 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_03 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_04 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_05 }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_06 } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_05 }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_06 } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_01 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_02 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_03 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_04 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_05 }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_06 } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_01 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_02 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_03 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_04 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_05 }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_06 }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_ample_steeds } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_ample_steeds }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_ascetics } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_ascetics }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_bartering_grounds } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_bartering_grounds }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_kennel } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_kennel }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_negotiators } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_negotiators }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_pleasure_tents } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_pleasure_tents }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_porters } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_porters }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_proof_of_claims } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_proof_of_claims }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_ransom_cages } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_ransom_cages }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_scribes } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_scribes }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_shrine } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_shrine }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_siege_engineers } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_siege_engineers }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = baggage_train_trackers } }
+        zz_swap_add_missing_tier = { BUILDING = baggage_train_trackers }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_dentists_tools } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_dentists_tools }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_morticians_tools } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_morticians_tools }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_reference_corpus } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_reference_corpus }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_surgeons_tools } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_surgeons_tools }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = barber_tent_torturers_tools } }
+        zz_swap_add_missing_tier = { BUILDING = barber_tent_torturers_tools }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_capering_fools } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_capering_fools }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_future_dreams } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_future_dreams }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_juicy_rumors } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_juicy_rumors }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_libations_for_the_lost } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_libations_for_the_lost }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_local_hangers_on } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_local_hangers_on }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_nightly_debates } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_nightly_debates }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_trailing_musicians } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_trailing_musicians }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_fire_wandering_poets } }
+        zz_swap_add_missing_tier = { BUILDING = camp_fire_wandering_poets }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_camp_hygiene } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_camp_hygiene }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_ditch } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_ditch }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_extra_watch } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_extra_watch }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_fixed_layout } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_fixed_layout }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_good_siting } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_good_siting }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = camp_perimeter_palisade } }
+        zz_swap_add_missing_tier = { BUILDING = camp_perimeter_palisade }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_bakers } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_bakers }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_brewers } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_brewers }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_cooks } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_cooks }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_curers } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_curers }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = mess_tent_herbalists } }
+        zz_swap_add_missing_tier = { BUILDING = mess_tent_herbalists }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_bodyguard_drills } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_bodyguard_drills }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_camel_run } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_camel_run }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_elephantry_reserve } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_elephantry_reserve }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_horse_run } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_horse_run }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_life_in_the_saddle } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_life_in_the_saddle }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_lockwagon } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_lockwagon }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_martial_study } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_martial_study }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_mock_battle_drills } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_mock_battle_drills }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_nightly_barding_drills } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_nightly_barding_drills }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_personal_bouts } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_personal_bouts }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stick_game } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_the_stick_game }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_the_stump } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_the_stump }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = proving_grounds_training_circle } }
+        zz_swap_add_missing_tier = { BUILDING = proving_grounds_training_circle }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_arsenal } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_arsenal }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_climbing_gear } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_climbing_gear }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_mender } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_mender }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_provisions } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_reserve_provisions }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_reserve_water } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_reserve_water }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_smithy } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_smithy }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_subdued_gear } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_subdued_gear }
+    }
+    if = {
+        limit = { zz_swap_needs_rebuild = { SOURCE = $SOURCE$ BUILDING = supply_tent_sutler } }
+        zz_swap_add_missing_tier = { BUILDING = supply_tent_sutler }
+    }
+}

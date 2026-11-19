@@ -1,0 +1,70 @@
+﻿zz_md_vassal_commit = {
+    if = {
+        limit = { zz_swap_can_execute = yes scope:zz_md_prepared_a = { is_domicile_type = $TYPE$ } }
+        scope:actor = { save_scope_as = zz_md_vassal_actor }
+        scope:zz_md_prepared_a = { save_scope_as = zz_md_a save_scope_as = zz_swap_a }
+        scope:zz_md_prepared_b = { save_scope_as = zz_md_b save_scope_as = zz_swap_b }
+        zz_md_begin_prepared_swap = yes
+    }
+    else = { trigger_event = zz_swap_domicile.0101 }
+}
+
+zz_md_begin_prepared_swap = {
+    # Each confirmation starts from the current inventories, as in an own-domicile swap.
+    scope:actor = {
+        remove_variable = zz_swap_incomplete
+        remove_variable = zz_md_swap_busy
+        remove_variable = zz_md_core_sync_busy
+        remove_variable = zz_md_core_sync_failed
+        remove_variable = zz_md_swap_completed
+    }
+    zz_md_dispatch_swap_effect = yes
+}
+
+# Both entry points run the same attachment kernel after the higher main tier has been reached.
+# A two-owner exchange also retains the donor mod's separate inventories for failure recovery.
+zz_md_exchange_aligned_pair = {
+    if = {
+        limit = { zz_md_is_vassal_exchange = yes }
+        scope:actor = { clear_variable_list = zz_swap_building_snapshot remove_variable = zz_md_vassal_restore_pending }
+        scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+        scope:zz_md_a = { $CAPTURE$ = { SOURCE = scope:actor } }
+        scope:zz_md_b = { $CAPTURE$ = { SOURCE = scope:recipient } }
+    }
+    $KERNEL$ = yes
+    if = {
+        limit = { zz_md_is_vassal_exchange = yes }
+        if = {
+            limit = { scope:actor = { has_variable = zz_md_vassal_restore_pending } }
+            if = {
+                limit = { zz_swap_can_commit = { TYPE = $TYPE$ } }
+                scope:zz_md_a = { if = { limit = { NOT = { $MATCH$ = { SOURCE = scope:actor } } } $APPLY$ = { SOURCE = scope:actor } } }
+                scope:zz_md_b = { if = { limit = { NOT = { $MATCH$ = { SOURCE = scope:recipient } } } $APPLY$ = { SOURCE = scope:recipient } } }
+                if = {
+                    limit = {
+                        scope:zz_md_a = { $MATCH$ = { SOURCE = scope:actor } }
+                        scope:zz_md_b = { $MATCH$ = { SOURCE = scope:recipient } }
+                    }
+                    scope:actor = { remove_variable = zz_swap_incomplete remove_variable = zz_md_swap_busy remove_variable = zz_md_last_swap_a remove_variable = zz_md_last_swap_b }
+                    scope:recipient = { remove_variable = zz_swap_incomplete }
+                    if = {
+                        limit = { scope:zz_md_a = { is_domicile_type = merchant_company } }
+                        scope:zz_md_a = { clear_variable_list = zz_md_company_recovery remove_variable = zz_md_company_recovery_needed }
+                        scope:zz_md_b = { clear_variable_list = zz_md_company_recovery remove_variable = zz_md_company_recovery_needed }
+                    }
+                    scope:actor = { trigger_event = zz_swap_domicile.0102 }
+                }
+                else = { scope:actor = { trigger_event = zz_swap_domicile.0103 } }
+            }
+            else = { scope:actor = { trigger_event = zz_swap_domicile.0103 } }
+            scope:actor = { remove_variable = zz_md_vassal_restore_pending }
+        }
+        scope:actor = { clear_variable_list = zz_swap_building_snapshot }
+        scope:recipient = { clear_variable_list = zz_swap_building_snapshot }
+    }
+}
+
+zz_md_report_attachment_failure = {
+    if = { limit = { zz_md_is_vassal_exchange = yes } set_variable = { name = zz_md_vassal_restore_pending value = yes } }
+    else = { trigger_event = zz_md.0203 }
+}

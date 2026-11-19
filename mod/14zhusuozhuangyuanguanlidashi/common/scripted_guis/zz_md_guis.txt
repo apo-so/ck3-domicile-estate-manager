@@ -57,8 +57,8 @@ zz_md_validation_toggle = {
 zz_md_create = {
     scope = character
     is_shown = { always = yes }
-    is_valid = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } }
-    effect = { if = { limit = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } } zz_md_begin_creation_effect = yes } }
+    is_valid = { zz_md_creation_can_start = yes }
+    effect = { if = { limit = { zz_md_creation_can_start = yes } zz_md_begin_creation_effect = yes } }
 }
 
 zz_md_prepare_swap = {

@@ -1041,7 +1041,7 @@
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
@@ -5420,7 +5420,7 @@ zz_md_swap_yurt_kernel = {
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
@@ -7867,7 +7867,7 @@ zz_md_swap_ecclesiastical_domicile_kernel = {
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }

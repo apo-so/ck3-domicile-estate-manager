@@ -19,8 +19,8 @@
 @ecclesiastical_domicile_church_holding_build_gold_cost = -0.1
 @ecclesiastical_domicile_church_holding_build_speed = -0.1
 @ecclesiastical_domicile_clergy_opinion = 5
-@ecclesiastical_domicile_development_growth = 0.05
-@ecclesiastical_domicile_development_growth_factor = 0.05
+@ecclesiastical_domicile_prosperity_growth = 0.05
+@ecclesiastical_domicile_prosperity_growth_factor = 0.05
 @ecclesiastical_domicile_domicile_external_slots_capacity_add = 6
 @ecclesiastical_domicile_main_domicile_monthly_gold_add_1 = 2
 @ecclesiastical_domicile_main_domicile_monthly_gold_add_2 = 3
@@ -29,8 +29,8 @@
 @ecclesiastical_domicile_enemy_hostile_scheme_success_chance_add = -2
 @ecclesiastical_domicile_garrison_size = 0.05
 @ecclesiastical_domicile_holy_order_hire_cost_mult = -0.05
-@ecclesiastical_domicile_monthly_county_control_growth_factor_1 = 0.02
-@ecclesiastical_domicile_monthly_county_control_growth_factor_3 = 0.1
+@ecclesiastical_domicile_control_below_baseline_mult_1 = 0.01
+@ecclesiastical_domicile_control_below_baseline_mult_3 = 0.1
 @ecclesiastical_domicile_monthly_dynasty_prestige = 0.1
 @ecclesiastical_domicile_monthly_dynasty_prestige_mult_1 = 0.05
 @ecclesiastical_domicile_monthly_income = 1
@@ -56,7 +56,6 @@
 @ecclesiastical_domicile_income_per_piety_level = 0.05
 @ecclesiastical_domicile_piety_add_external = 0.25
 @ecclesiastical_domicile_stress_gain_mult_external = -0.05
-@ecclesiastical_domicile_gold_add_external = 0.1
 
 # Main building spike values
 @ecclesiastical_domicile_domicile_monthly_piety_add_main_01 = 0.3
@@ -71,7 +70,7 @@
 @ecclesiastical_domicile_holy_order_hire_cost_mult_main = -0.15
 @ecclesiastical_domicile_learning_per_piety_level_main = 1
 @ecclesiastical_domicile_monthly_lifestyle_xp_gain_mult_main = 0.15
-@ecclesiastical_domicile_development_growth_factor_main = 0.1
+@ecclesiastical_domicile_prosperity_growth_factor_main = 0.1
 @ecclesiastical_domicile_treasury_from_vassals_mult_main = 0.05
 @ecclesiastical_domicile_diplomacy_per_piety_level_main = 1
 @ecclesiastical_domicile_stewardship_per_piety_level_main = 1
@@ -85,7 +84,7 @@
 @ecclesiastical_domicile_piety_standalone_micro = 0.02
 @ecclesiastical_domicile_piety_standalone_mini = 0.05
 @ecclesiastical_domicile_rite_creation_cost_line = -0.05
-@ecclesiastical_domicile_rite_creation_cost_main = -0.05
+@ecclesiastical_domicile_rite_creation_cost_main = -0.1
 
 ### NOTE: If updating, adding, or changing buildings, ensure the following effects in 11_dlc_pam_scripted_effects.txt are updated too:
 ### add_random_external_ecclesiastical_domicile_building
@@ -93,6 +92,8 @@
 ### fill_ecclesiastical_domicile_building_effect
 
 ### Ecclesiastical Domicile Main Building - The Cathedral
+@ecclesiastical_domicile_gold_add_external = 0.1
+
 ecclesiastical_domicile_main_01 = {
 	slot_type = main
 	internal_slots = 2
@@ -108,12 +109,12 @@ ecclesiastical_domicile_main_01 = {
 		domicile_monthly_piety_add = @ecclesiastical_domicile_domicile_monthly_piety_add_main_01
 		domicile_monthly_prestige_add = @ecclesiastical_domicile_domicile_monthly_prestige_add_2
 		domicile_external_slots_capacity_add = @ecclesiastical_domicile_domicile_external_slots_capacity_add
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_3
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_3
 	}
 
 	province_modifier = {
-		development_growth = @ecclesiastical_domicile_development_growth
-		tax_mult = @ecclesiastical_domicile_tax_mult
+		prosperity_growth = @ecclesiastical_domicile_prosperity_growth
+		religious_tax_mult = @ecclesiastical_domicile_tax_mult
 	}
 
 	ai_value = {
@@ -180,7 +181,7 @@ ecclesiastical_domicile_main_02 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_main_domicile_monthly_gold_add_2
 		domicile_monthly_piety_add = @ecclesiastical_domicile_domicile_monthly_piety_add_main_02
 		domicile_monthly_prestige_add = @ecclesiastical_domicile_domicile_monthly_prestige_add_2
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_3
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_3
 		clergy_opinion = @ecclesiastical_domicile_clergy_opinion
 		monthly_piety_gain_mult = @ecclesiastical_domicile_monthly_piety_gain_mult_main_02
 		piety_level_impact_mult = @ecclesiastical_domicile_piety_level_impact_mult_main
@@ -191,13 +192,13 @@ ecclesiastical_domicile_main_02 = {
 	province_modifier = {
 		church_holding_build_speed = @ecclesiastical_domicile_church_holding_build_speed
 		church_holding_build_gold_cost = @ecclesiastical_domicile_church_holding_build_gold_cost
-		development_growth = @ecclesiastical_domicile_development_growth
-		monthly_income = @ecclesiastical_domicile_monthly_income
-		tax_mult = @ecclesiastical_domicile_tax_mult
+		prosperity_growth = @ecclesiastical_domicile_prosperity_growth
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income
+		religious_tax_mult = @ecclesiastical_domicile_tax_mult
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	#Western
@@ -265,7 +266,7 @@ ecclesiastical_domicile_main_03 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_main_domicile_monthly_gold_add_2
 		domicile_monthly_piety_add = @ecclesiastical_domicile_domicile_monthly_piety_add_main_03
 		domicile_monthly_prestige_add = @ecclesiastical_domicile_domicile_monthly_prestige_add_2
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_3
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_3
 		clergy_opinion = @ecclesiastical_domicile_clergy_opinion
 		monthly_piety_gain_mult = @ecclesiastical_domicile_monthly_piety_gain_mult_main_03
 		learning_per_piety_level = @ecclesiastical_domicile_learning_per_piety_level_main
@@ -275,14 +276,14 @@ ecclesiastical_domicile_main_03 = {
 	province_modifier = {
 		church_holding_build_speed = @ecclesiastical_domicile_church_holding_build_speed
 		church_holding_build_gold_cost = @ecclesiastical_domicile_church_holding_build_gold_cost
-		development_growth = @ecclesiastical_domicile_development_growth
-		development_growth_factor = @ecclesiastical_domicile_development_growth_factor_main
-		monthly_income = @ecclesiastical_domicile_monthly_income
-		tax_mult = @ecclesiastical_domicile_tax_mult
+		prosperity_growth = @ecclesiastical_domicile_prosperity_growth
+		prosperity_growth_factor = @ecclesiastical_domicile_prosperity_growth_factor_main
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income
+		religious_tax_mult = @ecclesiastical_domicile_tax_mult
 		fort_level = good_building_fort_level_tier_1
 	}
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	#Western
@@ -333,7 +334,7 @@ ecclesiastical_domicile_main_04 = {
 				has_building_or_higher = great_project_cathedral_03
 			}
 		}
-		culture ?= { has_innovation = innovation_development_03 }
+		culture ?= { has_innovation = innovation_prosperity_03 }
 	
         }
     }
@@ -349,7 +350,7 @@ ecclesiastical_domicile_main_04 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_main_domicile_monthly_gold_add_2
 		domicile_monthly_piety_add = @ecclesiastical_domicile_domicile_monthly_piety_add_main_04
 		domicile_monthly_prestige_add = @ecclesiastical_domicile_domicile_monthly_prestige_add_main_04
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_3
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_3
 		clergy_opinion = @ecclesiastical_domicile_clergy_opinion
 		piety_level_impact_mult = @ecclesiastical_domicile_piety_level_impact_mult_main
 		monthly_treasury_from_vassals_mult = @ecclesiastical_domicile_treasury_from_vassals_mult_main
@@ -361,14 +362,14 @@ ecclesiastical_domicile_main_04 = {
 	province_modifier = {
 		church_holding_build_speed = @ecclesiastical_domicile_church_holding_build_speed
 		church_holding_build_gold_cost = @ecclesiastical_domicile_church_holding_build_gold_cost
-		development_growth = @ecclesiastical_domicile_development_growth
-		development_growth_factor = @ecclesiastical_domicile_development_growth_factor_main
-		monthly_income = @ecclesiastical_domicile_monthly_income
-		tax_mult = @ecclesiastical_domicile_tax_mult_main_04
+		prosperity_growth = @ecclesiastical_domicile_prosperity_growth
+		prosperity_growth_factor = @ecclesiastical_domicile_prosperity_growth_factor_main
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income
+		religious_tax_mult = @ecclesiastical_domicile_tax_mult_main_04
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	#Western
@@ -437,7 +438,11 @@ cathedral_masons_lodge_01 = {
 	ai_value = {
 		#Outranks the external buildings' 9 so the Lodge's build discounts are in place before the rest of the domicile goes up
 		value = 10
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -479,7 +484,11 @@ cathedral_masons_lodge_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -529,7 +538,11 @@ cathedral_masons_lodge_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -575,7 +588,11 @@ cathedral_masons_lodge_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -624,12 +641,16 @@ cathedral_sacristy_01 = {
 	}
 
 	province_modifier = {
-		monthly_income = @ecclesiastical_domicile_monthly_income_micro
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income_micro
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -667,7 +688,11 @@ cathedral_sacristy_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -707,7 +732,7 @@ cathedral_sacristy_03 = {
 	}
 
 	province_modifier = {
-		monthly_income = @ecclesiastical_domicile_monthly_income_micro
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income_micro
 	}
 
 	character_modifier = {
@@ -717,7 +742,11 @@ cathedral_sacristy_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -763,7 +792,11 @@ cathedral_sacristy_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -817,7 +850,23 @@ cathedral_crypt_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		if = {
+			limit = {
+				scope:owner = {
+					any_close_family_member = {
+						#must include both to find dead family members
+						even_if_dead = yes
+						is_alive = no
+					}
+				}
+			}
+			add = 10
+		}
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -870,7 +919,22 @@ cathedral_crypt_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		if = {
+			limit = {
+				scope:owner = {
+					any_close_family_member = {
+						even_if_dead = yes
+						is_alive = no
+					}
+				}
+			}
+			add = 10
+		}
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -923,7 +987,22 @@ cathedral_crypt_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		if = {
+			limit = {
+				scope:owner = {
+					any_close_family_member = {
+						even_if_dead = yes
+						is_alive = no
+					}
+				}
+			}
+			add = 10
+		}
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -984,7 +1063,22 @@ cathedral_crypt_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		if = {
+			limit = {
+				scope:owner = {
+					any_close_family_member = {
+						even_if_dead = yes
+						is_alive = no
+					}
+				}
+			}
+			add = 10
+		}
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1036,12 +1130,16 @@ cathedral_belltower_01 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_1
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -1092,12 +1190,16 @@ cathedral_belltower_02 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_1
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1148,12 +1250,16 @@ cathedral_belltower_03 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_1
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1212,12 +1318,16 @@ cathedral_belltower_04 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = @ecclesiastical_domicile_monthly_county_control_growth_factor_1
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1256,7 +1366,11 @@ cathedral_cantoria_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -1305,7 +1419,11 @@ cathedral_cantoria_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1351,7 +1469,11 @@ cathedral_cantoria_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1397,7 +1519,11 @@ cathedral_cantoria_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1452,7 +1578,11 @@ cathedral_chapter_house_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -1495,7 +1625,11 @@ cathedral_chapter_house_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1546,7 +1680,11 @@ cathedral_chapter_house_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1598,7 +1736,11 @@ cathedral_chapter_house_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1651,7 +1793,11 @@ cathedral_royal_nave_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -1692,7 +1838,11 @@ cathedral_royal_nave_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1741,7 +1891,11 @@ cathedral_royal_nave_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -1791,7 +1945,11 @@ cathedral_royal_nave_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -1835,7 +1993,11 @@ episcopal_palace_01 = {
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -1887,7 +2049,11 @@ episcopal_palace_02 = {
 	}
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -1949,7 +2115,11 @@ episcopal_palace_03 = {
 	}
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2011,7 +2181,11 @@ baptistery_01 = {
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -2073,7 +2247,11 @@ baptistery_02 = {
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2143,7 +2321,11 @@ baptistery_03 = {
 	
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2216,7 +2398,11 @@ chancery_01 = {
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -2277,7 +2463,11 @@ chancery_02 = {
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2347,7 +2537,11 @@ chancery_03 = {
 	
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2414,7 +2608,11 @@ church_guard_tower_01 = {
 
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -2481,7 +2679,11 @@ church_guard_tower_02 = {
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2554,7 +2756,11 @@ church_guard_tower_03 = {
 	}
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2631,7 +2837,11 @@ cloister_01 = {
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	
@@ -2691,7 +2901,11 @@ cloister_02 = {
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2758,7 +2972,11 @@ cloister_03 = {
 	
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2814,14 +3032,18 @@ church_school_01 = {
 	character_modifier = {
 		monthly_lifestyle_xp_gain_mult = 0.05
 		lifestyle_scholar_xp_gain_mult = @ecclesiastical_domicile_scholar_xp_mini
-		development_growth_factor = @ecclesiastical_domicile_development_growth_factor
+		prosperity_growth_factor = @ecclesiastical_domicile_prosperity_growth_factor
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_external
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_add_external
 	}
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -2876,14 +3098,18 @@ church_school_02 = {
 	character_modifier = {
 		monthly_lifestyle_xp_gain_mult = 0.05
 		lifestyle_scholar_xp_gain_mult = @ecclesiastical_domicile_scholar_xp_mini
-		development_growth_factor = @ecclesiastical_domicile_development_growth_factor
+		prosperity_growth_factor = @ecclesiastical_domicile_prosperity_growth_factor
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_external
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_add_external
 	}
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -2941,7 +3167,7 @@ church_school_03 = {
 	character_modifier = {
 		monthly_lifestyle_xp_gain_mult = 0.05
 		lifestyle_scholar_xp_gain_mult = @ecclesiastical_domicile_scholar_xp_mini
-		development_growth_factor = @ecclesiastical_domicile_development_growth_factor
+		prosperity_growth_factor = @ecclesiastical_domicile_prosperity_growth_factor
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_external
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_add_external
 	}
@@ -2952,7 +3178,11 @@ church_school_03 = {
 	}
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -3010,12 +3240,16 @@ church_treasury_01 = {
 	}
 
 	province_modifier = {
-		tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
+		religious_tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
 	}
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -3072,12 +3306,16 @@ church_treasury_02 = {
 	}
 	
 	province_modifier = {
-		tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
+		religious_tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -3142,12 +3380,16 @@ church_treasury_03 = {
 	}
 
 	province_modifier = {
-		tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
+		religious_tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
 	}
 	
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -3209,7 +3451,11 @@ church_archives_01 = {
 	
 	ai_value = {
 		value = 9
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	#Western
@@ -3269,7 +3515,11 @@ church_archives_02 = {
 	
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -3338,7 +3588,11 @@ church_archives_03 = {
 	
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	#Western
@@ -3405,7 +3659,11 @@ baptistery_holy_font_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -3443,7 +3701,11 @@ baptistery_holy_font_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3489,7 +3751,11 @@ baptistery_holy_font_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3535,7 +3801,11 @@ baptistery_holy_font_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3584,12 +3854,16 @@ baptistery_chrismarium_01 = {
 	}
 
 	province_modifier = {
-		monthly_income = @ecclesiastical_domicile_monthly_income_micro
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income_micro
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -3627,7 +3901,11 @@ baptistery_chrismarium_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -3667,7 +3945,7 @@ baptistery_chrismarium_03 = {
 	}
 
 	province_modifier = {
-		monthly_income = @ecclesiastical_domicile_monthly_income_micro
+		monthly_religious_tax = @ecclesiastical_domicile_monthly_income_micro
 	}
 
 	character_modifier = {
@@ -3677,7 +3955,11 @@ baptistery_chrismarium_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -3723,7 +4005,11 @@ baptistery_chrismarium_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -3776,7 +4062,11 @@ baptistery_catechumenon_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -3817,7 +4107,11 @@ baptistery_catechumenon_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3866,7 +4160,11 @@ baptistery_catechumenon_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3916,7 +4214,11 @@ baptistery_catechumenon_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -3971,7 +4273,11 @@ baptistery_pilgrims_hospice_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -4014,7 +4320,11 @@ baptistery_pilgrims_hospice_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4065,7 +4375,11 @@ baptistery_pilgrims_hospice_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4116,7 +4430,11 @@ baptistery_pilgrims_hospice_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4166,7 +4484,11 @@ baptistery_neophytes_hostel_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -4203,7 +4525,11 @@ baptistery_neophytes_hostel_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4249,7 +4575,11 @@ baptistery_neophytes_hostel_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4294,7 +4624,11 @@ baptistery_neophytes_hostel_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4346,7 +4680,11 @@ chancery_notaries_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -4384,7 +4722,11 @@ chancery_notaries_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4430,7 +4772,11 @@ chancery_notaries_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4476,7 +4822,11 @@ chancery_notaries_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4526,7 +4876,11 @@ chancery_seal_office_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -4563,7 +4917,11 @@ chancery_seal_office_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4609,7 +4967,11 @@ chancery_seal_office_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4654,7 +5016,11 @@ chancery_seal_office_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -4705,7 +5071,11 @@ chancery_registry_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -4744,7 +5114,11 @@ chancery_registry_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4791,7 +5165,11 @@ chancery_registry_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4838,7 +5216,11 @@ chancery_registry_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4891,7 +5273,11 @@ chancery_curial_rota_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -4932,7 +5318,11 @@ chancery_curial_rota_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -4981,7 +5371,11 @@ chancery_curial_rota_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5030,7 +5424,11 @@ chancery_curial_rota_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5083,7 +5481,11 @@ chancery_legation_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -5124,7 +5526,11 @@ chancery_legation_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5173,7 +5579,11 @@ chancery_legation_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5223,7 +5633,11 @@ chancery_legation_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5276,7 +5690,11 @@ chancery_visitation_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -5317,7 +5735,11 @@ chancery_visitation_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5366,7 +5788,11 @@ chancery_visitation_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5416,7 +5842,11 @@ chancery_visitation_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5466,12 +5896,16 @@ guard_tower_toll_house_01 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -5508,7 +5942,11 @@ guard_tower_toll_house_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5552,12 +5990,16 @@ guard_tower_toll_house_03 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5602,7 +6044,11 @@ guard_tower_toll_house_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5652,7 +6098,11 @@ guard_tower_armory_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -5690,7 +6140,11 @@ guard_tower_armory_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5736,7 +6190,11 @@ guard_tower_armory_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5782,7 +6240,11 @@ guard_tower_armory_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5832,7 +6294,11 @@ guard_tower_gatehouse_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -5870,7 +6336,11 @@ guard_tower_gatehouse_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5916,7 +6386,11 @@ guard_tower_gatehouse_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5962,7 +6436,11 @@ guard_tower_gatehouse_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6014,7 +6492,11 @@ guard_tower_drill_yard_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6054,7 +6536,11 @@ guard_tower_drill_yard_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6102,7 +6588,11 @@ guard_tower_drill_yard_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6150,7 +6640,11 @@ guard_tower_drill_yard_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6198,12 +6692,16 @@ guard_tower_night_watch_01 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6235,7 +6733,7 @@ guard_tower_night_watch_02 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	character_modifier = {
@@ -6244,7 +6742,11 @@ guard_tower_night_watch_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6288,12 +6790,16 @@ guard_tower_night_watch_03 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6337,12 +6843,16 @@ guard_tower_night_watch_04 = {
 	}
 
 	province_modifier = {
-		monthly_county_control_growth_factor = 0.02
+		monthly_control_change_when_below_baseline_mult = @ecclesiastical_domicile_control_below_baseline_mult_1
 	}
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6395,7 +6905,11 @@ guard_tower_provosts_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -6436,7 +6950,11 @@ guard_tower_provosts_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6485,7 +7003,11 @@ guard_tower_provosts_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6535,7 +7057,11 @@ guard_tower_provosts_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6593,7 +7119,11 @@ guard_tower_warriors_vestry_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6646,7 +7176,11 @@ guard_tower_warriors_vestry_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6700,7 +7234,11 @@ guard_tower_warriors_vestry_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6754,7 +7292,11 @@ guard_tower_warriors_vestry_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6803,9 +7345,18 @@ cloister_brewhouse_01 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_mini
 	}
 
+	province_modifier = {
+		trade_good_beer_production_add = domicile_primary_production_add_4_levels
+		trade_good_beer_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -6840,9 +7391,18 @@ cloister_brewhouse_02 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_mini
 	}
 
+	province_modifier = {
+		trade_good_beer_production_add = domicile_primary_production_add_4_levels
+		trade_good_beer_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6885,9 +7445,18 @@ cloister_brewhouse_03 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_mini
 	}
 
+	province_modifier = {
+		trade_good_beer_production_add = domicile_primary_production_add_4_levels
+		trade_good_beer_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6930,9 +7499,18 @@ cloister_brewhouse_04 = {
 		domicile_monthly_gold_add = @ecclesiastical_domicile_gold_mini
 	}
 
+	province_modifier = {
+		trade_good_beer_production_add = domicile_primary_production_add_4_levels
+		trade_good_beer_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -6986,7 +7564,11 @@ cloister_study_cells_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7028,7 +7610,11 @@ cloister_study_cells_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7078,7 +7664,11 @@ cloister_study_cells_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7128,7 +7718,11 @@ cloister_study_cells_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7181,7 +7775,11 @@ cloister_penitential_cells_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7222,7 +7820,11 @@ cloister_penitential_cells_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7272,7 +7874,11 @@ cloister_penitential_cells_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7323,7 +7929,11 @@ cloister_penitential_cells_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7376,7 +7986,11 @@ cloister_oblate_dormitory_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7417,7 +8031,11 @@ cloister_oblate_dormitory_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7466,7 +8084,11 @@ cloister_oblate_dormitory_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7517,7 +8139,11 @@ cloister_oblate_dormitory_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7571,7 +8197,11 @@ cloister_confessional_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7613,7 +8243,11 @@ cloister_confessional_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7663,7 +8297,11 @@ cloister_confessional_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7713,7 +8351,11 @@ cloister_confessional_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7761,9 +8403,18 @@ cloister_herbularius_01 = {
 		domicile_monthly_piety_add = @ecclesiastical_domicile_piety_micro
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_4_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7798,9 +8449,18 @@ cloister_herbularius_02 = {
 		stress_loss_mult = 0.025
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_4_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7843,9 +8503,18 @@ cloister_herbularius_03 = {
 		stress_loss_mult = 0.025
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_4_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7889,9 +8558,18 @@ cloister_herbularius_04 = {
 		domicile_monthly_piety_add = @ecclesiastical_domicile_piety_micro
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_4_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7947,7 +8625,11 @@ school_choir_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7989,7 +8671,11 @@ school_choir_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8039,7 +8725,11 @@ school_choir_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8089,7 +8779,11 @@ school_choir_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8140,7 +8834,11 @@ school_tutors_quarters_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -8177,7 +8875,11 @@ school_tutors_quarters_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8223,7 +8925,11 @@ school_tutors_quarters_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8269,7 +8975,11 @@ school_tutors_quarters_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8321,7 +9031,11 @@ school_lecture_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -8361,7 +9075,11 @@ school_lecture_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8413,7 +9131,11 @@ school_lecture_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8465,7 +9187,11 @@ school_lecture_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8519,7 +9245,11 @@ school_disputation_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -8561,7 +9291,11 @@ school_disputation_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8611,7 +9345,11 @@ school_disputation_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8662,7 +9400,11 @@ school_disputation_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8714,7 +9456,11 @@ school_observatory_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -8754,7 +9500,11 @@ school_observatory_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8802,7 +9552,11 @@ school_observatory_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8850,7 +9604,11 @@ school_observatory_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8904,7 +9662,11 @@ school_seminary_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -8946,7 +9708,11 @@ school_seminary_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8996,7 +9762,11 @@ school_seminary_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9047,7 +9817,11 @@ school_seminary_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9099,7 +9873,11 @@ treasury_counting_house_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -9136,12 +9914,16 @@ treasury_counting_house_02 = {
 	}
 
 	province_modifier = {
-		tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
+		religious_tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
 	}
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9187,7 +9969,11 @@ treasury_counting_house_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9232,12 +10018,16 @@ treasury_counting_house_04 = {
 	}
 
 	province_modifier = {
-		tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
+		religious_tax_per_piety_level = @ecclesiastical_domicile_tax_per_piety_level
 	}
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9288,7 +10078,11 @@ treasury_alms_house_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -9327,7 +10121,11 @@ treasury_alms_house_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9374,7 +10172,11 @@ treasury_alms_house_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9421,7 +10223,11 @@ treasury_alms_house_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9475,7 +10281,11 @@ treasury_benefice_registry_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -9517,7 +10327,11 @@ treasury_benefice_registry_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9567,7 +10381,11 @@ treasury_benefice_registry_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9618,7 +10436,11 @@ treasury_benefice_registry_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9673,7 +10495,11 @@ treasury_reliquary_vault_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -9714,7 +10540,11 @@ treasury_reliquary_vault_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9764,7 +10594,11 @@ treasury_reliquary_vault_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9813,7 +10647,11 @@ treasury_reliquary_vault_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9866,7 +10704,11 @@ treasury_coronation_regalia_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -9907,7 +10749,11 @@ treasury_coronation_regalia_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9956,7 +10802,11 @@ treasury_coronation_regalia_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10005,7 +10855,11 @@ treasury_coronation_regalia_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10058,7 +10912,11 @@ treasury_election_coffers_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -10099,7 +10957,11 @@ treasury_election_coffers_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10148,7 +11010,11 @@ treasury_election_coffers_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10198,7 +11064,11 @@ treasury_election_coffers_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10250,7 +11120,11 @@ archives_bindery_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -10288,7 +11162,11 @@ archives_bindery_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10332,9 +11210,18 @@ archives_bindery_03 = {
 		monthly_learning_lifestyle_xp_gain_mult = @ecclesiastical_domicile_xp_micro
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_secondary_production_add
+		trade_good_books_paper_production_mult = domicile_secondary_production_mult
+	}
+
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10378,9 +11265,18 @@ archives_bindery_04 = {
 		monthly_learning_lifestyle_xp_gain_mult = @ecclesiastical_domicile_xp_micro
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_secondary_production_add
+		trade_good_books_paper_production_mult = domicile_secondary_production_mult
+	}
+
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10434,7 +11330,11 @@ archives_homiliary_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -10476,7 +11376,11 @@ archives_homiliary_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10526,7 +11430,11 @@ archives_homiliary_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10576,7 +11484,11 @@ archives_homiliary_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10625,9 +11537,18 @@ archives_scriptorium_01 = {
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_internal
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_primary_production_add_4_levels
+		trade_good_books_paper_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -10664,9 +11585,18 @@ archives_scriptorium_02 = {
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_internal
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_primary_production_add_4_levels
+		trade_good_books_paper_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10711,9 +11641,18 @@ archives_scriptorium_03 = {
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_internal
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_primary_production_add_4_levels
+		trade_good_books_paper_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10758,9 +11697,18 @@ archives_scriptorium_04 = {
 		study_scripture_scheme_phase_duration_add = @ecclesiastical_domicile_study_scripture_speed_internal
 	}
 
+	province_modifier = {
+		trade_good_books_paper_production_add = domicile_primary_production_add_4_levels
+		trade_good_books_paper_production_mult = domicile_primary_production_mult_4_levels
+	}
+
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10808,13 +11756,17 @@ archives_cartulary_vault_01 = {
 	}
 
 	province_modifier = {
-		tax_mult = 0.01
-		monthly_income_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
+		religious_tax_mult = 0.01
+		religious_tax_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
 	}
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -10850,13 +11802,17 @@ archives_cartulary_vault_02 = {
 	}
 
 	province_modifier = {
-		tax_mult = 0.01
-		monthly_income_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
+		religious_tax_mult = 0.01
+		religious_tax_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
 	}
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10900,13 +11856,17 @@ archives_cartulary_vault_03 = {
 	}
 
 	province_modifier = {
-		tax_mult = 0.01
-		monthly_income_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
+		religious_tax_mult = 0.01
+		religious_tax_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
 	}
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10950,13 +11910,17 @@ archives_cartulary_vault_04 = {
 	}
 
 	province_modifier = {
-		tax_mult = 0.01
-		monthly_income_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
+		religious_tax_mult = 0.01
+		religious_tax_per_piety_level = @ecclesiastical_domicile_income_per_piety_level
 	}
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11006,7 +11970,11 @@ archives_chronicle_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -11044,7 +12012,11 @@ archives_chronicle_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11090,7 +12062,11 @@ archives_chronicle_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11136,7 +12112,11 @@ archives_chronicle_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11189,7 +12169,11 @@ archives_decretals_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -11230,7 +12214,11 @@ archives_decretals_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11279,7 +12267,11 @@ archives_decretals_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11329,7 +12321,11 @@ archives_decretals_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11382,7 +12378,11 @@ palace_chapel_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -11421,7 +12421,11 @@ palace_chapel_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11468,7 +12472,11 @@ palace_chapel_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11515,7 +12523,11 @@ palace_chapel_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11565,7 +12577,11 @@ palace_guest_wing_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -11603,7 +12619,11 @@ palace_guest_wing_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11649,7 +12669,11 @@ palace_guest_wing_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11695,7 +12719,11 @@ palace_guest_wing_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -11751,7 +12779,11 @@ palace_audience_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -11794,7 +12826,11 @@ palace_audience_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11846,7 +12882,11 @@ palace_audience_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11898,7 +12938,11 @@ palace_audience_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11953,7 +12997,11 @@ palace_consistory_court_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -11996,7 +13044,11 @@ palace_consistory_court_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -12047,7 +13099,11 @@ palace_consistory_court_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -12099,7 +13155,11 @@ palace_consistory_court_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -12153,7 +13213,11 @@ palace_synodal_hall_01 = {
 
 	ai_value = {
 		value = 8
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -12195,7 +13259,11 @@ palace_synodal_hall_02 = {
 
 	ai_value = {
 		value = 7
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -12245,7 +13313,11 @@ palace_synodal_hall_03 = {
 
 	ai_value = {
 		value = 6
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -12295,7 +13367,11 @@ palace_synodal_hall_04 = {
 
 	ai_value = {
 		value = 5
-		add = ecclesiastical_domicile_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {

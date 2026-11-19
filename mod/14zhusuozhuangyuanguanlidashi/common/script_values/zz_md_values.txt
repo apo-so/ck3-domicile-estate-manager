@@ -1095,6 +1095,7 @@ zz_md_core_known_building_count = {
     else_if = { limit = { is_domicile_type = camp } add = zz_md_known_camp_count }
     else_if = { limit = { is_domicile_type = yurt } add = zz_md_known_yurt_count }
     else_if = { limit = { is_domicile_type = ecclesiastical_domicile } add = zz_md_known_ecclesiastical_domicile_count }
+    else_if = { limit = { is_domicile_type = merchant_company } add = zz_md_company_known_count }
 }
 
 zz_md_known_camp_count = {

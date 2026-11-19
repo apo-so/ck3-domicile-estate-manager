@@ -1,6 +1,11 @@
 ﻿# Generated from current vanilla domicile buildings; internal > external > main, upgrades first.
 # Scope domicile. Native refund, no invented payout. New Mod building keys need catalogue regeneration.
 zz_md_liquidate_destroy_buildings_effect = {
+    if = { limit = { is_domicile_type = merchant_company } zz_md_company_liquidate_effect = yes }
+    else = { zz_md_liquidate_legacy_buildings_effect = yes }
+}
+
+zz_md_liquidate_legacy_buildings_effect = {
     if = { limit = { has_domicile_building = accolade_yurt_06 } remove_domicile_building = accolade_yurt_06 }
     if = { limit = { has_domicile_building = agent_dread_yurt_06 } remove_domicile_building = agent_dread_yurt_06 }
     if = { limit = { has_domicile_building = astrologer_yurt_06 } remove_domicile_building = astrologer_yurt_06 }

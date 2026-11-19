@@ -21,7 +21,7 @@
  zz_md_manage_decision_desc:0 "View your domicile titles, open each domicile, or exchange its buildings with your default domicile."
  zz_md_manage_decision_tooltip:0 "Open domicile list."
  zz_md_manage_decision_confirm:0 "Open manager"
- zz_md_supported:0 "Your government supports domicile creation: Administrative, Landless Adventurer, Nomadic, Celestial, Steppe Administrative, Meritocratic, Japanese Administrative, Japanese Feudal, or Ecclesiastical."
+ zz_md_supported:0 "Your government supports domicile creation: Administrative, Landless Adventurer, Nomadic, Celestial, Steppe Administrative, Meritocratic, Japanese Administrative, Japanese Feudal, Ecclesiastical, Merchant, or Republic."
  zz_md_creation_title:0 "Choose a domicile title tier"
  zz_md_creation_desc:0 "The new domicile will use the type associated with your government. What tier should its title have?"
  zz_md_confirm_desc:0 "The chosen title and its domicile will be created. The new domicile may become your default. A higher title may also change your primary title, liege relationships, and armies."

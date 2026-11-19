@@ -32,12 +32,18 @@ zz_md_destroy_execute_effect = {
         set_variable = { name = zz_md_destroy_refund_prestige value = { value = prestige subtract = var:zz_md_destroy_before_prestige } }
         set_variable = { name = zz_md_destroy_refund_piety value = { value = piety subtract = var:zz_md_destroy_before_piety } }
         set_variable = { name = zz_md_destroy_refund_influence value = { value = influence subtract = var:zz_md_destroy_before_influence } }
-        destroy_title = scope:zz_md_destroy_title
+        # Merchant companies have four fixed external slots. Keep the title for a retry
+        # if a paid upgrade could not be liquidated by the native refund effect.
+        if = {
+            limit = { scope:zz_md_destroy_source = { is_domicile_type = merchant_company zz_md_company_has_refundable_buildings = yes } }
+            set_variable = { name = zz_md_destroy_last_status value = flag:company_buildings_remain }
+        }
+        else = { destroy_title = scope:zz_md_destroy_title }
         if = {
             limit = { scope:zz_md_destroy_title = { NOT = { exists = holder } } }
             set_variable = { name = zz_md_destroy_last_status value = flag:destroyed }
         }
-        else = { set_variable = { name = zz_md_destroy_last_status value = flag:refused } }
+        else_if = { limit = { NOT = { var:zz_md_destroy_last_status = flag:company_buildings_remain } } set_variable = { name = zz_md_destroy_last_status value = flag:refused } }
         if = { limit = { exists = scope:zz_md_destroy_title.title_domicile } set_variable = { name = zz_md_destroy_domicile_remains value = yes } }
         else = { remove_variable = zz_md_destroy_domicile_remains }
         # Untransferred resources disappear only after confirmed title destruction.
@@ -156,6 +162,7 @@ zz_md_destroy_notice_effect = {
         scope:zz_md_destroy_title = { save_scope_as = zz_md_destroy_message_title }
         custom_tooltip = zz_md_destroy_result_target
         if = { limit = { var:zz_md_destroy_last_status = flag:destroyed } custom_tooltip = zz_md_destroy_result_done }
+        else_if = { limit = { var:zz_md_destroy_last_status = flag:company_buildings_remain } custom_tooltip = zz_md_company_refund_retry }
         else = { custom_tooltip = zz_md_destroy_result_refused }
         save_scope_value_as = { name = zz_md_destroy_message_gold value = var:zz_md_destroy_refund_gold }
         save_scope_value_as = { name = zz_md_destroy_message_prestige value = var:zz_md_destroy_refund_prestige }

@@ -5,8 +5,8 @@
     confirm_text = zz_md_create_decision_confirm
     is_shown = { is_ai = no }
     is_valid = { custom_description = { text = zz_md_supported zz_md_government_supported = yes }
-        custom_description = { text = zz_md_creation_idle_tt is_alive = yes NOT = { has_variable = zz_md_create_busy } NOT = { has_variable = zz_md_create_failed } NOT = { has_variable = zz_md_res_failed } }
-        custom_description = { text = zz_md_creation_not_pending_tt NOT = { has_variable = zz_md_create_pending } } }
+        custom_description = { text = zz_md_creation_idle_tt is_alive = yes NOT = { has_variable = zz_md_res_failed } OR = { AND = { NOT = { has_variable = zz_md_create_busy } NOT = { has_variable = zz_md_create_failed } } zz_md_retry_empty_company_creation = yes } }
+        custom_description = { text = zz_md_creation_not_pending_tt OR = { NOT = { has_variable = zz_md_create_pending } zz_md_retry_empty_company_creation = yes } } }
     effect = { zz_md_begin_creation_effect = yes }
     ai_check_interval = 0
     ai_potential = { always = no }

@@ -1,0 +1,101 @@
+﻿namespace = zz_md_vassal
+
+zz_md_vassal.0001 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_md_vassal_commit = { TYPE = camp }
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+zz_md_vassal.0002 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_md_vassal_commit = { TYPE = yurt }
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+zz_md_vassal.0003 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_md_vassal_commit = { TYPE = ecclesiastical_domicile }
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}
+
+zz_md_vassal.0004 = {
+    type = character_event
+    title = zz_swap_domicile.0001.t
+    desc = zz_swap_domicile.0001.desc
+    theme = stewardship
+    left_portrait = { character = scope:recipient animation = personality_honorable }
+    immediate = {
+        scope:recipient = { save_scope_as = zz_swap_target domicile ?= { save_scope_as = zz_md_prepared_b } }
+        root = { domicile ?= { save_scope_as = zz_md_prepared_a } }
+    }
+    option = {
+        name = zz_swap_domicile.0001.a
+        hidden_effect = {
+            root = { save_scope_as = actor }
+            if = {
+                limit = { exists = scope:zz_swap_target }
+                scope:zz_swap_target = { save_scope_as = recipient }
+                zz_md_vassal_commit = { TYPE = merchant_company }
+            }
+            else = { trigger_event = zz_swap_domicile.0003 }
+        }
+    }
+    option = { name = zz_swap_domicile.0001.b }
+}

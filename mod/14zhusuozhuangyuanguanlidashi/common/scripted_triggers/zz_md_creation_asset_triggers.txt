@@ -1,4 +1,9 @@
 ﻿zz_md_creation_title_buildings_match = {
+    trigger_if = { limit = { exists = title_domicile title_domicile = { is_domicile_type = merchant_company } } zz_md_company_creation_matches = yes }
+    trigger_else = { zz_md_legacy_creation_title_buildings_match = yes }
+}
+
+zz_md_legacy_creation_title_buildings_match = {
     exists = title_domicile
     has_variable = zz_md_before_building_count
     title_domicile = { num_domicile_buildings = prev.var:zz_md_before_building_count }

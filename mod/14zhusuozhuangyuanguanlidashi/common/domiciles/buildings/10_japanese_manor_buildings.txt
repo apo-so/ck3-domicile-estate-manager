@@ -32,12 +32,8 @@
 @japanese_manor_monthly_influence_add_2 = 0.25
 @japanese_manor_monthly_influence_add_3 = 0.5
 @japanese_manor_monthly_influence_mult_1 = 0.025
-@japanese_manor_monthly_gold_add_0 = 0.1
-@japanese_manor_monthly_gold_add_1 = 0.2
-@japanese_manor_monthly_gold_add_2 = 0.35
-@japanese_manor_monthly_gold_add_3 = 0.5
-@japanese_manor_monthly_gold_mult_domain_1 = 0.01
-@japanese_manor_monthly_gold_mult_1 = 0.04
+@japanese_manor_civic_tax_mult_1 = 0.02
+@japanese_manor_agricultural_tax_mult_1 = 0.02
 @japanese_manor_monthly_piety_add_1 = 0.1
 @japanese_manor_monthly_piety_add_2 = 0.25
 @japanese_manor_monthly_piety_add_3 = 0.5
@@ -68,8 +64,8 @@
 @japanese_manor_influence_level_impact_mult_1 = 0.025
 @japanese_manor_character_travel_speed_mult = 0.025
 @japanese_manor_hostile_raid_time_1 = 0.1
-@japanese_manor_development_growth_factor_1 = 0.025
-@japanese_manor_development_growth_1 = 0.05
+@japanese_manor_prosperity_growth_factor_1 = 0.025
+@japanese_manor_prosperity_growth_1 = 0.05
 @japanese_manor_county_control_growth_add_1 = 0.1
 @japanese_manor_prestige_gain_per_dread_mult_1 = 0.05
 @japanese_manor_dread_decay_mult_1 = -0.025
@@ -104,7 +100,7 @@ japanese_manor_main_01 = {
 	character_modifier = {
 		domicile_monthly_influence_add = @japanese_manor_monthly_prestige_add_3
 		domicile_monthly_prestige_add = @japanese_manor_monthly_influence_add_3
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_2
+		domicile_monthly_gold_add = japanese_manor_income_significant
 		domicile_external_slots_capacity_add = 2
 	}
 	
@@ -151,7 +147,7 @@ japanese_manor_main_02 = {
 	character_modifier = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domicile_external_slots_capacity_add = 2
 		domain_limit_max = 1
 	}
@@ -162,7 +158,7 @@ japanese_manor_main_02 = {
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	asset = {
@@ -199,7 +195,7 @@ japanese_manor_main_03 = {
 	character_modifier = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domicile_external_slots_capacity_add = 2
 	}
 	
@@ -209,7 +205,7 @@ japanese_manor_main_03 = {
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	asset = {
@@ -229,7 +225,7 @@ japanese_manor_main_04 = {
 	can_construct = {
         trigger_if = {
             limit = { NOT = { has_variable = zz_md_scripted_building_rebuild } }
-		culture ?= { has_innovation = innovation_development_03 }
+		culture ?= { has_innovation = innovation_prosperity_03 }
 	
         }
     }
@@ -246,7 +242,7 @@ japanese_manor_main_04 = {
 	character_modifier = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domain_limit_max = 1
 	}
 	
@@ -256,7 +252,7 @@ japanese_manor_main_04 = {
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	asset = {
@@ -293,7 +289,7 @@ japanese_manor_main_05 = {
 	character_modifier = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 	}
 	
 	province_modifier = {
@@ -302,7 +298,7 @@ japanese_manor_main_05 = {
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	asset = {
@@ -339,7 +335,7 @@ japanese_manor_main_06 = {
 	character_modifier = {
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domain_limit_max = 1
 	}
 	
@@ -349,7 +345,7 @@ japanese_manor_main_06 = {
 	}
 
 	ai_value = {
-		value = 100
+		value = ai_building_domicile_main_upgrade_value
 	}
 	
 	asset = {
@@ -375,13 +371,18 @@ japanese_main_tax_collectors_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -410,13 +411,18 @@ japanese_main_tax_collectors_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -445,13 +451,18 @@ japanese_main_tax_collectors_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -480,13 +491,18 @@ japanese_main_tax_collectors_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -515,13 +531,18 @@ japanese_main_tax_collectors_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -550,13 +571,18 @@ japanese_main_tax_collectors_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		domain_tax_mult = @japanese_manor_monthly_gold_mult_domain_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		civic_tax_mult = @japanese_manor_civic_tax_mult_1
+		agricultural_tax_mult = @japanese_manor_agricultural_tax_mult_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -584,7 +610,11 @@ japanese_main_carpenter_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -619,7 +649,11 @@ japanese_main_carpenter_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -654,7 +688,11 @@ japanese_main_carpenter_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -689,7 +727,11 @@ japanese_main_carpenter_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -724,7 +766,11 @@ japanese_main_carpenter_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -759,7 +805,11 @@ japanese_main_carpenter_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -809,7 +859,11 @@ japanese_manor_poetry_library_01 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -855,7 +909,11 @@ japanese_manor_poetry_library_02 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -901,7 +959,11 @@ japanese_manor_poetry_library_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -948,7 +1010,11 @@ japanese_manor_poetry_library_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -994,7 +1060,11 @@ japanese_manor_poetry_library_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1039,7 +1109,11 @@ japanese_manor_poetry_library_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1071,7 +1145,11 @@ sarugaku_stage_01 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -1109,7 +1187,11 @@ sarugaku_stage_02 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1147,7 +1229,11 @@ sarugaku_stage_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1185,7 +1271,11 @@ sarugaku_stage_04 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1223,7 +1313,11 @@ sarugaku_stage_05 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1261,7 +1355,11 @@ sarugaku_stage_06 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1307,7 +1405,11 @@ japanese_manor_trophy_room_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -1350,7 +1452,11 @@ japanese_manor_trophy_room_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1398,7 +1504,11 @@ japanese_manor_trophy_room_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1446,7 +1556,11 @@ japanese_manor_trophy_room_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1494,7 +1608,11 @@ japanese_manor_trophy_room_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1541,7 +1659,11 @@ japanese_manor_trophy_room_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1580,7 +1702,11 @@ japanese_manor_office_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -1617,7 +1743,11 @@ japanese_manor_office_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1663,7 +1793,11 @@ japanese_manor_office_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1708,7 +1842,11 @@ japanese_manor_office_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1753,7 +1891,11 @@ japanese_manor_office_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1799,7 +1941,11 @@ japanese_manor_office_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1835,7 +1981,11 @@ japanese_manor_servants_quarters_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -1868,7 +2018,11 @@ japanese_manor_servants_quarters_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1910,7 +2064,11 @@ japanese_manor_servants_quarters_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1952,7 +2110,11 @@ japanese_manor_servants_quarters_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -1993,7 +2155,11 @@ japanese_manor_servants_quarters_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2034,7 +2200,11 @@ japanese_manor_servants_quarters_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2069,7 +2239,11 @@ japanese_manor_library_confucian_01 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -2110,7 +2284,11 @@ japanese_manor_library_confucian_02 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2152,7 +2330,11 @@ japanese_manor_library_confucian_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2197,7 +2379,11 @@ japanese_manor_library_confucian_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2242,7 +2428,11 @@ japanese_manor_library_confucian_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2287,7 +2477,11 @@ japanese_manor_library_confucian_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2336,7 +2530,11 @@ japanese_manor_retainer_accomodations_01 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -2381,7 +2579,11 @@ japanese_manor_retainer_accomodations_02 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2428,7 +2630,11 @@ japanese_manor_retainer_accomodations_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2473,7 +2679,11 @@ japanese_manor_retainer_accomodations_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2520,7 +2730,11 @@ japanese_manor_retainer_accomodations_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -2575,8 +2789,13 @@ japanese_fields_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_2
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_significant
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	on_complete = {
@@ -2585,7 +2804,11 @@ japanese_fields_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -2644,8 +2867,13 @@ japanese_fields_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	on_complete = {
@@ -2654,7 +2882,11 @@ japanese_fields_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -2713,8 +2945,13 @@ japanese_fields_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	on_complete = {
@@ -2723,7 +2960,11 @@ japanese_fields_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -2782,8 +3023,13 @@ japanese_fields_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	on_complete = {
@@ -2792,7 +3038,11 @@ japanese_fields_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -2851,8 +3101,13 @@ japanese_fields_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	on_complete = {
@@ -2861,7 +3116,11 @@ japanese_fields_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -2920,8 +3179,13 @@ japanese_fields_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		development_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		prosperity_growth_factor = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_primary_production_add_6_levels
+		trade_good_rice_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	on_complete = {
@@ -2930,7 +3194,11 @@ japanese_fields_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -2982,7 +3250,11 @@ japanese_granary_01 = {
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -3040,7 +3312,11 @@ japanese_granary_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -3098,7 +3374,11 @@ japanese_granary_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -3156,7 +3436,11 @@ japanese_granary_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -3214,7 +3498,11 @@ japanese_granary_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -3272,7 +3560,11 @@ japanese_granary_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -3316,13 +3608,17 @@ japanese_rice_broker_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -3374,13 +3670,17 @@ japanese_rice_broker_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3432,13 +3732,17 @@ japanese_rice_broker_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3490,13 +3794,17 @@ japanese_rice_broker_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3548,13 +3856,17 @@ japanese_rice_broker_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3606,13 +3918,17 @@ japanese_rice_broker_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3656,13 +3972,17 @@ japanese_tenant_farmers_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
 	}
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -3714,13 +4034,17 @@ japanese_tenant_farmers_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3772,13 +4096,17 @@ japanese_tenant_farmers_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3830,13 +4158,17 @@ japanese_tenant_farmers_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3888,13 +4220,22 @@ japanese_tenant_farmers_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_secondary_production_add
+		trade_good_rice_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3946,13 +4287,22 @@ japanese_tenant_farmers_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_1
+	}
+
+	province_modifier = {
+		trade_good_rice_production_add = domicile_secondary_production_add
+		trade_good_rice_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -3998,7 +4348,11 @@ japanese_shrine_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = { 
@@ -4044,7 +4398,11 @@ japanese_shrine_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = { 
@@ -4090,7 +4448,11 @@ japanese_shrine_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = { 
@@ -4137,7 +4499,11 @@ japanese_shrine_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = { 
@@ -4183,7 +4549,11 @@ japanese_shrine_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = { 
@@ -4229,7 +4599,11 @@ japanese_shrine_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = { 
@@ -4261,7 +4635,11 @@ japanese_cemetery_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -4299,7 +4677,11 @@ japanese_cemetery_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4337,7 +4719,11 @@ japanese_cemetery_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4375,7 +4761,11 @@ japanese_cemetery_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4413,7 +4803,11 @@ japanese_cemetery_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4451,7 +4845,11 @@ japanese_cemetery_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4483,7 +4881,11 @@ japanese_shokubo_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -4522,7 +4924,11 @@ japanese_shokubo_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4561,7 +4967,11 @@ japanese_shokubo_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4601,7 +5011,11 @@ japanese_shokubo_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4640,7 +5054,11 @@ japanese_shokubo_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4679,7 +5097,11 @@ japanese_shokubo_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4713,7 +5135,11 @@ japanese_monastery_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -4754,7 +5180,11 @@ japanese_monastery_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4795,7 +5225,11 @@ japanese_monastery_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4837,7 +5271,11 @@ japanese_monastery_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4878,7 +5316,11 @@ japanese_monastery_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4919,7 +5361,11 @@ japanese_monastery_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -4951,10 +5397,15 @@ japanese_brewery_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_2
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_significant
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
 		stewardship_per_prestige_level = 1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -4963,7 +5414,11 @@ japanese_brewery_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -4996,9 +5451,14 @@ japanese_brewery_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -5007,7 +5467,11 @@ japanese_brewery_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5040,9 +5504,14 @@ japanese_brewery_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -5051,7 +5520,11 @@ japanese_brewery_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5084,10 +5557,15 @@ japanese_brewery_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
 		stewardship_per_prestige_level = 1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -5096,7 +5574,11 @@ japanese_brewery_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5129,9 +5611,14 @@ japanese_brewery_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -5140,7 +5627,11 @@ japanese_brewery_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5169,13 +5660,18 @@ japanese_brewery_06 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		development_growth_factor = @japanese_manor_development_growth_factor_1
-		county_opinion_add = @japanese_manor_opinion_add_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		prosperity_growth_factor = @japanese_manor_prosperity_growth_factor_1
+		popular_opinion_add = @japanese_manor_opinion_add_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_primary_production_add_6_levels
+		trade_good_wine_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -5184,7 +5680,11 @@ japanese_brewery_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5206,13 +5706,17 @@ japanese_koshu_cellars_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -5240,13 +5744,17 @@ japanese_koshu_cellars_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5274,13 +5782,17 @@ japanese_koshu_cellars_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5308,13 +5820,17 @@ japanese_koshu_cellars_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5342,13 +5858,22 @@ japanese_koshu_cellars_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_secondary_production_add
+		trade_good_wine_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5376,13 +5901,22 @@ japanese_koshu_cellars_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_wine_production_add = domicile_secondary_production_add
+		trade_good_wine_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5402,14 +5936,18 @@ japanese_gambling_den_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 
 		dread_decay_mult = -0.025
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -5437,12 +5975,16 @@ japanese_gambling_den_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5470,12 +6012,16 @@ japanese_gambling_den_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5503,12 +6049,16 @@ japanese_gambling_den_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5536,12 +6086,16 @@ japanese_gambling_den_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5569,12 +6123,16 @@ japanese_gambling_den_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5594,14 +6152,18 @@ japanese_sumo_hall_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -5629,14 +6191,18 @@ japanese_sumo_hall_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5664,14 +6230,18 @@ japanese_sumo_hall_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5699,14 +6269,18 @@ japanese_sumo_hall_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5734,14 +6308,18 @@ japanese_sumo_hall_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5769,14 +6347,18 @@ japanese_sumo_hall_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		trait_track_foot_xp_gain_mult = 0.05
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -5814,18 +6396,21 @@ japanese_archive_01 = {
 	character_modifier = {
 		stewardship_per_influence_level = 1
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		governor_efficiency_add = 0.125 # Estate bonus plus the first archive level
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -5863,18 +6448,21 @@ japanese_archive_02 = {
 
 	character_modifier = {
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		governor_efficiency_add = 0.025
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5912,18 +6500,21 @@ japanese_archive_03 = {
 
 	character_modifier = {
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		governor_efficiency_add = 0.025
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -5962,18 +6553,21 @@ japanese_archive_04 = {
 	character_modifier = {
 		stewardship_per_influence_level = 1
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		governor_efficiency_add = 0.025
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6011,18 +6605,21 @@ japanese_archive_05 = {
 
 	character_modifier = {
 		domicile_monthly_influence_add = @japanese_manor_monthly_influence_add_2
+		governor_efficiency_add = 0.025
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6055,7 +6652,7 @@ japanese_archive_06 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_external_building_normal_cost_tier_5_value }
+		gold = { value = japanese_manor_external_building_normal_cost_tier_6_value }
 	}
 
 	character_modifier = {
@@ -6063,15 +6660,17 @@ japanese_archive_06 = {
 	}
 
 	parameters = {
-		japanese_archives_governor_efficiency_boost = yes
 		japanese_manor_local_theme_cost_reduction = yes
-		estate_governor_efficiency_bonus = yes
 		estate_governor_trait_xp_bonus_for_contracts = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6105,7 +6704,11 @@ japanese_schoolhouse_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6145,7 +6748,11 @@ japanese_schoolhouse_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6185,7 +6792,11 @@ japanese_schoolhouse_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6225,7 +6836,11 @@ japanese_schoolhouse_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6265,7 +6880,11 @@ japanese_schoolhouse_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6305,7 +6924,11 @@ japanese_schoolhouse_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6335,7 +6958,11 @@ japanese_law_library_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6372,7 +6999,11 @@ japanese_law_library_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6409,7 +7040,11 @@ japanese_law_library_03 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6446,7 +7081,11 @@ japanese_law_library_04 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6483,7 +7122,11 @@ japanese_law_library_05 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6520,7 +7163,11 @@ japanese_law_library_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6546,7 +7193,11 @@ japanese_messenger_service_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6580,7 +7231,11 @@ japanese_messenger_service_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6614,7 +7269,11 @@ japanese_messenger_service_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6648,7 +7307,11 @@ japanese_messenger_service_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6682,7 +7345,11 @@ japanese_messenger_service_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6716,7 +7383,11 @@ japanese_messenger_service_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6761,7 +7432,11 @@ japanese_armory_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -6806,7 +7481,11 @@ japanese_armory_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6851,7 +7530,11 @@ japanese_armory_03 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6897,7 +7580,11 @@ japanese_armory_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6942,7 +7629,11 @@ japanese_armory_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -6972,7 +7663,7 @@ japanese_armory_06 = {
 
 	cost = {
 		gold = {
-			value = japanese_manor_external_building_normal_cost_tier_5_value
+			value = japanese_manor_external_building_normal_cost_tier_6_value
 			if = {
 				limit = { has_realm_law_flag = cheaper_japanese_domicile_military_buildings }
 				multiply = 0.75
@@ -6987,7 +7678,11 @@ japanese_armory_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7027,7 +7722,11 @@ japanese_bladesmith_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -7038,7 +7737,7 @@ japanese_bladesmith_01 = {
 	}
 }
 japanese_bladesmith_02 = {
-	construction_time = @japanese_manor_internal_construction_time_tier_1
+	construction_time = @japanese_manor_internal_construction_time_tier_2
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_bladesmith_01
@@ -7076,7 +7775,11 @@ japanese_bladesmith_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7124,7 +7827,11 @@ japanese_bladesmith_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7173,7 +7880,11 @@ japanese_bladesmith_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7221,7 +7932,11 @@ japanese_bladesmith_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7270,7 +7985,11 @@ japanese_bladesmith_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7309,7 +8028,11 @@ japanese_armorer_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -7356,7 +8079,11 @@ japanese_armorer_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7403,7 +8130,11 @@ japanese_armorer_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7450,7 +8181,11 @@ japanese_armorer_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7497,7 +8232,11 @@ japanese_armorer_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7544,7 +8283,11 @@ japanese_armorer_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7581,7 +8324,11 @@ japanese_barracks_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -7626,7 +8373,11 @@ japanese_barracks_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7671,7 +8422,11 @@ japanese_barracks_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7712,7 +8467,11 @@ japanese_barracks_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7757,7 +8516,11 @@ japanese_barracks_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7802,7 +8565,11 @@ japanese_barracks_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -7842,7 +8609,7 @@ japanese_watch_house_01 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 		intrigue_per_prestige_level = 1
@@ -7855,7 +8622,11 @@ japanese_watch_house_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -7895,7 +8666,7 @@ japanese_watch_house_02 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
@@ -7907,7 +8678,11 @@ japanese_watch_house_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7947,7 +8722,7 @@ japanese_watch_house_03 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
@@ -7959,7 +8734,11 @@ japanese_watch_house_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -7999,7 +8778,7 @@ japanese_watch_house_04 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 		intrigue_per_prestige_level = 1
@@ -8012,7 +8791,11 @@ japanese_watch_house_04 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8052,7 +8835,7 @@ japanese_watch_house_05 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
@@ -8064,7 +8847,11 @@ japanese_watch_house_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8104,7 +8891,7 @@ japanese_watch_house_06 = {
 	}
 
 	character_modifier = {
-		monthly_county_control_growth_factor = @japanese_manor_control_growth_factor_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 		defender_holding_advantage = @japanese_manor_advantage_add_1
 		hostile_raid_time = @japanese_manor_hostile_raid_time_1
 	}
@@ -8116,7 +8903,11 @@ japanese_watch_house_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -8140,12 +8931,16 @@ japanese_spy_network_01 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -8175,12 +8970,16 @@ japanese_spy_network_02 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8210,12 +9009,16 @@ japanese_spy_network_03 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8245,12 +9048,16 @@ japanese_spy_network_04 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8280,12 +9087,16 @@ japanese_spy_network_05 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8315,12 +9126,16 @@ japanese_spy_network_06 = {
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_max_add = @japanese_manor_enemy_scheme_success_chance_max_add
 		owned_hostile_scheme_success_chance_growth_add = @japanese_manor_owned_scheme_success_growth_add
-		monthly_county_control_growth_add = @japanese_manor_county_control_growth_add_1
+		character_capital_county_monthly_control_change_mult = @japanese_manor_county_control_growth_add_1
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8347,7 +9162,11 @@ japanese_infiltrators_01 = {
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -8385,7 +9204,11 @@ japanese_infiltrators_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8423,7 +9246,11 @@ japanese_infiltrators_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8462,7 +9289,11 @@ japanese_infiltrators_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8499,7 +9330,11 @@ japanese_infiltrators_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8537,7 +9372,11 @@ japanese_infiltrators_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8564,7 +9403,11 @@ japanese_prison_01 = {
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -8599,7 +9442,11 @@ japanese_prison_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8634,7 +9481,11 @@ japanese_prison_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8669,7 +9520,11 @@ japanese_prison_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8704,7 +9559,11 @@ japanese_prison_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8739,7 +9598,11 @@ japanese_prison_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -8767,14 +9630,23 @@ japanese_horse_pastures_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -8810,14 +9682,23 @@ japanese_horse_pastures_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 	}
 
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8853,14 +9734,23 @@ japanese_horse_pastures_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8896,14 +9786,23 @@ japanese_horse_pastures_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8939,14 +9838,23 @@ japanese_horse_pastures_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -8982,14 +9890,23 @@ japanese_horse_pastures_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		archer_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
 		light_cavalry_maintenance_mult = @japanese_manor_maa_maintenance_mult_1
+	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_primary_production_add_6_levels
+		trade_good_horses_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9018,7 +9935,11 @@ japanese_stud_farm_01 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -9054,7 +9975,11 @@ japanese_stud_farm_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9079,7 +10004,7 @@ japanese_stud_farm_03 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+		gold = { value = japanese_manor_external_building_normal_cost_tier_3_value }
 	}
 
 	character_modifier = {
@@ -9090,7 +10015,11 @@ japanese_stud_farm_03 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9126,7 +10055,11 @@ japanese_stud_farm_04 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9159,10 +10092,19 @@ japanese_stud_farm_05 = {
 		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_secondary_production_add
+		trade_good_horses_production_mult = domicile_secondary_production_mult
+	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9195,10 +10137,19 @@ japanese_stud_farm_06 = {
 		light_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 		archer_cavalry_recruitment_cost_mult = @japanese_manor_maa_recruitment_cost_mult_1
 	}
+
+	province_modifier = {
+		trade_good_horses_production_add = domicile_secondary_production_add
+		trade_good_horses_production_mult = domicile_secondary_production_mult
+	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9219,13 +10170,22 @@ japanese_ox_breeder_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -9254,13 +10214,22 @@ japanese_ox_breeder_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9289,13 +10258,22 @@ japanese_ox_breeder_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9324,13 +10302,22 @@ japanese_ox_breeder_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9359,13 +10346,22 @@ japanese_ox_breeder_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9394,13 +10390,22 @@ japanese_ox_breeder_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		character_travel_speed = 2
+	}
+
+	province_modifier = {
+		trade_good_cattle_production_add = domicile_primary_production_add_6_levels
+		trade_good_cattle_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9428,7 +10433,11 @@ japanese_riding_school_01 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -9463,7 +10472,11 @@ japanese_riding_school_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9488,7 +10501,7 @@ japanese_riding_school_03 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+		gold = { value = japanese_manor_external_building_normal_cost_tier_3_value }
 	}
 
 	character_modifier = {
@@ -9498,7 +10511,11 @@ japanese_riding_school_03 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9534,7 +10551,11 @@ japanese_riding_school_04 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9569,7 +10590,11 @@ japanese_riding_school_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9604,7 +10629,11 @@ japanese_riding_school_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -9635,7 +10664,12 @@ japanese_tea_plantation_01 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_2
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -9675,7 +10709,11 @@ japanese_tea_plantation_01 = {
 			}
 			add = 20
 		}
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -9713,7 +10751,12 @@ japanese_tea_plantation_02 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -9744,7 +10787,11 @@ japanese_tea_plantation_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9782,7 +10829,12 @@ japanese_tea_plantation_03 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -9813,7 +10865,11 @@ japanese_tea_plantation_03 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9851,7 +10907,12 @@ japanese_tea_plantation_04 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -9882,7 +10943,11 @@ japanese_tea_plantation_04 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9920,7 +10985,12 @@ japanese_tea_plantation_05 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -9951,7 +11021,11 @@ japanese_tea_plantation_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -9989,7 +11063,12 @@ japanese_tea_plantation_06 = {
 	character_modifier = {
 		elderly_health = @japanese_manor_health_add_1
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_primary_production_add_6_levels
+		trade_good_tea_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	parameters = {
@@ -10020,7 +11099,11 @@ japanese_tea_plantation_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10050,12 +11133,16 @@ japanese_matcha_factory_01 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -10092,12 +11179,16 @@ japanese_matcha_factory_02 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10134,12 +11225,16 @@ japanese_matcha_factory_03 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10176,12 +11271,16 @@ japanese_matcha_factory_04 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10218,12 +11317,21 @@ japanese_matcha_factory_05 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_secondary_production_add
+		trade_good_tea_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10260,12 +11368,21 @@ japanese_matcha_factory_06 = {
 
 	character_modifier = {
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
-		domicile_monthly_gold_mult = @japanese_manor_monthly_gold_mult_1
+		domicile_monthly_gold_mult = japanese_manor_income_mult_small
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_secondary_production_add
+		trade_good_tea_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10297,6 +11414,11 @@ japanese_medicine_house_01 = {
 		negate_health_penalty_add = @japanese_manor_health_add_1
 		epidemic_resistance = @japanese_manor_epidemic_resistance_1
 	}
+
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	parameters = {
 		estate_increase_physician_aptitude_1 = yes
@@ -10304,7 +11426,11 @@ japanese_medicine_house_01 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -10344,13 +11470,22 @@ japanese_medicine_house_02 = {
 		epidemic_resistance = @japanese_manor_epidemic_resistance_1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_increase_physician_aptitude_2 = yes
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10391,13 +11526,22 @@ japanese_medicine_house_03 = {
 		negate_prowess_penalty_add = 1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_increase_physician_aptitude_3 = yes
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10438,13 +11582,22 @@ japanese_medicine_house_04 = {
 		epidemic_resistance = @japanese_manor_epidemic_resistance_1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_increase_physician_aptitude_4 = yes
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10484,13 +11637,22 @@ japanese_medicine_house_05 = {
 		epidemic_resistance = @japanese_manor_epidemic_resistance_1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_increase_physician_aptitude_5 = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10531,13 +11693,22 @@ japanese_medicine_house_06 = {
 		negate_prowess_penalty_add = 1
 	}
 
+	province_modifier = {
+		trade_good_medicaments_production_add = domicile_primary_production_add_6_levels
+		trade_good_medicaments_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_increase_physician_aptitude_6 = yes
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10565,14 +11736,17 @@ japanese_roastery_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_2
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
-
+		domicile_monthly_gold_add = japanese_manor_income_significant
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 
 	asset = {
@@ -10608,13 +11782,17 @@ japanese_roastery_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10650,13 +11828,17 @@ japanese_roastery_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10692,13 +11874,17 @@ japanese_roastery_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
 	}
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10734,13 +11920,22 @@ japanese_roastery_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_secondary_production_add
+		trade_good_tea_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10776,13 +11971,22 @@ japanese_roastery_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
-		character_capital_county_monthly_control_add = @japanese_manor_control_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
+		character_capital_county_monthly_control_change_mult = @japanese_manor_control_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_tea_production_add = domicile_secondary_production_add
+		trade_good_tea_production_mult = domicile_secondary_production_mult
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 
 	asset = {
@@ -10822,7 +12026,11 @@ japanese_stables_01 = {
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -10869,7 +12077,11 @@ japanese_stables_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10916,7 +12128,11 @@ japanese_stables_03 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -10963,7 +12179,11 @@ japanese_stables_04 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11010,7 +12230,11 @@ japanese_stables_05 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11057,7 +12281,11 @@ japanese_stables_06 = {
 
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11086,7 +12314,11 @@ japanese_yabusame_ground_01 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 
 	asset = {
@@ -11122,7 +12354,11 @@ japanese_yabusame_ground_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11147,7 +12383,7 @@ japanese_yabusame_ground_03 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_external_building_normal_cost_tier_4_value }
+		gold = { value = japanese_manor_external_building_normal_cost_tier_3_value }
 	}
 
 	character_modifier = {
@@ -11158,7 +12394,11 @@ japanese_yabusame_ground_03 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11194,7 +12434,11 @@ japanese_yabusame_ground_04 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11230,7 +12474,11 @@ japanese_yabusame_ground_05 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11266,7 +12514,11 @@ japanese_yabusame_ground_06 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 
 	asset = {
@@ -11300,7 +12552,11 @@ japanese_farrier_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -11311,7 +12567,7 @@ japanese_farrier_01 = {
 	}
 }
 japanese_farrier_02 = {
-	construction_time = @japanese_manor_internal_construction_time_tier_1
+	construction_time = @japanese_manor_internal_construction_time_tier_2
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_farrier_01
@@ -11342,7 +12598,11 @@ japanese_farrier_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11384,7 +12644,11 @@ japanese_farrier_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11426,7 +12690,11 @@ japanese_farrier_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11468,7 +12736,11 @@ japanese_farrier_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11510,7 +12782,11 @@ japanese_farrier_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11541,13 +12817,22 @@ japanese_hunting_lodge_01 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -11558,7 +12843,7 @@ japanese_hunting_lodge_01 = {
 	}
 }
 japanese_hunting_lodge_02 = {
-	construction_time = @japanese_manor_internal_construction_time_tier_1
+	construction_time = @japanese_manor_internal_construction_time_tier_2
 	allowed_domicile_types = { japanese_manor }
 	slot_type = internal
 	previous_building = japanese_hunting_lodge_01
@@ -11586,13 +12871,22 @@ japanese_hunting_lodge_02 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11631,13 +12925,22 @@ japanese_hunting_lodge_03 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11676,13 +12979,22 @@ japanese_hunting_lodge_04 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11721,13 +13033,22 @@ japanese_hunting_lodge_05 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11766,13 +13087,22 @@ japanese_hunting_lodge_06 = {
 		movement_speed = @japanese_manor_movement_speed_1
 	}
 
+	province_modifier = {
+		trade_good_furs_production_add = domicile_primary_production_add_6_levels
+		trade_good_furs_production_mult = domicile_primary_production_mult_6_levels
+	}
+
 	parameters = {
 		estate_cheaper_hunt_cost = yes
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -11801,14 +13131,18 @@ japanese_workshop_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_2
+		domicile_monthly_gold_add = japanese_manor_income_significant
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -11844,14 +13178,18 @@ japanese_workshop_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -11887,14 +13225,18 @@ japanese_workshop_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -11920,7 +13262,7 @@ japanese_workshop_04 = {
 
 	cost = {
 		gold = {
-			value = japanese_manor_external_building_normal_cost_tier_3_value
+			value = japanese_manor_external_building_normal_cost_tier_4_value
 			if = {
 				limit = { has_character_modifier = raid_insight_workshop }
 				multiply = 0.75
@@ -11930,14 +13272,18 @@ japanese_workshop_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -11973,14 +13319,18 @@ japanese_workshop_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12016,14 +13366,18 @@ japanese_workshop_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_build_speed = @japanese_manor_domicile_build_speed
 		build_speed = @japanese_manor_domicile_build_speed
 	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12062,7 +13416,11 @@ japanese_bowyer_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -12108,7 +13466,11 @@ japanese_bowyer_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12154,7 +13516,11 @@ japanese_bowyer_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12200,7 +13566,11 @@ japanese_bowyer_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12246,7 +13616,11 @@ japanese_bowyer_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12292,7 +13666,11 @@ japanese_bowyer_06 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12313,8 +13691,13 @@ japanese_lacquerer_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_1
+		domicile_monthly_gold_add = japanese_manor_income_moderate
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12324,7 +13707,11 @@ japanese_lacquerer_01 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -12353,8 +13740,13 @@ japanese_lacquerer_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12364,7 +13756,11 @@ japanese_lacquerer_02 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12393,8 +13789,13 @@ japanese_lacquerer_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12404,7 +13805,11 @@ japanese_lacquerer_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12433,8 +13838,13 @@ japanese_lacquerer_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12444,7 +13854,11 @@ japanese_lacquerer_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12473,8 +13887,13 @@ japanese_lacquerer_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12484,7 +13903,11 @@ japanese_lacquerer_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12513,8 +13936,13 @@ japanese_lacquerer_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_mult = @japanese_manor_monthly_prestige_mult_1
+	}
+
+	province_modifier = {
+		trade_good_lacquerware_production_add = domicile_primary_production_add_6_levels
+		trade_good_lacquerware_production_mult = domicile_primary_production_mult_6_levels
 	}
 
 	parameters = {
@@ -12524,7 +13952,11 @@ japanese_lacquerer_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -12549,10 +13981,19 @@ japanese_carpenter_01 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -12585,10 +14026,19 @@ japanese_carpenter_02 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12621,10 +14071,19 @@ japanese_carpenter_03 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12657,10 +14116,19 @@ japanese_carpenter_04 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12693,10 +14161,19 @@ japanese_carpenter_05 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12729,10 +14206,19 @@ japanese_carpenter_06 = {
 		domicile_build_gold_cost = @japanese_manor_domicile_build_gold_cost
 		holding_build_gold_cost = @japanese_manor_holding_build_gold_cost
 	}
+
+	province_modifier = {
+		trade_good_wood_production_add = domicile_primary_production_add_6_levels
+		trade_good_wood_production_mult = domicile_primary_production_mult_6_levels
+	}
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12776,7 +14262,11 @@ japanese_tea_house_01 = {
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -12819,7 +14309,11 @@ japanese_tea_house_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12862,7 +14356,11 @@ japanese_tea_house_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12906,7 +14404,11 @@ japanese_tea_house_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12949,7 +14451,11 @@ japanese_tea_house_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -12992,7 +14498,11 @@ japanese_tea_house_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13030,7 +14540,11 @@ japanese_guest_house_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -13074,7 +14588,11 @@ japanese_guest_house_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13119,7 +14637,11 @@ japanese_guest_house_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13165,7 +14687,11 @@ japanese_guest_house_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13190,7 +14716,7 @@ japanese_guest_house_05 = {
 
 	cost = {
 		gold = {
-			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			value = japanese_manor_internal_building_normal_cost_tier_5_value
 			if = {
 				limit = { has_character_modifier = raid_insight_living_quarters }
 				multiply = 0.75
@@ -13211,7 +14737,11 @@ japanese_guest_house_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13257,7 +14787,11 @@ japanese_guest_house_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13286,7 +14820,11 @@ japanese_performance_stage_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -13325,7 +14863,11 @@ japanese_performance_stage_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13363,7 +14905,11 @@ japanese_performance_stage_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13402,7 +14948,11 @@ japanese_performance_stage_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13426,7 +14976,7 @@ japanese_performance_stage_05 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_internal_building_normal_cost_tier_4_value }
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_5_value }
 	}
 
 	character_modifier = {
@@ -13441,7 +14991,11 @@ japanese_performance_stage_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13478,7 +15032,11 @@ japanese_performance_stage_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13507,7 +15065,11 @@ japanese_asobi_colony_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -13545,7 +15107,11 @@ japanese_asobi_colony_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13583,7 +15149,11 @@ japanese_asobi_colony_03 = {
 
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13621,7 +15191,11 @@ japanese_asobi_colony_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13645,7 +15219,7 @@ japanese_asobi_colony_05 = {
     }
 
 	cost = {
-		gold = { value = japanese_manor_internal_building_normal_cost_tier_4_value }
+		gold = { value = japanese_manor_internal_building_normal_cost_tier_5_value }
 	}
 
 	character_modifier = {
@@ -13659,7 +15233,11 @@ japanese_asobi_colony_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13696,7 +15274,11 @@ japanese_asobi_colony_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -13724,7 +15306,7 @@ japanese_garden_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13735,7 +15317,11 @@ japanese_garden_01 = {
 
 	ai_value = {
 		value = 9
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -13771,7 +15357,7 @@ japanese_garden_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13782,7 +15368,11 @@ japanese_garden_02 = {
 
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -13818,7 +15408,7 @@ japanese_garden_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13829,7 +15419,11 @@ japanese_garden_03 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -13865,7 +15459,7 @@ japanese_garden_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13876,7 +15470,11 @@ japanese_garden_04 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -13912,7 +15510,7 @@ japanese_garden_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13923,7 +15521,11 @@ japanese_garden_05 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -13959,7 +15561,7 @@ japanese_garden_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
+		domicile_monthly_gold_add = japanese_manor_income_small
 		domicile_monthly_prestige_add = @japanese_manor_monthly_prestige_add_1
 		stress_gain_mult = @japanese_manor_stress_gain_mult_1
 	}
@@ -13970,7 +15572,11 @@ japanese_garden_06 = {
 	
 	ai_value = {
 		value = 8
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -14005,7 +15611,11 @@ japanese_rock_garden_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -14046,7 +15656,11 @@ japanese_rock_garden_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14087,7 +15701,11 @@ japanese_rock_garden_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14128,7 +15746,11 @@ japanese_rock_garden_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14153,7 +15775,7 @@ japanese_rock_garden_05 = {
 
 	cost = {
 		gold = {
-			value = japanese_manor_internal_building_normal_cost_tier_4_value
+			value = japanese_manor_internal_building_normal_cost_tier_5_value
 			if = {
 				limit = { has_character_modifier = raid_insight_living_quarters }
 				multiply = 0.75
@@ -14169,7 +15791,11 @@ japanese_rock_garden_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14210,7 +15836,11 @@ japanese_rock_garden_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14236,7 +15866,11 @@ japanese_kazan_display_01 = {
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_value
 	}
 	
 	asset = {
@@ -14270,7 +15904,11 @@ japanese_kazan_display_02 = {
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14304,7 +15942,11 @@ japanese_kazan_display_03 = {
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14338,7 +15980,11 @@ japanese_kazan_display_04 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14372,7 +16018,11 @@ japanese_kazan_display_05 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14406,7 +16056,11 @@ japanese_kazan_display_06 = {
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_value
 	}
 	
 	asset = {
@@ -14426,13 +16080,22 @@ japanese_orchard_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels_level_1
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 7
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_new_income_value
 	}
 	
 	asset = {
@@ -14460,13 +16123,22 @@ japanese_orchard_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 6
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -14494,13 +16166,22 @@ japanese_orchard_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 5
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -14528,13 +16209,22 @@ japanese_orchard_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -14562,13 +16252,22 @@ japanese_orchard_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {
@@ -14596,13 +16295,22 @@ japanese_orchard_06 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = @japanese_manor_monthly_gold_add_0
-		character_capital_county_monthly_development_growth_add = @japanese_manor_development_growth_factor_1
+		domicile_monthly_gold_add = japanese_manor_income_small
+		character_capital_county_monthly_prosperity_growth_add = @japanese_manor_prosperity_growth_factor_1
+	}
+
+	province_modifier = {
+		trade_good_fruit_production_add = domicile_primary_production_add_6_levels
+		trade_good_fruit_production_mult = domicile_primary_production_mult_6_levels
 	}
 	
 	ai_value = {
 		value = 4
-		add = japanese_manor_building_ai_modifier_value
+		multiply = ai_building_domicile_nudge_slope
+		add = ai_building_domicile_nudge_offset
+		min = ai_building_domicile_nudge_min
+		max = ai_building_domicile_nudge_max
+		multiply = ai_building_domicile_upgrade_income_value
 	}
 	
 	asset = {

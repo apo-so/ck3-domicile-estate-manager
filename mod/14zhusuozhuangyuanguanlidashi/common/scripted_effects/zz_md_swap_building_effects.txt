@@ -1862,7 +1862,7 @@
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
@@ -7320,7 +7320,7 @@ zz_md_swap_east_asian_estate_kernel = {
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
@@ -10794,18 +10794,33 @@ zz_md_swap_japanese_manor_kernel = {
             }
             scope:recipient = { remove_variable = zz_swap_incomplete }
         }
-        else = { scope:actor = { trigger_event = zz_md.0203 } }
+        else = { scope:actor = { zz_md_report_attachment_failure = yes } }
     }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
-zz_md_dispatch_swap_effect = { hidden_effect_new_object = { zz_md_sync_then_swap_effect = yes } }
+zz_md_dispatch_swap_effect = {
+    hidden_effect_new_object = {
+        if = {
+            limit = { zz_md_exchange_structural_pair_valid = yes scope:zz_md_a = { is_domicile_type = merchant_company } }
+            scope:zz_md_a = { zz_md_company_resume_recovery = yes }
+            scope:zz_md_b = { zz_md_company_resume_recovery = yes }
+            if = {
+                limit = { scope:zz_md_a = { NOT = { has_variable = zz_md_company_recovery_needed } } scope:zz_md_b = { NOT = { has_variable = zz_md_company_recovery_needed } } }
+                zz_md_sync_then_swap_effect = yes
+            }
+            else = { scope:actor = { trigger_event = zz_md.0203 } }
+        }
+        else = { zz_md_sync_then_swap_effect = yes }
+    }
+}
 zz_md_dispatch_same_main_effect = {
-    if = { limit = { scope:zz_md_a = { is_domicile_type = estate } } zz_md_swap_estate_kernel = yes }
-    else_if = { limit = { scope:zz_md_a = { is_domicile_type = east_asian_estate } } zz_md_swap_east_asian_estate_kernel = yes }
-    else_if = { limit = { scope:zz_md_a = { is_domicile_type = japanese_manor } } zz_md_swap_japanese_manor_kernel = yes }
-    else_if = { limit = { scope:zz_md_a = { is_domicile_type = camp } } zz_md_swap_camp_kernel = yes }
-    else_if = { limit = { scope:zz_md_a = { is_domicile_type = yurt } } zz_md_swap_yurt_kernel = yes }
-    else_if = { limit = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile } } zz_md_swap_ecclesiastical_domicile_kernel = yes }
+    if = { limit = { scope:zz_md_a = { is_domicile_type = estate } } zz_md_exchange_aligned_pair = { TYPE = estate KERNEL = zz_md_swap_estate_kernel CAPTURE = zz_swap_capture_estate APPLY = zz_swap_apply_estate MATCH = zz_swap_matches_estate } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = east_asian_estate } } zz_md_exchange_aligned_pair = { TYPE = east_asian_estate KERNEL = zz_md_swap_east_asian_estate_kernel CAPTURE = zz_swap_capture_east_asian_estate APPLY = zz_swap_apply_east_asian_estate MATCH = zz_swap_matches_east_asian_estate } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = japanese_manor } } zz_md_exchange_aligned_pair = { TYPE = japanese_manor KERNEL = zz_md_swap_japanese_manor_kernel CAPTURE = zz_swap_capture_japanese_manor APPLY = zz_swap_apply_japanese_manor MATCH = zz_swap_matches_japanese_manor } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = camp } } zz_md_exchange_aligned_pair = { TYPE = camp KERNEL = zz_md_swap_camp_kernel CAPTURE = zz_swap_capture_camp APPLY = zz_swap_apply_camp MATCH = zz_swap_matches_camp } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = yurt } } zz_md_exchange_aligned_pair = { TYPE = yurt KERNEL = zz_md_swap_yurt_kernel CAPTURE = zz_swap_capture_yurt APPLY = zz_swap_apply_yurt MATCH = zz_swap_matches_yurt } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = ecclesiastical_domicile } } zz_md_exchange_aligned_pair = { TYPE = ecclesiastical_domicile KERNEL = zz_md_swap_ecclesiastical_domicile_kernel CAPTURE = zz_swap_capture_ecclesiastical_domicile APPLY = zz_swap_apply_ecclesiastical_domicile MATCH = zz_swap_matches_ecclesiastical_domicile } }
+    else_if = { limit = { scope:zz_md_a = { is_domicile_type = merchant_company } } zz_md_exchange_aligned_pair = { TYPE = merchant_company KERNEL = zz_md_swap_merchant_company_kernel CAPTURE = zz_swap_capture_merchant_company APPLY = zz_swap_apply_merchant_company MATCH = zz_swap_matches_merchant_company } }
     else = { scope:actor = { trigger_event = zz_md.0202 } }
 }
 zz_md_own_swap_clear_effect = { remove_variable = zz_md_swap_title remove_variable = zz_md_swap_source remove_variable = zz_md_swap_target remove_variable = zz_md_swap_pending }
@@ -10825,13 +10840,7 @@ zz_md_commit_own_swap_effect = {
         limit = { zz_md_own_pair_valid = yes }
         var:zz_md_swap_source = { save_scope_as = zz_md_a }
         var:zz_md_swap_target = { save_scope_as = zz_md_b }
-        # Previous attempt status is diagnostic, never a permanent lock on an own swap.
-        remove_variable = zz_swap_incomplete
-        remove_variable = zz_md_swap_busy
-        remove_variable = zz_md_core_sync_busy
-        remove_variable = zz_md_core_sync_failed
-        remove_variable = zz_md_swap_completed
-        zz_md_dispatch_swap_effect = yes
+        zz_md_begin_prepared_swap = yes
     }
     else = { trigger_event = zz_md.0202 }
     zz_md_own_swap_clear_effect = yes

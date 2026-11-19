@@ -20,6 +20,8 @@ zz_md_same_preview_government = {
         AND = { var:zz_md_preview_government = 7 has_government = japan_administrative_government }
         AND = { var:zz_md_preview_government = 8 has_government = japan_feudal_government }
         AND = { var:zz_md_preview_government = 9 has_government = ecclesiastical_government }
+        AND = { var:zz_md_preview_government = 10 has_government = merchant_government }
+        AND = { var:zz_md_preview_government = 11 has_government = republic_government }
     }
 }
 zz_md_has_selected_domicile = {
@@ -49,6 +51,9 @@ zz_md_government_supported = {
         has_government = japan_administrative_government
         has_government = japan_feudal_government
         has_government = ecclesiastical_government
+
+        has_government = merchant_government
+        has_government = republic_government
     }
 }
 
@@ -62,5 +67,39 @@ zz_md_selected_swap_supported = {
             AND = { domicile = { is_domicile_type = camp } scope:selected_title = { title_domicile = { is_domicile_type = camp } } }
         AND = { domicile = { is_domicile_type = yurt } scope:selected_title = { title_domicile = { is_domicile_type = yurt } } }
         AND = { domicile = { is_domicile_type = ecclesiastical_domicile } scope:selected_title = { title_domicile = { is_domicile_type = ecclesiastical_domicile } } }
+        AND = { domicile = { is_domicile_type = merchant_company } scope:selected_title = { title_domicile = { is_domicile_type = merchant_company } } }
+    }
+}
+
+# A 1.2.2 merchant-house title attempt could fail before the engine created anything.
+zz_md_retry_empty_company_creation = {
+    has_variable = zz_md_create_busy
+    has_variable = zz_md_create_failed
+    has_variable = zz_md_create_pending
+    NOT = { has_variable = zz_md_last_created_title }
+    NOT = { has_variable = zz_md_last_created_domicile }
+    exists = var:zz_md_created_old_default
+    exists = var:zz_md_created_old_primary
+    domicile = var:zz_md_created_old_default
+    primary_title = var:zz_md_created_old_primary
+    zz_md_same_preview_government = yes
+    OR = { has_government = merchant_government has_government = republic_government }
+    is_target_in_variable_list = { name = zz_md_before_titles target = primary_title }
+    is_target_in_variable_list = { name = zz_md_before_domiciles target = domicile }
+    NOT = { any_held_title = { root = { NOT = { is_target_in_variable_list = { name = zz_md_before_titles target = prev } } } } }
+    NOT = { any_in_list = { variable = zz_md_before_titles NOT = { holder = root } } }
+    NOT = { any_in_list = {
+        variable = zz_md_before_titles
+        OR = {
+            AND = { has_variable = zz_md_had_domicile_before_creation NOT = { exists = title_domicile exists = var:zz_md_before_creation_domicile title_domicile = var:zz_md_before_creation_domicile } }
+            AND = { NOT = { has_variable = zz_md_had_domicile_before_creation } exists = title_domicile }
+        }
+    } }
+    zz_md_old_creation_buildings_preserved = yes
+}
+zz_md_creation_can_start = {
+    OR = {
+        AND = { zz_md_creation_available = yes NOT = { has_variable = zz_md_create_pending } }
+        AND = { is_ai = no is_alive = yes NOT = { has_variable = zz_md_res_failed } zz_md_retry_empty_company_creation = yes }
     }
 }
